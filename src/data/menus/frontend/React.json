@@ -1,0 +1,334 @@
+{
+  "title": "React",
+  "sections": [
+    {
+      "id": "fundamentos",
+      "title": "Fundamentos",
+      "items": [
+        {
+          "id": "introduccion",
+          "title": "Introducción a React",
+          "slug": "react/fundamentos/introduccion",
+          "content": {
+            "breadcrumb": ["Inicio", "React", "Fundamentos", "Introducción"],
+            "sections": [
+              {
+                "type": "heading",
+                "level": 2,
+                "text": "¿Qué es React?"
+              },
+              {
+                "type": "paragraph",
+                "text": "React es una biblioteca de JavaScript para construir interfaces de usuario, desarrollada y mantenida por Meta (Facebook). Se centra en la creación de componentes reutilizables y la gestión eficiente del estado de la aplicación."
+              },
+              {
+                "type": "heading",
+                "level": 3,
+                "text": "Características principales"
+              },
+              {
+                "type": "list",
+                "items": [
+                  "<strong>Component-Based</strong> - Arquitectura basada en componentes",
+                  "<strong>Virtual DOM</strong> - Renderizado eficiente con DOM virtual",
+                  "<strong>Declarativo</strong> - Código más predecible y fácil de debuguear",
+                  "<strong>JSX</strong> - Sintaxis que combina JavaScript con HTML",
+                  "<strong>Unidirectional Data Flow</strong> - Flujo de datos unidireccional"
+                ]
+              },
+              {
+                "type": "heading",
+                "level": 3,
+                "text": "Instalación"
+              },
+              {
+                "type": "paragraph",
+                "text": "Crear una nueva aplicación React con Vite:"
+              },
+              {
+                "type": "code",
+                "text": "# Crear proyecto con Vite\nnpm create vite@latest mi-app -- --template react\n\n# Navegar al directorio\ncd mi-app\n\n# Instalar dependencias\nnpm install\n\n# Iniciar servidor de desarrollo\nnpm run dev"
+              },
+              {
+                "type": "heading",
+                "level": 3,
+                "text": "Primer componente"
+              },
+              {
+                "type": "code",
+                "text": "// App.jsx\nfunction App() {\n  return (\n    <div>\n      <h1>¡Hola React!</h1>\n      <p>Mi primer componente</p>\n    </div>\n  );\n}\n\nexport default App;"
+              },
+              {
+                "type": "callout",
+                "title": "💡 Filosofía de React",
+                "text": "React te permite construir UIs complejas a partir de pequeñas piezas aisladas de código llamadas \"componentes\"."
+              }
+            ]
+          }
+        },
+        {
+          "id": "jsx",
+          "title": "JSX",
+          "slug": "react/fundamentos/jsx",
+          "content": {
+            "breadcrumb": ["Inicio", "React", "Fundamentos", "JSX"],
+            "sections": [
+              {
+                "type": "heading",
+                "level": 2,
+                "text": "JSX"
+              },
+              {
+                "type": "paragraph",
+                "text": "JSX es una extensión de sintaxis para JavaScript que permite escribir HTML dentro de JavaScript."
+              }
+            ]
+          }
+        },
+        {
+          "id": "componentes",
+          "title": "Componentes",
+          "slug": "react/fundamentos/componentes",
+          "content": {
+            "breadcrumb": ["Inicio", "React", "Fundamentos", "Componentes"],
+            "sections": [
+              {
+                "type": "heading",
+                "level": 2,
+                "text": "Componentes"
+              }
+            ]
+          }
+        },
+        {
+          "id": "props",
+          "title": "Props",
+          "slug": "react/fundamentos/props",
+          "content": {
+            "breadcrumb": ["Inicio", "React", "Fundamentos", "Props"],
+            "sections": [
+              {
+                "type": "heading",
+                "level": 2,
+                "text": "Props"
+              }
+            ]
+          }
+        },
+        {
+          "id": "state",
+          "title": "State",
+          "slug": "react/fundamentos/state",
+          "content": {
+            "breadcrumb": ["Inicio", "React", "Fundamentos", "State"],
+            "sections": [
+              {
+                "type": "heading",
+                "level": 2,
+                "text": "State"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "hooks",
+      "title": "Hooks",
+      "items": [
+        {
+          "id": "usestate",
+          "title": "useState",
+          "slug": "react/hooks/usestate",
+          "content": {
+            "breadcrumb": ["Inicio", "React", "Hooks", "useState"],
+            "sections": [
+              {
+                "type": "heading",
+                "level": 2,
+                "text": "useState"
+              }
+            ]
+          }
+        },
+        {
+          "id": "useeffect",
+          "title": "useEffect",
+          "slug": "react/hooks/useeffect",
+          "content": {
+            "breadcrumb": ["Inicio", "React", "Hooks", "useEffect"],
+            "sections": [
+              {
+                "type": "heading",
+                "level": 2,
+                "text": "useEffect"
+              }
+            ]
+          }
+        },
+        {
+          "id": "usecontext",
+          "title": "useContext",
+          "slug": "react/hooks/usecontext",
+          "content": {
+            "breadcrumb": ["Inicio", "React", "Hooks", "useContext"],
+            "sections": [
+              {
+                "type": "heading",
+                "level": 2,
+                "text": "useContext"
+              }
+            ]
+          }
+        },
+        {
+          "id": "usememo",
+          "title": "useMemo",
+          "slug": "react/hooks/usememo",
+          "content": {
+            "breadcrumb": ["Inicio", "React", "Hooks", "useMemo"],
+            "sections": [
+              {
+                "type": "heading",
+                "level": 2,
+                "text": "useMemo"
+              }
+            ]
+          }
+        },
+        {
+          "id": "usecallback",
+          "title": "useCallback",
+          "slug": "react/hooks/usecallback",
+          "content": {
+            "breadcrumb": ["Inicio", "React", "Hooks", "useCallback"],
+            "sections": [
+              {
+                "type": "heading",
+                "level": 2,
+                "text": "useCallback"
+              }
+            ]
+          }
+        },
+        {
+          "id": "custom-hooks",
+          "title": "Custom Hooks",
+          "slug": "react/hooks/custom-hooks",
+          "content": {
+            "breadcrumb": ["Inicio", "React", "Hooks", "Custom Hooks"],
+            "sections": [
+              {
+                "type": "heading",
+                "level": 2,
+                "text": "Custom Hooks"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "routing",
+      "title": "Routing",
+      "items": [
+        {
+          "id": "react-router",
+          "title": "React Router",
+          "slug": "react/routing/react-router",
+          "content": {
+            "breadcrumb": ["Inicio", "React", "Routing", "React Router"],
+            "sections": [
+              {
+                "type": "heading",
+                "level": 2,
+                "text": "React Router"
+              }
+            ]
+          }
+        },
+        {
+          "id": "navegacion",
+          "title": "Navegación",
+          "slug": "react/routing/navegacion",
+          "content": {
+            "breadcrumb": ["Inicio", "React", "Routing", "Navegación"],
+            "sections": [
+              {
+                "type": "heading",
+                "level": 2,
+                "text": "Navegación"
+              }
+            ]
+          }
+        },
+        {
+          "id": "parametros",
+          "title": "Parámetros de Ruta",
+          "slug": "react/routing/parametros",
+          "content": {
+            "breadcrumb": ["Inicio", "React", "Routing", "Parámetros"],
+            "sections": [
+              {
+                "type": "heading",
+                "level": 2,
+                "text": "Parámetros de Ruta"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "estado-global",
+      "title": "Estado Global",
+      "items": [
+        {
+          "id": "context-api",
+          "title": "Context API",
+          "slug": "react/estado-global/context-api",
+          "content": {
+            "breadcrumb": ["Inicio", "React", "Estado Global", "Context API"],
+            "sections": [
+              {
+                "type": "heading",
+                "level": 2,
+                "text": "Context API"
+              }
+            ]
+          }
+        },
+        {
+          "id": "redux",
+          "title": "Redux",
+          "slug": "react/estado-global/redux",
+          "content": {
+            "breadcrumb": ["Inicio", "React", "Estado Global", "Redux"],
+            "sections": [
+              {
+                "type": "heading",
+                "level": 2,
+                "text": "Redux"
+              }
+            ]
+          }
+        },
+        {
+          "id": "zustand",
+          "title": "Zustand",
+          "slug": "react/estado-global/zustand",
+          "content": {
+            "breadcrumb": ["Inicio", "React", "Estado Global", "Zustand"],
+            "sections": [
+              {
+                "type": "heading",
+                "level": 2,
+                "text": "Zustand"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

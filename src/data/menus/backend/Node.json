@@ -1,0 +1,316 @@
+{
+  "title": "Node.js",
+  "sections": [
+    {
+      "id": "fundamentos",
+      "title": "Fundamentos",
+      "items": [
+        {
+          "id": "introduccion",
+          "title": "Introducción a Node.js",
+          "slug": "node/fundamentos/introduccion",
+          "content": {
+            "breadcrumb": ["Inicio", "Node.js", "Fundamentos", "Introducción"],
+            "sections": [
+              {
+                "type": "heading",
+                "level": 2,
+                "text": "¿Qué es Node.js?"
+              },
+              {
+                "type": "paragraph",
+                "text": "Node.js es un entorno de ejecución de JavaScript del lado del servidor, construido sobre el motor V8 de Chrome. Permite ejecutar JavaScript fuera del navegador, lo que lo hace ideal para crear aplicaciones de servidor."
+              },
+              {
+                "type": "heading",
+                "level": 3,
+                "text": "Características principales"
+              },
+              {
+                "type": "list",
+                "items": [
+                  "<strong>Event-Driven</strong> - Basado en eventos asíncronos",
+                  "<strong>Non-Blocking I/O</strong> - Operaciones de entrada/salida no bloqueantes",
+                  "<strong>Single-Threaded</strong> - Un solo hilo principal con event loop",
+                  "<strong>NPM</strong> - El gestor de paquetes más grande del mundo",
+                  "<strong>Cross-Platform</strong> - Funciona en Windows, Linux y macOS"
+                ]
+              },
+              {
+                "type": "heading",
+                "level": 3,
+                "text": "Instalación"
+              },
+              {
+                "type": "paragraph",
+                "text": "Para instalar Node.js, descarga el instalador desde el sitio oficial:"
+              },
+              {
+                "type": "code",
+                "text": "# Verificar versión instalada\nnode --version\n\n# Verificar versión de NPM\nnpm --version"
+              },
+              {
+                "type": "heading",
+                "level": 3,
+                "text": "Primer programa en Node.js"
+              },
+              {
+                "type": "code",
+                "text": "// hola.js\nconsole.log('¡Hola desde Node.js!');\n\n// Ejecutar con:\n// node hola.js"
+              },
+              {
+                "type": "heading",
+                "level": 3,
+                "text": "Casos de uso"
+              },
+              {
+                "type": "list",
+                "items": [
+                  "APIs REST y GraphQL",
+                  "Aplicaciones web en tiempo real",
+                  "Microservicios",
+                  "Herramientas de línea de comandos",
+                  "Aplicaciones de streaming"
+                ]
+              },
+              {
+                "type": "callout",
+                "title": "💡 Ventajas",
+                "text": "Node.js permite usar JavaScript tanto en el frontend como en el backend, lo que facilita la reutilización de código y reduce la curva de aprendizaje."
+              }
+            ]
+          }
+        },
+        {
+          "id": "event-loop",
+          "title": "Event Loop",
+          "slug": "node/fundamentos/event-loop",
+          "content": {
+            "breadcrumb": ["Inicio", "Node.js", "Fundamentos", "Event Loop"],
+            "sections": [
+              {
+                "type": "heading",
+                "level": 2,
+                "text": "Event Loop"
+              },
+              {
+                "type": "paragraph",
+                "text": "El Event Loop es el corazón de Node.js. Es el mecanismo que permite a Node.js realizar operaciones de I/O no bloqueantes."
+              }
+            ]
+          }
+        },
+        {
+          "id": "modulos",
+          "title": "Sistema de Módulos",
+          "slug": "node/fundamentos/modulos",
+          "content": {
+            "breadcrumb": ["Inicio", "Node.js", "Fundamentos", "Sistema de Módulos"],
+            "sections": [
+              {
+                "type": "heading",
+                "level": 2,
+                "text": "Sistema de Módulos"
+              },
+              {
+                "type": "paragraph",
+                "text": "Node.js utiliza CommonJS para importar y exportar módulos."
+              }
+            ]
+          }
+        },
+        {
+          "id": "npm",
+          "title": "NPM y Package.json",
+          "slug": "node/fundamentos/npm",
+          "content": {
+            "breadcrumb": ["Inicio", "Node.js", "Fundamentos", "NPM"],
+            "sections": [
+              {
+                "type": "heading",
+                "level": 2,
+                "text": "NPM y Package.json"
+              },
+              {
+                "type": "paragraph",
+                "text": "NPM es el gestor de paquetes de Node.js y package.json es el archivo de configuración."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "apis",
+      "title": "APIs y Servidores",
+      "items": [
+        {
+          "id": "http-server",
+          "title": "Servidor HTTP",
+          "slug": "node/apis/http-server",
+          "content": {
+            "breadcrumb": ["Inicio", "Node.js", "APIs", "Servidor HTTP"],
+            "sections": [
+              {
+                "type": "heading",
+                "level": 2,
+                "text": "Servidor HTTP"
+              },
+              {
+                "type": "paragraph",
+                "text": "Crear un servidor HTTP básico con Node.js."
+              }
+            ]
+          }
+        },
+        {
+          "id": "express",
+          "title": "Express.js",
+          "slug": "node/apis/express",
+          "content": {
+            "breadcrumb": ["Inicio", "Node.js", "APIs", "Express"],
+            "sections": [
+              {
+                "type": "heading",
+                "level": 2,
+                "text": "Express.js"
+              }
+            ]
+          }
+        },
+        {
+          "id": "rest-api",
+          "title": "REST APIs",
+          "slug": "node/apis/rest-api",
+          "content": {
+            "breadcrumb": ["Inicio", "Node.js", "APIs", "REST API"],
+            "sections": [
+              {
+                "type": "heading",
+                "level": 2,
+                "text": "REST APIs"
+              }
+            ]
+          }
+        },
+        {
+          "id": "middleware",
+          "title": "Middleware",
+          "slug": "node/apis/middleware",
+          "content": {
+            "breadcrumb": ["Inicio", "Node.js", "APIs", "Middleware"],
+            "sections": [
+              {
+                "type": "heading",
+                "level": 2,
+                "text": "Middleware"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "async",
+      "title": "Programación Asíncrona",
+      "items": [
+        {
+          "id": "callbacks",
+          "title": "Callbacks",
+          "slug": "node/async/callbacks",
+          "content": {
+            "breadcrumb": ["Inicio", "Node.js", "Async", "Callbacks"],
+            "sections": [
+              {
+                "type": "heading",
+                "level": 2,
+                "text": "Callbacks"
+              }
+            ]
+          }
+        },
+        {
+          "id": "promises",
+          "title": "Promises",
+          "slug": "node/async/promises",
+          "content": {
+            "breadcrumb": ["Inicio", "Node.js", "Async", "Promises"],
+            "sections": [
+              {
+                "type": "heading",
+                "level": 2,
+                "text": "Promises"
+              }
+            ]
+          }
+        },
+        {
+          "id": "async-await",
+          "title": "Async/Await",
+          "slug": "node/async/async-await",
+          "content": {
+            "breadcrumb": ["Inicio", "Node.js", "Async", "Async/Await"],
+            "sections": [
+              {
+                "type": "heading",
+                "level": 2,
+                "text": "Async/Await"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "database",
+      "title": "Base de Datos",
+      "items": [
+        {
+          "id": "mongodb",
+          "title": "MongoDB",
+          "slug": "node/database/mongodb",
+          "content": {
+            "breadcrumb": ["Inicio", "Node.js", "Database", "MongoDB"],
+            "sections": [
+              {
+                "type": "heading",
+                "level": 2,
+                "text": "MongoDB"
+              }
+            ]
+          }
+        },
+        {
+          "id": "postgresql",
+          "title": "PostgreSQL",
+          "slug": "node/database/postgresql",
+          "content": {
+            "breadcrumb": ["Inicio", "Node.js", "Database", "PostgreSQL"],
+            "sections": [
+              {
+                "type": "heading",
+                "level": 2,
+                "text": "PostgreSQL"
+              }
+            ]
+          }
+        },
+        {
+          "id": "orm",
+          "title": "ORMs (Sequelize, Prisma)",
+          "slug": "node/database/orm",
+          "content": {
+            "breadcrumb": ["Inicio", "Node.js", "Database", "ORM"],
+            "sections": [
+              {
+                "type": "heading",
+                "level": 2,
+                "text": "ORMs"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -4,10 +4,18 @@ import Sidebar from '../components/Sidebar.astro';
 ---
 
 <Layout title="Documentación Técnica">
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
   <main class="docs-layout">
     <Sidebar />
 
     <div class="content">
+      <button class="menu-toggle" aria-label="Toggle menu" id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
       <div class="content-header">
         <h1>Bienvenido a la Documentación</h1>
         <p style="color: var(--gray); font-size: 11px; text-transform: uppercase;">
@@ -57,4 +65,39 @@ import Sidebar from '../components/Sidebar.astro';
       </section>
     </div>
   </main>
+
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const sidebar = document.querySelector('.sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+
+    function openMenu() {
+      sidebar?.classList.add('mobile-open');
+      overlay?.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      sidebar?.classList.remove('mobile-open');
+      overlay?.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    menuToggle?.addEventListener('click', () => {
+      if (sidebar?.classList.contains('mobile-open')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    overlay?.addEventListener('click', closeMenu);
+
+    // Cerrar menú al hacer click en un link
+    const sidebarLinks = sidebar?.querySelectorAll('a');
+    sidebarLinks?.forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+  </script>
 </Layout>

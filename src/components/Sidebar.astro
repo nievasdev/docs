@@ -1,100 +1,216 @@
 ---
-import { readdir } from 'node:fs/promises';
 import { join } from 'node:path';
+import { readMenusRecursively, type MenuStructure } from '../utils/menuLoader';
 
-// Leer todos los archivos JSON del directorio de menús
 const menusPath = join(process.cwd(), 'src/data/menus');
-const files = await readdir(menusPath);
-const jsonFiles = files.filter(file => file.endsWith('.json'));
-
-// Cargar cada archivo JSON
-const menus = await Promise.all(
-  jsonFiles.map(async (file) => {
-    const content = await import(`../data/menus/${file}`);
-    return {
-      name: file.replace('.json', ''),
-      data: content.default
-    };
-  })
-);
-
+const menus = await readMenusRecursively(menusPath);
 const currentPath = Astro.url.pathname;
+
+// Función para capitalizar el nombre de las carpetas
+function capitalize(str: string): string {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+// Función para generar un ID único para cada menú/carpeta
+function generateMenuId(menu: MenuStructure, parentPath: string = ''): string {
+  return parentPath ? `${parentPath}-${menu.name}` : menu.name;
+}
+
+// Función para verificar si un menú contiene el path actual (recursivamente)
+function menuContainsCurrentPath(menu: MenuStructure, path: string): boolean {
+  // Si tiene datos (es un JSON), verificar sus items
+  if (menu.data) {
+    for (const section of menu.data.sections) {
+      for (const item of section.items) {
+        if (path === `/${item.slug}` || path === `/${item.slug}/`) {
+          return true;
+        }
+      }
+    }
+  }
+
+  // Si tiene hijos, verificar recursivamente
+  if (menu.children) {
+    for (const child of menu.children) {
+      if (menuContainsCurrentPath(child, path)) {
+        return true;
+      }
+    }
+  }
+
+  return false;
+}
 ---
 
 <aside class="sidebar">
   <h1>📚 DOCS</h1>
 
-  {menus.map((menu) => (
-    <div class="menu-section">
-      <div class="menu-title" data-menu={menu.name}>
-        {menu.data.title}
+  {menus.map((menu) => {
+    const isMenuActive = menuContainsCurrentPath(menu, currentPath);
+    return (
+      <div class="menu-section">
+        {menu.children ? (
+          /* Es una carpeta con subcategorías */
+          <>
+            <div
+              class:list={['menu-title', 'category-title', { active: isMenuActive }]}
+              data-menu={generateMenuId(menu)}
+            >
+              {capitalize(menu.name)}
+            </div>
+            <div
+              class:list={['submenu', 'category-submenu', { open: isMenuActive }]}
+              id={`submenu-${generateMenuId(menu)}`}
+            >
+              <div class="submenu-content">
+                {menu.children.map((child) => {
+                  const isChildActive = menuContainsCurrentPath(child, currentPath);
+                  return child.data ? (
+                    /* Es un archivo JSON */
+                    <div class="menu-subcategory">
+                      <div
+                        class:list={['menu-subtitle', { active: isChildActive }]}
+                        data-menu={generateMenuId(child, menu.name)}
+                      >
+                        {child.data.title}
+                      </div>
+                      <div
+                        class:list={['submenu', { open: isChildActive }]}
+                        id={`submenu-${generateMenuId(child, menu.name)}`}
+                      >
+                        <ul class="submenu-content">
+                          {child.data.sections.map((section) => (
+                            <li>
+                              <strong style="color: #fff; font-size: 10px; display: block; margin: 0.5rem 0 0.25rem 0; text-transform: uppercase;">
+                                {section.title}
+                              </strong>
+                              <ul style="list-style: none; margin-left: 0.5rem;">
+                                {section.items.map((item) => (
+                                  <li style="margin-bottom: 0.25rem;">
+                                    <a
+                                      href={`/${item.slug}`}
+                                      class={currentPath === `/${item.slug}` || currentPath === `/${item.slug}/` ? 'active' : ''}
+                                    >
+                                      {item.title}
+                                    </a>
+                                  </li>
+                                ))}
+                              </ul>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  ) : null
+                })}
+              </div>
+            </div>
+          </>
+        ) : menu.data ? (
+          /* Es un archivo JSON sin carpeta padre */
+          <>
+            <div
+              class:list={['menu-title', { active: isMenuActive }]}
+              data-menu={generateMenuId(menu)}
+            >
+              {menu.data.title}
+            </div>
+            <div
+              class:list={['submenu', { open: isMenuActive }]}
+              id={`submenu-${generateMenuId(menu)}`}
+            >
+              <ul class="submenu-content">
+                {menu.data.sections.map((section) => (
+                  <li>
+                    <strong style="color: #fff; font-size: 10px; display: block; margin: 0.5rem 0 0.25rem 0; text-transform: uppercase;">
+                      {section.title}
+                    </strong>
+                    <ul style="list-style: none; margin-left: 0.5rem;">
+                      {section.items.map((item) => (
+                        <li style="margin-bottom: 0.25rem;">
+                          <a
+                            href={`/${item.slug}`}
+                            class={currentPath === `/${item.slug}` || currentPath === `/${item.slug}/` ? 'active' : ''}
+                          >
+                            {item.title}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </>
+        ) : null}
       </div>
-      <ul class="submenu" id={`submenu-${menu.name}`}>
-        {menu.data.sections.map((section) => (
-          <li>
-            <strong style="color: #fff; font-size: 10px; display: block; margin: 0.5rem 0 0.25rem 0; text-transform: uppercase;">
-              {section.title}
-            </strong>
-            <ul style="list-style: none; margin-left: 0.5rem;">
-              {section.items.map((item) => (
-                <li style="margin-bottom: 0.25rem;">
-                  <a
-                    href={`/${item.slug}`}
-                    class={currentPath === `/${item.slug}` || currentPath === `/${item.slug}/` ? 'active' : ''}
-                  >
-                    {item.title}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </li>
-        ))}
-      </ul>
-    </div>
-  ))}
+    )
+  })}
 </aside>
 
 <script>
-  // Toggle de submenús
-  document.addEventListener('DOMContentLoaded', () => {
-    const menuTitles = document.querySelectorAll('.menu-title');
+  // Toggle de submenús (solo maneja interacción del usuario)
+  const menuTitles = document.querySelectorAll('.menu-title');
+  const menuSubtitles = document.querySelectorAll('.menu-subtitle');
 
-    menuTitles.forEach((title) => {
-      title.addEventListener('click', () => {
-        const menuName = title.getAttribute('data-menu');
-        const submenu = document.getElementById(`submenu-${menuName}`);
+  // Manejar categorías principales
+  menuTitles.forEach((title) => {
+    title.addEventListener('click', () => {
+      const menuName = title.getAttribute('data-menu');
+      const submenu = document.getElementById(`submenu-${menuName}`);
 
-        if (submenu) {
-          // Toggle del menú actual
-          submenu.classList.toggle('open');
-          title.classList.toggle('active');
-
-          // Cerrar otros menús
-          menuTitles.forEach((otherTitle) => {
-            if (otherTitle !== title) {
-              const otherMenuName = otherTitle.getAttribute('data-menu');
-              const otherSubmenu = document.getElementById(`submenu-${otherMenuName}`);
-              if (otherSubmenu) {
-                otherSubmenu.classList.remove('open');
-                otherTitle.classList.remove('active');
-              }
-            }
-          });
-        }
-      });
-    });
-
-    // Abrir automáticamente el menú activo
-    const activeLink = document.querySelector('.submenu a.active');
-    if (activeLink) {
-      const submenu = activeLink.closest('.submenu');
       if (submenu) {
-        submenu.classList.add('open');
-        const menuTitle = submenu.previousElementSibling;
-        if (menuTitle && menuTitle.classList.contains('menu-title')) {
-          menuTitle.classList.add('active');
-        }
+        submenu.classList.toggle('open');
+        title.classList.toggle('active');
       }
-    }
+    });
+  });
+
+  // Manejar subcategorías
+  menuSubtitles.forEach((subtitle) => {
+    subtitle.addEventListener('click', () => {
+      const menuName = subtitle.getAttribute('data-menu');
+      const submenu = document.getElementById(`submenu-${menuName}`);
+
+      if (submenu) {
+        submenu.classList.toggle('open');
+        subtitle.classList.toggle('active');
+      }
+    });
   });
 </script>
+
+<style>
+  .menu-subtitle {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--gray);
+    border-left: 2px solid transparent;
+    transition: all 0.2s;
+    margin-left: 0.5rem;
+  }
+
+  .menu-subtitle:hover {
+    color: var(--accent);
+    border-left-color: var(--accent);
+  }
+
+  .menu-subtitle.active {
+    color: var(--accent);
+    border-left-color: var(--accent);
+  }
+
+  .menu-subcategory {
+    margin-bottom: 0.5rem;
+  }
+
+  .category-title {
+    font-weight: bold;
+    font-size: 1rem;
+  }
+
+  .category-submenu {
+    padding-left: 0.5rem;
+  }
+</style>

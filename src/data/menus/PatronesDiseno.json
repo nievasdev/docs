@@ -1,0 +1,108 @@
+{
+  "title": "Patrones de Diseño",
+  "sections": [
+    {
+      "id": "creacionales",
+      "title": "Patrones Creacionales",
+      "items": [
+        {
+          "id": "singleton",
+          "title": "Singleton",
+          "slug": "patrones/creacionales/singleton"
+        },
+        {
+          "id": "factory",
+          "title": "Factory",
+          "slug": "patrones/creacionales/factory"
+        },
+        {
+          "id": "abstract-factory",
+          "title": "Abstract Factory",
+          "slug": "patrones/creacionales/abstract-factory"
+        },
+        {
+          "id": "builder",
+          "title": "Builder",
+          "slug": "patrones/creacionales/builder"
+        },
+        {
+          "id": "prototype",
+          "title": "Prototype",
+          "slug": "patrones/creacionales/prototype"
+        }
+      ]
+    },
+    {
+      "id": "estructurales",
+      "title": "Patrones Estructurales",
+      "items": [
+        {
+          "id": "adapter",
+          "title": "Adapter",
+          "slug": "patrones/estructurales/adapter"
+        },
+        {
+          "id": "bridge",
+          "title": "Bridge",
+          "slug": "patrones/estructurales/bridge"
+        },
+        {
+          "id": "composite",
+          "title": "Composite",
+          "slug": "patrones/estructurales/composite"
+        },
+        {
+          "id": "decorator",
+          "title": "Decorator",
+          "slug": "patrones/estructurales/decorator"
+        },
+        {
+          "id": "facade",
+          "title": "Facade",
+          "slug": "patrones/estructurales/facade"
+        },
+        {
+          "id": "proxy",
+          "title": "Proxy",
+          "slug": "patrones/estructurales/proxy"
+        }
+      ]
+    },
+    {
+      "id": "comportamiento",
+      "title": "Patrones de Comportamiento",
+      "items": [
+        {
+          "id": "observer",
+          "title": "Observer",
+          "slug": "patrones/comportamiento/observer"
+        },
+        {
+          "id": "strategy",
+          "title": "Strategy",
+          "slug": "patrones/comportamiento/strategy"
+        },
+        {
+          "id": "command",
+          "title": "Command",
+          "slug": "patrones/comportamiento/command"
+        },
+        {
+          "id": "iterator",
+          "title": "Iterator",
+          "slug": "patrones/comportamiento/iterator"
+        },
+        {
+          "id": "mediator",
+          "title": "Mediator",
+          "slug": "patrones/comportamiento/mediator"
+        },
+        {
+          "id": "memento",
+          "title": "Memento",
+          "slug": "patrones/comportamiento/memento"
+        }
+      ]
+    }
+  ]
+}

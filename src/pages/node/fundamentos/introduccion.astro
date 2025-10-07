@@ -1,0 +1,76 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Sidebar from '../../../components/Sidebar.astro';
+---
+
+<Layout title="Introducción a Node.js - Docs">
+  <main class="docs-layout">
+    <Sidebar />
+
+    <div class="content">
+      <div class="breadcrumb">
+        <a href="/">Inicio</a>
+        <span>›</span>
+        <a href="#">Node.js</a>
+        <span>›</span>
+        <a href="#">Fundamentos</a>
+        <span>›</span>
+        <span>Introducción</span>
+      </div>
+
+      <div class="content-header">
+        <h1>Introducción a Node.js</h1>
+      </div>
+
+      <section>
+        <h2>¿Qué es Node.js?</h2>
+        <p>
+          Node.js es un entorno de ejecución de JavaScript del lado del servidor,
+          construido sobre el motor V8 de Chrome. Permite ejecutar JavaScript fuera
+          del navegador, lo que lo hace ideal para crear aplicaciones de servidor.
+        </p>
+
+        <h3>Características principales</h3>
+        <ul>
+          <li><strong>Event-Driven</strong> - Basado en eventos asíncronos</li>
+          <li><strong>Non-Blocking I/O</strong> - Operaciones de entrada/salida no bloqueantes</li>
+          <li><strong>Single-Threaded</strong> - Un solo hilo principal con event loop</li>
+          <li><strong>NPM</strong> - El gestor de paquetes más grande del mundo</li>
+          <li><strong>Cross-Platform</strong> - Funciona en Windows, Linux y macOS</li>
+        </ul>
+
+        <h3>Instalación</h3>
+        <p>Para instalar Node.js, descarga el instalador desde el sitio oficial:</p>
+        <pre><code># Verificar versión instalada
+node --version
+
+# Verificar versión de NPM
+npm --version</code></pre>
+
+        <h3>Primer programa en Node.js</h3>
+        <pre><code>// hola.js
+console.log('¡Hola desde Node.js!');
+
+// Ejecutar con:
+// node hola.js</code></pre>
+
+        <h3>Casos de uso</h3>
+        <ul>
+          <li>APIs REST y GraphQL</li>
+          <li>Aplicaciones web en tiempo real</li>
+          <li>Microservicios</li>
+          <li>Herramientas de línea de comandos</li>
+          <li>Aplicaciones de streaming</li>
+        </ul>
+
+        <div style="background: #1a1a1a; padding: 1rem; border-left: 3px solid var(--accent); margin-top: 1.5rem;">
+          <h4>💡 Ventajas</h4>
+          <p style="margin: 0; color: var(--gray);">
+            Node.js permite usar JavaScript tanto en el frontend como en el backend,
+            lo que facilita la reutilización de código y reduce la curva de aprendizaje.
+          </p>
+        </div>
+      </section>
+    </div>
+  </main>
+</Layout>

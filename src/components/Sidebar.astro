@@ -1,0 +1,100 @@
+---
+import { readdir } from 'node:fs/promises';
+import { join } from 'node:path';
+
+// Leer todos los archivos JSON del directorio de menús
+const menusPath = join(process.cwd(), 'src/data/menus');
+const files = await readdir(menusPath);
+const jsonFiles = files.filter(file => file.endsWith('.json'));
+
+// Cargar cada archivo JSON
+const menus = await Promise.all(
+  jsonFiles.map(async (file) => {
+    const content = await import(`../data/menus/${file}`);
+    return {
+      name: file.replace('.json', ''),
+      data: content.default
+    };
+  })
+);
+
+const currentPath = Astro.url.pathname;
+---
+
+<aside class="sidebar">
+  <h1>📚 DOCS</h1>
+
+  {menus.map((menu) => (
+    <div class="menu-section">
+      <div class="menu-title" data-menu={menu.name}>
+        {menu.data.title}
+      </div>
+      <ul class="submenu" id={`submenu-${menu.name}`}>
+        {menu.data.sections.map((section) => (
+          <li>
+            <strong style="color: #fff; font-size: 10px; display: block; margin: 0.5rem 0 0.25rem 0; text-transform: uppercase;">
+              {section.title}
+            </strong>
+            <ul style="list-style: none; margin-left: 0.5rem;">
+              {section.items.map((item) => (
+                <li style="margin-bottom: 0.25rem;">
+                  <a
+                    href={`/${item.slug}`}
+                    class={currentPath === `/${item.slug}` || currentPath === `/${item.slug}/` ? 'active' : ''}
+                  >
+                    {item.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</aside>
+
+<script>
+  // Toggle de submenús
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuTitles = document.querySelectorAll('.menu-title');
+
+    menuTitles.forEach((title) => {
+      title.addEventListener('click', () => {
+        const menuName = title.getAttribute('data-menu');
+        const submenu = document.getElementById(`submenu-${menuName}`);
+
+        if (submenu) {
+          // Toggle del menú actual
+          submenu.classList.toggle('open');
+          title.classList.toggle('active');
+
+          // Cerrar otros menús
+          menuTitles.forEach((otherTitle) => {
+            if (otherTitle !== title) {
+              const otherMenuName = otherTitle.getAttribute('data-menu');
+              const otherSubmenu = document.getElementById(`submenu-${otherMenuName}`);
+              if (otherSubmenu) {
+                otherSubmenu.classList.remove('open');
+                otherTitle.classList.remove('active');
+              }
+            }
+          });
+        }
+      });
+    });
+
+    // Abrir automáticamente el menú activo
+    const activeLink = document.querySelector('.submenu a.active');
+    if (activeLink) {
+      const submenu = activeLink.closest('.submenu');
+      if (submenu) {
+        submenu.classList.add('open');
+        const menuTitle = submenu.previousElementSibling;
+        if (menuTitle && menuTitle.classList.contains('menu-title')) {
+          menuTitle.classList.add('active');
+        }
+      }
+    }
+  });
+</script>

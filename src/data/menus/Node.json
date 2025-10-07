@@ -1,0 +1,99 @@
+{
+  "title": "Node.js",
+  "sections": [
+    {
+      "id": "fundamentos",
+      "title": "Fundamentos",
+      "items": [
+        {
+          "id": "introduccion",
+          "title": "Introducción a Node.js",
+          "slug": "node/fundamentos/introduccion"
+        },
+        {
+          "id": "event-loop",
+          "title": "Event Loop",
+          "slug": "node/fundamentos/event-loop"
+        },
+        {
+          "id": "modulos",
+          "title": "Sistema de Módulos",
+          "slug": "node/fundamentos/modulos"
+        },
+        {
+          "id": "npm",
+          "title": "NPM y Package.json",
+          "slug": "node/fundamentos/npm"
+        }
+      ]
+    },
+    {
+      "id": "apis",
+      "title": "APIs y Servidores",
+      "items": [
+        {
+          "id": "http-server",
+          "title": "Servidor HTTP",
+          "slug": "node/apis/http-server"
+        },
+        {
+          "id": "express",
+          "title": "Express.js",
+          "slug": "node/apis/express"
+        },
+        {
+          "id": "rest-api",
+          "title": "REST APIs",
+          "slug": "node/apis/rest-api"
+        },
+        {
+          "id": "middleware",
+          "title": "Middleware",
+          "slug": "node/apis/middleware"
+        }
+      ]
+    },
+    {
+      "id": "async",
+      "title": "Programación Asíncrona",
+      "items": [
+        {
+          "id": "callbacks",
+          "title": "Callbacks",
+          "slug": "node/async/callbacks"
+        },
+        {
+          "id": "promises",
+          "title": "Promises",
+          "slug": "node/async/promises"
+        },
+        {
+          "id": "async-await",
+          "title": "Async/Await",
+          "slug": "node/async/async-await"
+        }
+      ]
+    },
+    {
+      "id": "database",
+      "title": "Base de Datos",
+      "items": [
+        {
+          "id": "mongodb",
+          "title": "MongoDB",
+          "slug": "node/database/mongodb"
+        },
+        {
+          "id": "postgresql",
+          "title": "PostgreSQL",
+          "slug": "node/database/postgresql"
+        },
+        {
+          "id": "orm",
+          "title": "ORMs (Sequelize, Prisma)",
+          "slug": "node/database/orm"
+        }
+      ]
+    }
+  ]
+}

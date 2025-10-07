@@ -1,0 +1,88 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Sidebar from '../../../components/Sidebar.astro';
+---
+
+<Layout title="Introducción a React - Docs">
+  <main class="docs-layout">
+    <Sidebar />
+
+    <div class="content">
+      <div class="breadcrumb">
+        <a href="/">Inicio</a>
+        <span>›</span>
+        <a href="#">React</a>
+        <span>›</span>
+        <a href="#">Fundamentos</a>
+        <span>›</span>
+        <span>Introducción</span>
+      </div>
+
+      <div class="content-header">
+        <h1>Introducción a React</h1>
+      </div>
+
+      <section>
+        <h2>¿Qué es React?</h2>
+        <p>
+          React es una biblioteca de JavaScript para construir interfaces de usuario,
+          desarrollada y mantenida por Meta (Facebook). Se centra en la creación de
+          componentes reutilizables y la gestión eficiente del estado de la aplicación.
+        </p>
+
+        <h3>Características principales</h3>
+        <ul>
+          <li><strong>Component-Based</strong> - Arquitectura basada en componentes</li>
+          <li><strong>Virtual DOM</strong> - Renderizado eficiente con DOM virtual</li>
+          <li><strong>Declarativo</strong> - Código más predecible y fácil de debuguear</li>
+          <li><strong>JSX</strong> - Sintaxis que combina JavaScript con HTML</li>
+          <li><strong>Unidirectional Data Flow</strong> - Flujo de datos unidireccional</li>
+        </ul>
+
+        <h3>Instalación</h3>
+        <p>Crear una nueva aplicación React con Vite:</p>
+        <pre><code># Crear proyecto con Vite
+npm create vite@latest mi-app -- --template react
+
+# Navegar al directorio
+cd mi-app
+
+# Instalar dependencias
+npm install
+
+# Iniciar servidor de desarrollo
+npm run dev</code></pre>
+
+        <h3>Primer componente</h3>
+        <pre><code>// App.jsx
+function App() {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;¡Hola React!&lt;/h1&gt;
+      &lt;p&gt;Mi primer componente&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+
+        <h3>¿Por qué usar React?</h3>
+        <ul>
+          <li>Gran ecosistema y comunidad activa</li>
+          <li>Componentes reutilizables</li>
+          <li>Excelente rendimiento</li>
+          <li>Amplia adopción en la industria</li>
+          <li>Herramientas de desarrollo potentes</li>
+        </ul>
+
+        <div style="background: #1a1a1a; padding: 1rem; border-left: 3px solid var(--accent); margin-top: 1.5rem;">
+          <h4>💡 Filosofía de React</h4>
+          <p style="margin: 0; color: var(--gray);">
+            React te permite construir UIs complejas a partir de pequeñas piezas
+            aisladas de código llamadas "componentes".
+          </p>
+        </div>
+      </section>
+    </div>
+  </main>
+</Layout>

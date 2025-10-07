@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Sidebar from '../components/Sidebar.astro';
+---
+
+<Layout title="Documentación Técnica">
+  <main class="docs-layout">
+    <Sidebar />
+
+    <div class="content">
+      <div class="content-header">
+        <h1>Bienvenido a la Documentación</h1>
+        <p style="color: var(--gray); font-size: 11px; text-transform: uppercase;">
+          Sistema de documentación técnica
+        </p>
+      </div>
+
+      <section>
+        <h2>Sobre este proyecto</h2>
+        <p>
+          Esta es una plataforma de documentación técnica construida con <strong>Astro</strong>,
+          diseñada con el mismo estilo minimalista y terminal-style del portfolio.
+        </p>
+
+        <h3>Características</h3>
+        <ul>
+          <li>Menú lateral dinámico generado desde archivos JSON</li>
+          <li>Diseño responsive optimizado para desktop y mobile</li>
+          <li>Estilo inspirado en terminales de consola</li>
+          <li>Navegación fluida entre secciones</li>
+          <li>Fácil de extender agregando nuevos archivos JSON</li>
+        </ul>
+
+        <h3>Temáticas disponibles</h3>
+        <p>Explora las siguientes secciones en el menú lateral:</p>
+        <ul>
+          <li><strong>Node.js</strong> - Fundamentos, APIs, Programación Asíncrona y Bases de Datos</li>
+          <li><strong>React</strong> - Fundamentos, Hooks, Routing y Estado Global</li>
+          <li><strong>Patrones de Diseño</strong> - Patrones Creacionales, Estructurales y de Comportamiento</li>
+        </ul>
+
+        <h3>Cómo agregar nueva documentación</h3>
+        <p>Para agregar una nueva sección de documentación:</p>
+        <ol style="list-style: decimal; margin-left: 2rem;">
+          <li style="list-style: decimal;">Crea un nuevo archivo JSON en <code>src/data/menus/</code></li>
+          <li style="list-style: decimal;">Define la estructura con título, secciones e items</li>
+          <li style="list-style: decimal;">Crea las páginas correspondientes en <code>src/pages/</code></li>
+          <li style="list-style: decimal;">El menú se generará automáticamente</li>
+        </ol>
+
+        <div style="background: #1a1a1a; padding: 1rem; border-left: 3px solid var(--accent); margin-top: 1.5rem;">
+          <h4>💡 Tip</h4>
+          <p style="margin: 0; color: var(--gray);">
+            Haz clic en cualquier título del menú lateral para expandir o contraer las subsecciones.
+          </p>
+        </div>
+      </section>
+    </div>
+  </main>
+</Layout>

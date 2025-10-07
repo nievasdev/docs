@@ -1,0 +1,122 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Sidebar from '../../../components/Sidebar.astro';
+---
+
+<Layout title="Patrón Singleton - Docs">
+  <main class="docs-layout">
+    <Sidebar />
+
+    <div class="content">
+      <div class="breadcrumb">
+        <a href="/">Inicio</a>
+        <span>›</span>
+        <a href="#">Patrones de Diseño</a>
+        <span>›</span>
+        <a href="#">Creacionales</a>
+        <span>›</span>
+        <span>Singleton</span>
+      </div>
+
+      <div class="content-header">
+        <h1>Patrón Singleton</h1>
+      </div>
+
+      <section>
+        <h2>Definición</h2>
+        <p>
+          El patrón Singleton garantiza que una clase tenga una única instancia
+          y proporciona un punto de acceso global a ella. Es uno de los patrones
+          de diseño creacionales más simples y utilizados.
+        </p>
+
+        <h3>Problema que resuelve</h3>
+        <p>
+          Cuando necesitas asegurarte de que solo exista una instancia de una clase
+          en toda la aplicación, como una conexión a base de datos, un gestor de
+          configuración o un logger.
+        </p>
+
+        <h3>Implementación en JavaScript</h3>
+        <pre><code>class Singleton {
+  constructor() {
+    if (Singleton.instance) {
+      return Singleton.instance;
+    }
+
+    // Inicialización de la instancia
+    this.data = [];
+    Singleton.instance = this;
+  }
+
+  getData() {
+    return this.data;
+  }
+
+  addData(item) {
+    this.data.push(item);
+  }
+}
+
+// Uso
+const instance1 = new Singleton();
+const instance2 = new Singleton();
+
+console.log(instance1 === instance2); // true</code></pre>
+
+        <h3>Implementación moderna (ES6+)</h3>
+        <pre><code>class Database {
+  static #instance = null;
+
+  constructor() {
+    if (Database.#instance) {
+      throw new Error('Use Database.getInstance()');
+    }
+    this.connection = null;
+  }
+
+  static getInstance() {
+    if (!Database.#instance) {
+      Database.#instance = new Database();
+    }
+    return Database.#instance;
+  }
+
+  connect() {
+    this.connection = 'Connected';
+    console.log('Database connected');
+  }
+}
+
+// Uso
+const db1 = Database.getInstance();
+const db2 = Database.getInstance();
+console.log(db1 === db2); // true</code></pre>
+
+        <h3>Ventajas</h3>
+        <ul>
+          <li>Garantiza una única instancia</li>
+          <li>Proporciona acceso global controlado</li>
+          <li>Inicialización perezosa (lazy initialization)</li>
+          <li>Ahorra memoria</li>
+        </ul>
+
+        <h3>Desventajas</h3>
+        <ul>
+          <li>Dificulta el testing</li>
+          <li>Viola el principio de responsabilidad única</li>
+          <li>Puede causar problemas en aplicaciones multihilo</li>
+          <li>Estado global puede ser problemático</li>
+        </ul>
+
+        <div style="background: #1a1a1a; padding: 1rem; border-left: 3px solid var(--accent); margin-top: 1.5rem;">
+          <h4>⚠️ Advertencia</h4>
+          <p style="margin: 0; color: var(--gray);">
+            El patrón Singleton debe usarse con precaución. En muchos casos,
+            la inyección de dependencias es una mejor alternativa.
+          </p>
+        </div>
+      </section>
+    </div>
+  </main>
+</Layout>

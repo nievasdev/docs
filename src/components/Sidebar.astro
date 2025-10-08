@@ -1,48 +1,9 @@
 ---
-import { readMenusRecursively, type MenuStructure } from '../utils/menuLoader';
-
-const menus = await readMenusRecursively();
-const currentPath = Astro.url.pathname;
-
-// Función para formatear nombres de carpetas
-// Convierte "logica_y_matematica" o "logica-matematica" a "Logica Y Matematica"
-function formatFolderName(str: string): string {
-  return str
-    .replace(/[-_]/g, ' ')  // Reemplaza guiones y guiones bajos por espacios
-    .split(' ')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-    .join(' ');
-}
-
-// Función para generar un ID único para cada menú/carpeta
-function generateMenuId(menu: MenuStructure, parentPath: string = ''): string {
-  return parentPath ? `${parentPath}-${menu.name}` : menu.name;
-}
-
-// Función para verificar si un menú contiene el path actual (recursivamente)
-function menuContainsCurrentPath(menu: MenuStructure, path: string): boolean {
-  // Si tiene datos (es un JSON), verificar sus items
-  if (menu.data) {
-    for (const section of menu.data.sections) {
-      for (const item of section.items) {
-        if (path === `/${item.slug}` || path === `/${item.slug}/`) {
-          return true;
-        }
-      }
-    }
-  }
-
-  // Si tiene hijos, verificar recursivamente
-  if (menu.children) {
-    for (const child of menu.children) {
-      if (menuContainsCurrentPath(child, path)) {
-        return true;
-      }
-    }
-  }
-
-  return false;
-}
+import{readMenusRecursively,type MenuStructure}from'../utils/menuLoader';
+const menus=await readMenusRecursively();const currentPath=Astro.url.pathname;
+function formatFolderName(s:string):string{return s.replace(/[-_]/g,' ').split(' ').map(w=>w.charAt(0).toUpperCase()+w.slice(1).toLowerCase()).join(' ')}
+function generateMenuId(m:MenuStructure,p:string=''):string{return p?`${p}-${m.name}`:m.name}
+function menuContainsCurrentPath(m:MenuStructure,p:string):boolean{if(m.data){for(const s of m.data.sections){for(const i of s.items){if(p===`/${i.slug}`||p===`/${i.slug}/`)return true}}}if(m.children){for(const c of m.children){if(menuContainsCurrentPath(c,p))return true}}return false}
 ---
 
 <aside class="sidebar">

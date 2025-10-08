@@ -1,24 +1,11 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Sidebar from '../components/Sidebar.astro';
-import ContentRenderer from '../components/ContentRenderer.astro';
-import { readMenusRecursively, extractAllPaths } from '../utils/menuLoader';
-
-export async function getStaticPaths() {
-  const menuStructures = await readMenusRecursively();
-  const allPaths = extractAllPaths(menuStructures);
-
-  return allPaths.map(path => ({
-    params: { slug: path.slug },
-    props: {
-      title: path.title,
-      content: path.content
-    }
-  }));
-}
-
-const { title, content } = Astro.props;
-const { breadcrumb, sections } = content;
+import Layout from'../layouts/Layout.astro';
+import Sidebar from'../components/Sidebar.astro';
+import ContentRenderer from'../components/ContentRenderer.astro';
+import{readMenusRecursively,extractAllPaths}from'../utils/menuLoader';
+export async function getStaticPaths(){const menuStructures=await readMenusRecursively();const allPaths=extractAllPaths(menuStructures);return allPaths.map(path=>({params:{slug:path.slug},props:{title:path.title,content:path.content}}))}
+const{title,content}=Astro.props;
+const{breadcrumb,sections}=content;
 ---
 
 <Layout title={`${title} - Docs`}>

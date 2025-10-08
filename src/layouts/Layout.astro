@@ -1,12 +1,7 @@
 ---
-import '../styles/global.css';
-
-export interface Props {
-  title: string;
-  description?: string;
-}
-
-const { title, description = "Technical Documentation" } = Astro.props;
+import'../styles/global.css';
+export interface Props{title:string;description?:string}
+const{title,description="Technical Documentation"}=Astro.props;
 ---
 
 <!DOCTYPE html>

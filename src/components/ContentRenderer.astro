@@ -1,17 +1,7 @@
 ---
-interface Section {
-  type: string;
-  level?: number;
-  text?: string;
-  items?: string[];
-  title?: string;
-}
-
-interface Props {
-  sections: Section[];
-}
-
-const { sections } = Astro.props;
+interface Section{type:string;level?:number;text?:string;items?:string[];title?:string}
+interface Props{sections:Section[]}
+const{sections}=Astro.props;
 ---
 
 {sections.map((section) => {

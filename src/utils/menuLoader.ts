@@ -1,6 +1,3 @@
-import { readdir, stat } from 'node:fs/promises';
-import { join, relative } from 'node:path';
-
 export interface MenuItem {
   id: string;
   title: string;
@@ -29,39 +26,143 @@ export interface MenuStructure {
 /**
  * Lee recursivamente todos los archivos JSON y carpetas desde un directorio
  */
-export async function readMenusRecursively(
-  basePath: string,
-  currentPath: string = basePath
-): Promise<MenuStructure[]> {
-  const entries = await readdir(currentPath, { withFileTypes: true });
-  const results: MenuStructure[] = [];
+export async function readMenusRecursively(): Promise<MenuStructure[]> {
+  // Usar import.meta.glob para cargar todos los JSON en tiempo de build
+  const modules = import.meta.glob('../data/menus/**/*.json', { eager: true }) as Record<string, { default: MenuData }>;
 
-  for (const entry of entries) {
-    const fullPath = join(currentPath, entry.name);
-    const relativePath = relative(basePath, fullPath);
+  // Estructura para organizar los archivos por carpetas
+  const structure: Map<string, MenuStructure> = new Map();
 
-    if (entry.isDirectory()) {
-      // Es una carpeta, leer recursivamente
-      const children = await readMenusRecursively(basePath, fullPath);
+  for (const [path, module] of Object.entries(modules)) {
+    // Extraer el path relativo: ../data/menus/backend/Node.json -> backend/Node.json
+    const relativePath = path.replace('../data/menus/', '');
+    const parts = relativePath.split('/');
 
-      results.push({
-        name: entry.name,
-        path: relativePath,
-        children: children
+    if (parts.length === 1) {
+      // Archivo en raíz (ej: PatronesDiseno.json)
+      const name = parts[0].replace('.json', '');
+      structure.set(name, {
+        name,
+        path: name,
+        data: module.default
       });
-    } else if (entry.isFile() && entry.name.endsWith('.json')) {
-      // Es un archivo JSON, cargarlo
-      const content = await import(`../data/menus/${relativePath}`);
+    } else {
+      // Archivo dentro de carpetas (ej: backend/Node.json o academic/subfolder/file.json)
+      const folderPath = parts.slice(0, -1).join('/');
+      const fileName = parts[parts.length - 1].replace('.json', '');
 
-      results.push({
-        name: entry.name.replace('.json', ''),
-        path: relativePath.replace('.json', ''),
-        data: content.default
+      // Crear estructura de carpetas si no existe
+      const folders = parts.slice(0, -1);
+      let currentLevel = structure;
+      let currentPath = '';
+
+      for (let i = 0; i < folders.length; i++) {
+        const folderName = folders[i];
+        currentPath += (i > 0 ? '/' : '') + folderName;
+
+        if (!currentLevel.has(folderName)) {
+          const newFolder: MenuStructure = {
+            name: folderName,
+            path: currentPath,
+            children: []
+          };
+          currentLevel.set(folderName, newFolder);
+        }
+
+        const folder = currentLevel.get(folderName)!;
+        if (!folder.children) {
+          folder.children = [];
+        }
+
+        // Crear un Map temporal para el siguiente nivel
+        const childrenMap = new Map<string, MenuStructure>();
+        folder.children.forEach(child => childrenMap.set(child.name, child));
+        currentLevel = childrenMap;
+      }
+
+      // Agregar el archivo JSON al último nivel
+      currentLevel.set(fileName, {
+        name: fileName,
+        path: folderPath + '/' + fileName,
+        data: module.default
       });
+
+      // Actualizar los children del folder padre
+      const parentFolder = structure.get(folders[0]);
+      if (parentFolder && folders.length === 1) {
+        parentFolder.children = Array.from(currentLevel.values());
+      }
     }
   }
 
-  return results;
+  // Convertir Map a Array y reconstruir la jerarquía correctamente
+  const result: MenuStructure[] = [];
+
+  for (const [path, module] of Object.entries(modules)) {
+    const relativePath = path.replace('../data/menus/', '');
+    const parts = relativePath.split('/');
+
+    if (parts.length === 1) {
+      // Archivo en raíz
+      const name = parts[0].replace('.json', '');
+      if (!result.find(r => r.name === name)) {
+        result.push({
+          name,
+          path: name,
+          data: module.default
+        });
+      }
+    } else {
+      // Archivo dentro de carpetas
+      const rootFolder = parts[0];
+      let folder = result.find(r => r.name === rootFolder);
+
+      if (!folder) {
+        folder = {
+          name: rootFolder,
+          path: rootFolder,
+          children: []
+        };
+        result.push(folder);
+      }
+
+      // Navegar por la jerarquía
+      let currentFolder = folder;
+      for (let i = 1; i < parts.length - 1; i++) {
+        const subFolderName = parts[i];
+        if (!currentFolder.children) {
+          currentFolder.children = [];
+        }
+
+        let subFolder = currentFolder.children.find(c => c.name === subFolderName);
+        if (!subFolder) {
+          subFolder = {
+            name: subFolderName,
+            path: parts.slice(0, i + 1).join('/'),
+            children: []
+          };
+          currentFolder.children.push(subFolder);
+        }
+        currentFolder = subFolder;
+      }
+
+      // Agregar el archivo JSON
+      const fileName = parts[parts.length - 1].replace('.json', '');
+      if (!currentFolder.children) {
+        currentFolder.children = [];
+      }
+
+      if (!currentFolder.children.find(c => c.name === fileName)) {
+        currentFolder.children.push({
+          name: fileName,
+          path: parts.slice(0, -1).join('/') + '/' + fileName,
+          data: module.default
+        });
+      }
+    }
+  }
+
+  return result;
 }
 
 /**

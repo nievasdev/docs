@@ -55,6 +55,21 @@
                                 }
                             ]
                         }
+                    },
+                {
+                    "id": "operadores",
+                    "title": "Operadores logicos",
+                    "slug": "academic/logica_y_matematica_discreta/booleanos/operadores",
+                    "content" :  
+                        {
+                            "breadcrumb": ["Inicio", "academic", "logica y matematica discreta", "booleanos", "operadores logicos"],
+                            "sections": [
+                                {
+                                    "type": "paragraph",
+                                    "text": "hola"
+                                }
+                            ]
+                        }
                     }
                     ]
         }

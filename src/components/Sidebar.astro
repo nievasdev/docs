@@ -1,9 +1,7 @@
 ---
-import { join } from 'node:path';
 import { readMenusRecursively, type MenuStructure } from '../utils/menuLoader';
 
-const menusPath = join(process.cwd(), 'src/data/menus');
-const menus = await readMenusRecursively(menusPath);
+const menus = await readMenusRecursively();
 const currentPath = Astro.url.pathname;
 
 // Función para formatear nombres de carpetas

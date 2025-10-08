@@ -2,12 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import Sidebar from '../components/Sidebar.astro';
 import ContentRenderer from '../components/ContentRenderer.astro';
-import { join } from 'node:path';
 import { readMenusRecursively, extractAllPaths } from '../utils/menuLoader';
 
 export async function getStaticPaths() {
-  const menusPath = join(process.cwd(), 'src/data/menus');
-  const menuStructures = await readMenusRecursively(menusPath);
+  const menuStructures = await readMenusRecursively();
   const allPaths = extractAllPaths(menuStructures);
 
   return allPaths.map(path => ({

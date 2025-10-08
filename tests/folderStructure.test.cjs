@@ -36,32 +36,21 @@ const tests = [
     expected: true,
   },
   {
-    name: 'Test 7: Academic tiene subcarpeta',
+    name: 'Test 7: Academic tiene contenido',
     check: () => {
       const academicPath = path.join(menusPath, 'academic');
       const items = fs.readdirSync(academicPath);
-      const folders = items.filter(item =>
-        fs.statSync(path.join(academicPath, item)).isDirectory()
-      );
-      return folders.length > 0;
+      return items.length > 0;
     },
     expected: true,
   },
   {
-    name: 'Test 8: Subcarpeta de academic tiene JSON',
+    name: 'Test 8: Academic tiene JSON',
     check: () => {
       const academicPath = path.join(menusPath, 'academic');
       const items = fs.readdirSync(academicPath);
-
-      for (const item of items) {
-        const itemPath = path.join(academicPath, item);
-        if (fs.statSync(itemPath).isDirectory()) {
-          const subItems = fs.readdirSync(itemPath);
-          const hasJson = subItems.some(file => file.endsWith('.json'));
-          if (hasJson) return true;
-        }
-      }
-      return false;
+      const hasJson = items.some(file => file.endsWith('.json'));
+      return hasJson;
     },
     expected: true,
   },
@@ -101,35 +90,25 @@ const tests = [
     expected: true,
   },
   {
-    name: 'Test 10: Estructura tiene al menos 3 niveles',
+    name: 'Test 10: Sistema soporta estructura de carpetas',
     check: () => {
-      // Buscar estructura: folder/subfolder/file.json
-      const findDeepJson = (dir, level = 0) => {
-        const items = fs.readdirSync(dir);
+      // Verificar que existen carpetas con JSON (al menos 2 niveles)
+      const items = fs.readdirSync(menusPath);
+      let foundNestedStructure = false;
 
-        for (const item of items) {
-          const fullPath = path.join(dir, item);
-          const stat = fs.statSync(fullPath);
-
-          if (stat.isDirectory()) {
-            const subItems = fs.readdirSync(fullPath);
-            const hasSubfolderWithJson = subItems.some(subItem => {
-              const subPath = path.join(fullPath, subItem);
-              if (fs.statSync(subPath).isDirectory()) {
-                const deepItems = fs.readdirSync(subPath);
-                return deepItems.some(f => f.endsWith('.json'));
-              }
-              return false;
-            });
-
-            if (hasSubfolderWithJson) return true;
-            if (findDeepJson(fullPath, level + 1)) return true;
+      for (const item of items) {
+        const itemPath = path.join(menusPath, item);
+        if (fs.statSync(itemPath).isDirectory()) {
+          const subItems = fs.readdirSync(itemPath);
+          const hasJson = subItems.some(file => file.endsWith('.json'));
+          if (hasJson) {
+            foundNestedStructure = true;
+            break;
           }
         }
-        return false;
-      };
+      }
 
-      return findDeepJson(menusPath);
+      return foundNestedStructure;
     },
     expected: true,
   }

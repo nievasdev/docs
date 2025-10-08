@@ -46,7 +46,13 @@ function menuContainsCurrentPath(menu: MenuStructure, path: string): boolean {
 ---
 
 <aside class="sidebar">
-  <h1>📚 DOCS</h1>
+  <div class="sidebar-header">
+    <h1>📚 DOCS</h1>
+    <div class="font-controls">
+      <button id="font-decrease" class="font-btn" title="Disminuir tamaño de fuente">-</button>
+      <button id="font-increase" class="font-btn" title="Aumentar tamaño de fuente">+</button>
+    </div>
+  </div>
 
   {menus.map((menu) => {
     const isMenuActive = menuContainsCurrentPath(menu, currentPath);
@@ -101,7 +107,7 @@ function menuContainsCurrentPath(menu: MenuStructure, path: string): boolean {
                                     <ul class="submenu-content">
                                       {subchild.data.sections.map((section) => (
                                         <li>
-                                          <strong style="color: #fff; font-size: 10px; display: block; margin: 0.5rem 0 0.25rem 0; text-transform: uppercase;">
+                                          <strong style="color: #fff; font-size: 0.714rem; display: block; margin: 0.5rem 0 0.25rem 0; text-transform: uppercase;">
                                             {section.title}
                                           </strong>
                                           <ul style="list-style: none; margin-left: 0.5rem;">
@@ -145,7 +151,7 @@ function menuContainsCurrentPath(menu: MenuStructure, path: string): boolean {
                           <ul class="submenu-content">
                             {child.data.sections.map((section) => (
                               <li>
-                                <strong style="color: #fff; font-size: 10px; display: block; margin: 0.5rem 0 0.25rem 0; text-transform: uppercase;">
+                                <strong style="color: #fff; font-size: 0.714rem; display: block; margin: 0.5rem 0 0.25rem 0; text-transform: uppercase;">
                                   {section.title}
                                 </strong>
                                 <ul style="list-style: none; margin-left: 0.5rem;">
@@ -189,7 +195,7 @@ function menuContainsCurrentPath(menu: MenuStructure, path: string): boolean {
               <ul class="submenu-content">
                 {menu.data.sections.map((section) => (
                   <li>
-                    <strong style="color: #fff; font-size: 10px; display: block; margin: 0.5rem 0 0.25rem 0; text-transform: uppercase;">
+                    <strong style="color: #fff; font-size: 0.714rem; display: block; margin: 0.5rem 0 0.25rem 0; text-transform: uppercase;">
                       {section.title}
                     </strong>
                     <ul style="list-style: none; margin-left: 0.5rem;">
@@ -269,6 +275,49 @@ function menuContainsCurrentPath(menu: MenuStructure, path: string): boolean {
       }
     });
   });
+
+  // Control de tamaño de fuente
+  const fontSizes = [12, 14, 16, 18, 20, 22]; // Tamaños disponibles en px
+  const defaultSize = 14; // Índice 1
+  let currentSizeIndex = parseInt(localStorage.getItem('fontSize') || '1');
+
+  // Aplicar tamaño guardado al cargar
+  function applyFontSize(index: number) {
+    const size = fontSizes[index];
+    document.documentElement.style.fontSize = `${size}px`;
+    localStorage.setItem('fontSize', index.toString());
+  }
+
+  // Aplicar tamaño inicial
+  applyFontSize(currentSizeIndex);
+
+  // Botón para aumentar
+  const fontIncrease = document.getElementById('font-increase');
+  if (fontIncrease) {
+    fontIncrease.addEventListener('click', () => {
+      if (currentSizeIndex < fontSizes.length - 1) {
+        currentSizeIndex++;
+        applyFontSize(currentSizeIndex);
+        if (typeof window.playTerminalSound === 'function') {
+          window.playTerminalSound();
+        }
+      }
+    });
+  }
+
+  // Botón para disminuir
+  const fontDecrease = document.getElementById('font-decrease');
+  if (fontDecrease) {
+    fontDecrease.addEventListener('click', () => {
+      if (currentSizeIndex > 0) {
+        currentSizeIndex--;
+        applyFontSize(currentSizeIndex);
+        if (typeof window.playTerminalSound === 'function') {
+          window.playTerminalSound();
+        }
+      }
+    });
+  }
 </script>
 
 <style>
@@ -328,5 +377,44 @@ function menuContainsCurrentPath(menu: MenuStructure, path: string): boolean {
 
   .category-submenu {
     padding-left: 0.5rem;
+  }
+
+  .sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .font-controls {
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  .font-btn {
+    background: transparent;
+    border: 1px solid var(--gray);
+    color: var(--gray);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.286rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    padding: 0;
+  }
+
+  .font-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(8, 203, 0, 0.1);
+  }
+
+  .font-btn:active {
+    transform: scale(0.95);
   }
 </style>

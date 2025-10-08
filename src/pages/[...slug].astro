@@ -60,42 +60,6 @@ const { breadcrumb, sections } = content;
   </main>
 
   <script>
-    // Mobile menu toggle
-    const menuToggle = document.getElementById('menu-toggle');
-    const sidebar = document.querySelector('.sidebar');
-    const overlay = document.getElementById('sidebar-overlay');
-
-    function openMenu() {
-      sidebar?.classList.add('mobile-open');
-      overlay?.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeMenu() {
-      sidebar?.classList.remove('mobile-open');
-      overlay?.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-
-    menuToggle?.addEventListener('click', () => {
-      if (sidebar?.classList.contains('mobile-open')) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
-    });
-
-    overlay?.addEventListener('click', () => {
-      if (typeof playTerminalSound === 'function') {
-        playTerminalSound();
-      }
-      closeMenu();
-    });
-
-    // Cerrar menú al hacer click en un link
-    const sidebarLinks = sidebar?.querySelectorAll('a');
-    sidebarLinks?.forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
+const m=document.getElementById('menu-toggle'),s=document.querySelector('.sidebar'),o=document.getElementById('sidebar-overlay');function p(){s?.classList.add('mobile-open');o?.classList.add('active');document.body.style.overflow='hidden'}function c(){s?.classList.remove('mobile-open');o?.classList.remove('active');document.body.style.overflow=''}m?.addEventListener('click',()=>{s?.classList.contains('mobile-open')?c():p()});o?.addEventListener('click',()=>{typeof playTerminalSound==='function'&&playTerminalSound();c()});s?.querySelectorAll('a').forEach(l=>l.addEventListener('click',c));
   </script>
 </Layout>

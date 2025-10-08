@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a technical documentation system built with Astro 5. It uses a JSON-driven architecture where documentation content and navigation are defined in JSON files, and pages are generated dynamically at build time.
+This is a technical documentation system built with Astro 5. It uses a Markdown-driven architecture where documentation content is written in Markdown files with frontmatter, organized in folders, and pages are generated dynamically at build time.
 
 ## Commands
 
@@ -22,12 +22,12 @@ npm install           # Install dependencies
 
 ## Testing
 
-The project includes a comprehensive test suite in `tests/`:
+The project includes a test suite in `tests/`:
 
 **Test Suites:**
 1. **formatFolderName** (8 tests) - Validates folder name formatting logic
 2. **folderStructure** (10 tests) - Verifies directory structure and file existence
-3. **jsonContent** (8 tests) - Validates JSON structure and content types
+3. **jsonContent** (8 tests) - Validates file structure (legacy from JSON era, may need updates)
 
 **Run tests:**
 ```bash
@@ -37,182 +37,145 @@ bash tests/runAll.sh  # Direct execution
 
 **Total: 26 tests** covering:
 - Folder naming conventions (`_` and `-` to spaces, capitalization)
-- 3-level folder hierarchy support
-- JSON validity and schema compliance
-- Content type validation (heading, paragraph, code, list, callout)
+- Multi-level folder hierarchy support
+- File structure and validity
 
 See `tests/README.md` for detailed documentation.
 
+**Note**: The test suite was originally designed for the JSON-based architecture. Some tests may need updates to align with the current Markdown-based implementation.
+
 ## Architecture
 
-### JSON-Driven Content System
+### Markdown-Driven Content System
 
-The entire documentation is driven by JSON files in `src/data/menus/`. The system supports hierarchical organization through folders and subfolders.
+The entire documentation is driven by Markdown files in `src/data/menus/`. The system supports hierarchical organization through folders and subfolders.
 
 **Key principle**: Pages are NOT created as individual .astro files. Instead:
-1. Content and structure are defined in JSON files organized in folders/subfolders
+1. Content is written in Markdown files with frontmatter, organized in folders/subfolders
 2. `src/pages/[...slug].astro` dynamically generates static pages at build time via `getStaticPaths()`
-3. The Sidebar component recursively reads all folders and JSON files to build the navigation menu
-4. `src/utils/menuLoader.ts` provides utilities to recursively load menu structures
+3. The Sidebar component recursively reads all folders and Markdown files to build the navigation menu
+4. `src/utils/menuLoader.ts` provides utilities to recursively load menu structures, process frontmatter with `gray-matter`, and convert Markdown to HTML with `marked`
 
 ### Folder Structure
 
-You can organize documentation in subcategories using folders (supports up to 3 levels of nesting):
+Documentation is organized in a hierarchical folder structure with Markdown files. The system supports unlimited nesting levels:
 
 ```
 src/data/menus/
-  backend/                    # Level 1: Category folder → "Backend"
-    Node.json                 # Level 2: Direct JSON file
-  academic/                   # Level 1: Category folder → "Academic"
-    logica_y_matematica/      # Level 2: Subcategory → "Logica Y Matematica"
-      Calculo.json            # Level 3: JSON file (deepest supported)
-  PatronesDiseno.json         # Level 1: Top-level JSON (no folder)
+  backend/                          # Level 1: Category
+    Node/                           # Level 2: Topic
+      index.md                      # Optional: Category/topic landing page
+      Fundamentos/                  # Level 3: Subtopic
+        index.md                    # Optional: Section landing page
+        Introduccion.md             # Individual page
+        NPM-y-Package-json.md       # Individual page
+  academic/                         # Level 1: Category
+    index.md                        # Optional: Category landing page
+    Logica_y_Matematica_Discreta/   # Level 2: Topic
+      Logica-Proposicional.md       # Individual page
+  PatronesDiseno/                   # Level 1: Top-level topic
+    Creacionales/                   # Level 2: Subtopic
+      Singleton.md                  # Individual page
 ```
 
 **Folder naming:**
 - Use underscores (`_`) or hyphens (`-`) instead of spaces in folder names
-- Names are automatically formatted: `logica_y_matematica` displays as "Logica Y Matematica"
+- Names are automatically formatted: `Logica_y_Matematica_Discreta` displays as "Logica Y Matematica Discreta"
 - Examples: `machine_learning`, `design-patterns`, `data_structures`
 
-The sidebar will display:
-- **Backend** (formatted from folder name)
-  - **Node.js** (from Node.json title)
-- **Academic** (formatted from folder name)
-  - **Logica Y Matematica** (formatted from subfolder name)
-    - **Cálculo** (from Calculo.json title)
-- **Patrones de Diseño** (from PatronesDiseno.json title)
+**index.md files:**
+- Create `index.md` in any folder to provide a landing page for that category/section
+- `index.md` makes the folder name itself clickable in the sidebar
+- Without `index.md`, the folder name is just a collapsible header
 
-**Supported structures:**
-- Level 1: `file.json` → Top-level menu item
-- Level 2: `folder/file.json` → Category with direct content
-- Level 3: `folder/subfolder/file.json` → Category → Subcategory → Content (maximum depth)
-
-**Formatting logic** (src/components/Sidebar.astro):
+**Formatting logic** (src/utils/menuLoader.ts:27-33):
 - Folder names are processed by `formatFolderName()` function
 - Replaces `_` and `-` with spaces
 - Capitalizes each word
 
-### JSON File Structure
+### Markdown File Structure
 
-Each menu JSON file must follow this structure:
+Each Markdown file uses frontmatter for metadata and standard Markdown for content:
 
-```json
-{
-  "title": "Topic Name",
-  "sections": [
-    {
-      "id": "unique-section-id",
-      "title": "Section Name",
-      "items": [
-        {
-          "id": "unique-item-id",
-          "title": "Page Title",
-          "slug": "topic/section/page",
-          "content": {
-            "breadcrumb": ["Home", "Topic", "Section", "Page"],
-            "sections": [...]
-          }
-        }
-      ]
-    }
-  ]
-}
+```markdown
+---
+title: Page Title
+---
+
+## Heading
+
+Content goes here in standard Markdown format.
+
+### Subheading
+
+- List item 1
+- List item 2
+
+\`\`\`javascript
+// Code blocks
+const example = 'code';
+console.log(example);
+\`\`\`
+
+> **💡 Callouts**
+>
+> Use blockquotes for callouts and highlighted information.
 ```
 
-**Required fields:**
-- `title` (string): Topic name shown in sidebar
-- `sections` (array): Groups of documentation pages
-  - `id` (string): Unique section identifier
-  - `title` (string): Section name in sidebar
-  - `items` (array): Documentation pages in this section
-    - `id` (string): Unique item identifier
-    - `title` (string): Page title
-    - `slug` (string): URL path (without leading slash)
-    - `content.breadcrumb` (array): Navigation breadcrumb
-    - `content.sections` (array): Content blocks
+**Frontmatter fields:**
+- `title` (required): Page title shown in sidebar and as page heading
+- Additional custom fields can be added as needed
 
-### Content Types
-
-The `ContentRenderer.astro` component supports these content types in `content.sections`:
-
-**1. heading**: Headings (h2-h6)
-```json
-{
-  "type": "heading",
-  "level": 2,
-  "text": "Heading text"
-}
-```
-
-**2. paragraph**: Text paragraphs
-```json
-{
-  "type": "paragraph",
-  "text": "Paragraph content"
-}
-```
-
-**3. code**: Code blocks
-```json
-{
-  "type": "code",
-  "text": "const example = 'code';\nconsole.log(example);"
-}
-```
-
-**4. list**: Lists (supports inline HTML)
-```json
-{
-  "type": "list",
-  "items": [
-    "Item 1",
-    "<strong>Item with HTML</strong>",
-    "Item 3"
-  ]
-}
-```
-
-**5. callout**: Highlighted boxes
-```json
-{
-  "type": "callout",
-  "title": "💡 Note",
-  "text": "Important information"
-}
-```
+**Markdown features:**
+- Standard Markdown syntax (processed by `marked` library)
+- Code blocks with syntax highlighting
+- Lists (ordered and unordered)
+- Blockquotes for callouts
+- Inline HTML is supported
+- Tables, links, images, etc.
 
 ### Component Architecture
 
-- **Sidebar.astro**: Auto-discovers all JSON files in `src/data/menus/`, builds collapsible menu, handles active state
-- **ContentRenderer.astro**: Type-based content renderer that maps JSON content types to HTML elements
-- **[...slug].astro**: Dynamic route handler that generates all documentation pages at build time
-- **Layout.astro**: Base layout wrapper
+- **Sidebar.astro** (src/components/Sidebar.astro): Auto-discovers all Markdown files recursively in `src/data/menus/`, builds hierarchical collapsible menu, handles active state and font size controls
+- **ContentRenderer.astro** (src/components/ContentRenderer.astro): Simple component that renders HTML content converted from Markdown using `set:html`
+- **[...slug].astro** (src/pages/[...slug].astro): Dynamic route handler that generates all documentation pages at build time via `getStaticPaths()`, uses `extractAllPaths()` from menuLoader
+- **Layout.astro** (src/layouts/Layout.astro): Base layout wrapper with terminal sound effects
+- **menuLoader.ts** (src/utils/menuLoader.ts): Core utility that recursively scans folders, processes Markdown with frontmatter, and builds menu structure
 
 ### Static Site Generation
 
 - Build output: Static HTML files (configured in astro.config.mjs)
-- All routes are generated at build time from JSON files
+- All routes are generated at build time from Markdown files
 - No server-side rendering or API routes
+- Optimized with compression (gzip and brotli), minification, and inlined stylesheets
 
 ## Adding New Documentation
 
 To add new documentation:
 
-### Option 1: Top-level topic (no category)
-1. Create a JSON file in `src/data/menus/` (e.g., `NewTopic.json`)
-2. Follow the JSON structure with sections, items, slugs, and content
-3. It will appear at the top level in the sidebar
+### Option 1: Add a page to existing category
+1. Navigate to the appropriate folder in `src/data/menus/`
+2. Create a new `.md` file (e.g., `New-Topic.md`)
+3. Add frontmatter with `title` field and write content in Markdown
+4. File appears automatically in sidebar on next build
 
-### Option 2: Organized in categories
-1. Create a folder in `src/data/menus/` (e.g., `src/data/menus/backend/`)
-2. Inside the folder, create a JSON file (e.g., `Node.json`)
-3. The folder name becomes the category in the sidebar
-4. You can nest folders for deeper hierarchies
+### Option 2: Create new category/topic
+1. Create a new folder in `src/data/menus/` (e.g., `src/data/menus/machine_learning/`)
+2. Optionally create `index.md` for a landing page
+3. Add Markdown files for individual pages
+4. Folder name becomes a collapsible section in sidebar
+
+### Option 3: Deep hierarchies
+1. Create nested folders as needed (unlimited depth supported)
+2. Each folder can have an optional `index.md` for that level
+3. Add Markdown files at any level of nesting
+4. Navigation structure mirrors folder structure
 
 **Important**:
 - Pages and navigation are automatically generated on next build
 - Do NOT create individual .astro page files
-- The system recursively scans all folders in `src/data/menus/`
+- The system recursively scans all folders and `.md` files in `src/data/menus/`
+- Folder and file names are auto-formatted for display (underscores/hyphens → spaces, capitalized)
 
 ## Styling
 

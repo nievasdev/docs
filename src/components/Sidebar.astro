@@ -1,14 +1,34 @@
 ---
-import{readMenusRecursively,type MenuStructure}from'../utils/menuLoader';
-const menus=await readMenusRecursively();const currentPath=Astro.url.pathname;
-function formatFolderName(s:string):string{return s.replace(/[-_]/g,' ').split(' ').map(w=>w.charAt(0).toUpperCase()+w.slice(1).toLowerCase()).join(' ')}
-function generateMenuId(m:MenuStructure,p:string=''):string{return p?`${p}-${m.name}`:m.name}
-function menuContainsCurrentPath(m:MenuStructure,p:string):boolean{if(m.data){for(const s of m.data.sections){for(const i of s.items){if(p===`/${i.slug}`||p===`/${i.slug}/`)return true}}}if(m.children){for(const c of m.children){if(menuContainsCurrentPath(c,p))return true}}return false}
+import { readMenusRecursively, type MenuCategory } from '../utils/menuLoader';
+
+const menus = await readMenusRecursively();
+const currentPath = Astro.url.pathname;
+
+function formatFolderName(s: string): string {
+  return s.replace(/[-_]/g, ' ').split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ');
+}
+
+function generateMenuId(m: MenuCategory, p: string = ''): string {
+  return p ? `${p}-${m.name}` : m.name;
+}
+
+function menuContainsCurrentPath(m: MenuCategory, p: string): boolean {
+  if (m.indexContent && (p === `/${m.slug}` || p === `/${m.slug}/`)) return true;
+  for (const i of m.items) {
+    if (p === `/${i.slug}` || p === `/${i.slug}/`) return true;
+  }
+  if (m.children) {
+    for (const c of m.children) {
+      if (menuContainsCurrentPath(c, p)) return true;
+    }
+  }
+  return false;
+}
 ---
 
 <aside class="sidebar">
   <div class="sidebar-header">
-    <h1>📚 DOCS</h1>
+    <h1><a href="/" onclick="playTerminalSound()">📚 DOCS</a></h1>
     <div class="font-controls">
       <button id="font-decrease" class="font-btn" title="Disminuir tamaño de fuente">-</button>
       <button id="font-increase" class="font-btn" title="Aumentar tamaño de fuente">+</button>
@@ -19,162 +39,71 @@ function menuContainsCurrentPath(m:MenuStructure,p:string):boolean{if(m.data){fo
     const isMenuActive = menuContainsCurrentPath(menu, currentPath);
     return (
       <div class="menu-section">
-        {menu.children ? (
-          /* Es una carpeta con subcategorías */
+        {menu.children || menu.items.length > 0 ? (
           <>
-            <div
-              class:list={['menu-title', 'category-title', { active: isMenuActive }]}
-              data-menu={generateMenuId(menu)}
-            >
-              {formatFolderName(menu.name)}
-            </div>
-            <div
-              class:list={['submenu', 'category-submenu', { open: isMenuActive }]}
-              id={`submenu-${generateMenuId(menu)}`}
-            >
+            {menu.indexContent ? (
+              <a href={`/${menu.slug}`} class:list={['menu-title', 'category-title', { active: isMenuActive }]} onclick="playTerminalSound()">{menu.title}</a>
+            ) : (
+              <div class:list={['menu-title', 'category-title', { active: isMenuActive }]} data-menu={generateMenuId(menu)}>{menu.title}</div>
+            )}
+            <div class:list={['submenu', 'category-submenu', { open: isMenuActive }]} id={`submenu-${generateMenuId(menu)}`}>
               <div class="submenu-content">
-                {menu.children.map((child) => {
+                {menu.children?.map((child) => {
                   const isChildActive = menuContainsCurrentPath(child, currentPath);
-
-                  if (child.children) {
-                    /* Es una subcarpeta con más contenido */
-                    return (
-                      <div class="menu-subcategory">
-                        <div
-                          class:list={['menu-subtitle', { active: isChildActive }]}
-                          data-menu={generateMenuId(child, menu.name)}
-                        >
-                          {formatFolderName(child.name)}
-                        </div>
-                        <div
-                          class:list={['submenu', { open: isChildActive }]}
-                          id={`submenu-${generateMenuId(child, menu.name)}`}
-                        >
-                          <div class="submenu-content">
-                            {child.children.map((subchild) => {
-                              const isSubchildActive = menuContainsCurrentPath(subchild, currentPath);
-                              return subchild.data ? (
-                                <div class="menu-subsubcategory">
-                                  <div
-                                    class:list={['menu-subsubtitle', { active: isSubchildActive }]}
-                                    data-menu={generateMenuId(subchild, `${menu.name}-${child.name}`)}
-                                  >
-                                    {subchild.data.title}
-                                  </div>
-                                  <div
-                                    class:list={['submenu', { open: isSubchildActive }]}
-                                    id={`submenu-${generateMenuId(subchild, `${menu.name}-${child.name}`)}`}
-                                  >
-                                    <ul class="submenu-content">
-                                      {subchild.data.sections.map((section) => (
-                                        <li>
-                                          <strong style="color: #fff; font-size: 0.714rem; display: block; margin: 0.5rem 0 0.25rem 0; text-transform: uppercase;">
-                                            {section.title}
-                                          </strong>
-                                          <ul style="list-style: none; margin-left: 0.5rem;">
-                                            {section.items.map((item) => (
-                                              <li style="margin-bottom: 0.25rem;">
-                                                <a
-                                                  href={`/${item.slug}`}
-                                                  class={currentPath === `/${item.slug}` || currentPath === `/${item.slug}/` ? 'active' : ''}
-                                                  onclick="playTerminalSound()"
-                                                >
-                                                  {item.title}
-                                                </a>
-                                              </li>
-                                            ))}
-                                          </ul>
-                                        </li>
-                                      ))}
-                                    </ul>
-                                  </div>
+                  return (
+                    <div class="menu-subcategory">
+                      {child.indexContent ? (
+                        <a href={`/${child.slug}`} class:list={['menu-subtitle', { active: isChildActive }]} onclick="playTerminalSound()">{child.title}</a>
+                      ) : (
+                        <div class:list={['menu-subtitle', { active: isChildActive }]} data-menu={generateMenuId(child, menu.name)}>{child.title}</div>
+                      )}
+                      <div class:list={['submenu', { open: isChildActive }]} id={`submenu-${generateMenuId(child, menu.name)}`}>
+                        <div class="submenu-content">
+                          {child.children?.map((subchild) => {
+                            const isSubchildActive = menuContainsCurrentPath(subchild, currentPath);
+                            return (
+                              <div class="menu-subsubcategory">
+                                {subchild.indexContent ? (
+                                  <a href={`/${subchild.slug}`} class:list={['menu-subsubtitle', { active: isSubchildActive }]} onclick="playTerminalSound()">{subchild.title}</a>
+                                ) : (
+                                  <div class:list={['menu-subsubtitle', { active: isSubchildActive }]} data-menu={generateMenuId(subchild, `${menu.name}-${child.name}`)}>{subchild.title}</div>
+                                )}
+                                <div class:list={['submenu', { open: isSubchildActive }]} id={`submenu-${generateMenuId(subchild, `${menu.name}-${child.name}`)}`}>
+                                  <ul class="submenu-content">
+                                    {subchild.items.map((item) => (
+                                      <li>
+                                        <a href={`/${item.slug}`} class={currentPath === `/${item.slug}` || currentPath === `/${item.slug}/` ? 'active' : ''} onclick="playTerminalSound()">{item.title}</a>
+                                      </li>
+                                    ))}
+                                  </ul>
                                 </div>
-                              ) : null
-                            })}
-                          </div>
+                              </div>
+                            )
+                          })}
+                          {child.items.length > 0 && (
+                            <ul class="submenu-content">
+                              {child.items.map((item) => (
+                                <li>
+                                  <a href={`/${item.slug}`} class={currentPath === `/${item.slug}` || currentPath === `/${item.slug}/` ? 'active' : ''} onclick="playTerminalSound()">{item.title}</a>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
                         </div>
                       </div>
-                    );
-                  } else if (child.data) {
-                    /* Es un archivo JSON directo */
-                    return (
-                      <div class="menu-subcategory">
-                        <div
-                          class:list={['menu-subtitle', { active: isChildActive }]}
-                          data-menu={generateMenuId(child, menu.name)}
-                        >
-                          {child.data.title}
-                        </div>
-                        <div
-                          class:list={['submenu', { open: isChildActive }]}
-                          id={`submenu-${generateMenuId(child, menu.name)}`}
-                        >
-                          <ul class="submenu-content">
-                            {child.data.sections.map((section) => (
-                              <li>
-                                <strong style="color: #fff; font-size: 0.714rem; display: block; margin: 0.5rem 0 0.25rem 0; text-transform: uppercase;">
-                                  {section.title}
-                                </strong>
-                                <ul style="list-style: none; margin-left: 0.5rem;">
-                                  {section.items.map((item) => (
-                                    <li style="margin-bottom: 0.25rem;">
-                                      <a
-                                        href={`/${item.slug}`}
-                                        class={currentPath === `/${item.slug}` || currentPath === `/${item.slug}/` ? 'active' : ''}
-                                        onclick="playTerminalSound()"
-                                      >
-                                        {item.title}
-                                      </a>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    );
-                  }
-                  return null;
+                    </div>
+                  )
                 })}
+                {menu.items.length > 0 && (
+                  <ul class="submenu-content">
+                    {menu.items.map((item) => (
+                      <li>
+                        <a href={`/${item.slug}`} class={currentPath === `/${item.slug}` || currentPath === `/${item.slug}/` ? 'active' : ''} onclick="playTerminalSound()">{item.title}</a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
-            </div>
-          </>
-        ) : menu.data ? (
-          /* Es un archivo JSON sin carpeta padre */
-          <>
-            <div
-              class:list={['menu-title', { active: isMenuActive }]}
-              data-menu={generateMenuId(menu)}
-            >
-              {menu.data.title}
-            </div>
-            <div
-              class:list={['submenu', { open: isMenuActive }]}
-              id={`submenu-${generateMenuId(menu)}`}
-            >
-              <ul class="submenu-content">
-                {menu.data.sections.map((section) => (
-                  <li>
-                    <strong style="color: #fff; font-size: 0.714rem; display: block; margin: 0.5rem 0 0.25rem 0; text-transform: uppercase;">
-                      {section.title}
-                    </strong>
-                    <ul style="list-style: none; margin-left: 0.5rem;">
-                      {section.items.map((item) => (
-                        <li style="margin-bottom: 0.25rem;">
-                          <a
-                            href={`/${item.slug}`}
-                            class={currentPath === `/${item.slug}` || currentPath === `/${item.slug}/` ? 'active' : ''}
-                            onclick="playTerminalSound()"
-                          >
-                            {item.title}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </li>
-                ))}
-              </ul>
             </div>
           </>
         ) : null}
@@ -184,9 +113,74 @@ function menuContainsCurrentPath(m:MenuStructure,p:string):boolean{if(m.data){fo
 </aside>
 
 <script>
-const t=document.querySelectorAll('.menu-title'),s=document.querySelectorAll('.menu-subtitle'),u=document.querySelectorAll('.menu-subsubtitle');function h(e){const n=e.getAttribute('data-menu'),m=document.getElementById(`submenu-${n}`);m&&(typeof window.playTerminalSound==='function'&&window.playTerminalSound(),m.classList.toggle('open'),e.classList.toggle('active'))}t.forEach(e=>e.addEventListener('click',()=>h(e)));s.forEach(e=>e.addEventListener('click',()=>h(e)));u.forEach(e=>e.addEventListener('click',()=>h(e)));const f=[12,14,16,18,20,22];let c=parseInt(localStorage.getItem('fontSize')||'1');function a(i){document.documentElement.style.fontSize=`${f[i]}px`;localStorage.setItem('fontSize',i.toString())}a(c);const d=document.getElementById('font-increase');d&&d.addEventListener('click',()=>{c<f.length-1&&(c++,a(c),typeof window.playTerminalSound==='function'&&window.playTerminalSound())});const r=document.getElementById('font-decrease');r&&r.addEventListener('click',()=>{c>0&&(c--,a(c),typeof window.playTerminalSound==='function'&&window.playTerminalSound())});
+  const t = document.querySelectorAll('.menu-title:not(a)');
+  const s = document.querySelectorAll('.menu-subtitle:not(a)');
+  const u = document.querySelectorAll('.menu-subsubtitle:not(a)');
+
+  function h(e) {
+    const n = e.getAttribute('data-menu');
+    const m = document.getElementById(`submenu-${n}`);
+    if (m) {
+      if (typeof window.playTerminalSound === 'function') {
+        window.playTerminalSound();
+      }
+      m.classList.toggle('open');
+      e.classList.toggle('active');
+    }
+  }
+
+  t.forEach(e => e.addEventListener('click', () => h(e)));
+  s.forEach(e => e.addEventListener('click', () => h(e)));
+  u.forEach(e => e.addEventListener('click', () => h(e)));
+
+  const f = [12, 14, 16, 18, 20, 22];
+  let c = parseInt(localStorage.getItem('fontSize') || '1');
+
+  function a(i) {
+    document.documentElement.style.fontSize = `${f[i]}px`;
+    localStorage.setItem('fontSize', i.toString());
+  }
+
+  a(c);
+
+  const d = document.getElementById('font-increase');
+  d && d.addEventListener('click', () => {
+    if (c < f.length - 1) {
+      c++;
+      a(c);
+      if (typeof window.playTerminalSound === 'function') {
+        window.playTerminalSound();
+      }
+    }
+  });
+
+  const r = document.getElementById('font-decrease');
+  r && r.addEventListener('click', () => {
+    if (c > 0) {
+      c--;
+      a(c);
+      if (typeof window.playTerminalSound === 'function') {
+        window.playTerminalSound();
+      }
+    }
+  });
 </script>
 
 <style>
-.menu-subtitle{padding:.5rem 1rem;cursor:pointer;font-size:.9rem;color:var(--gray);border-left:2px solid transparent;transition:all .2s;margin-left:.5rem}.menu-subtitle:hover,.menu-subtitle.active{color:var(--accent);border-left-color:var(--accent)}.menu-subcategory{margin-bottom:.5rem}.menu-subsubtitle{padding:.4rem .8rem;cursor:pointer;font-size:.85rem;color:var(--gray);border-left:2px solid transparent;transition:all .2s;margin-left:1rem}.menu-subsubtitle:hover,.menu-subsubtitle.active{color:var(--accent);border-left-color:var(--accent)}.menu-subsubcategory{margin-bottom:.5rem;margin-left:.5rem}.category-title{font-weight:bold;font-size:1rem}.category-submenu{padding-left:.5rem}.sidebar-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}.font-controls{display:flex;gap:.25rem}.font-btn{background:transparent;border:1px solid var(--gray);color:var(--gray);width:2rem;height:2rem;border-radius:4px;cursor:pointer;font-size:1.286rem;font-weight:bold;display:flex;align-items:center;justify-content:center;transition:all .2s;padding:0}.font-btn:hover{border-color:var(--accent);color:var(--accent);background:rgba(8,203,0,.1)}.font-btn:active{transform:scale(.95)}
+  .sidebar-header h1 a { color: inherit; text-decoration: none; transition: color .2s; }
+  .sidebar-header h1 a:hover { color: var(--accent); }
+  .menu-title a, .menu-subtitle a, .menu-subsubtitle a { color: inherit; text-decoration: none; }
+  .menu-subtitle { padding: .5rem 1rem; cursor: pointer; font-size: .9rem; color: var(--gray); border-left: 2px solid transparent; transition: all .2s; margin-left: .5rem; }
+  .menu-subtitle:hover, .menu-subtitle.active { color: var(--accent); border-left-color: var(--accent); }
+  .menu-subcategory { margin-bottom: .5rem; }
+  .menu-subsubtitle { padding: .4rem .8rem; cursor: pointer; font-size: .85rem; color: var(--gray); border-left: 2px solid transparent; transition: all .2s; margin-left: 1rem; }
+  .menu-subsubtitle:hover, .menu-subsubtitle.active { color: var(--accent); border-left-color: var(--accent); }
+  .menu-subsubcategory { margin-bottom: .5rem; margin-left: .5rem; }
+  .category-title { font-weight: bold; font-size: 1rem; }
+  .category-submenu { padding-left: .5rem; }
+  .sidebar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+  .font-controls { display: flex; gap: .25rem; }
+  .font-btn { background: transparent; border: 1px solid var(--gray); color: var(--gray); width: 2rem; height: 2rem; border-radius: 4px; cursor: pointer; font-size: 1.286rem; font-weight: bold; display: flex; align-items: center; justify-content: center; transition: all .2s; padding: 0; }
+  .font-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(8, 203, 0, .1); }
+  .font-btn:active { transform: scale(.95); }
 </style>

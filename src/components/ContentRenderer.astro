@@ -1,41 +1,9 @@
 ---
-interface Section{type:string;level?:number;text?:string;items?:string[];title?:string}
-interface Props{sections:Section[]}
-const{sections}=Astro.props;
+interface Props {
+  html: string;
+}
+
+const { html } = Astro.props;
 ---
 
-{sections.map((section) => {
-  if (section.type === 'heading') {
-    const Tag = `h${section.level}` as any;
-    return <Tag>{section.text}</Tag>;
-  }
-
-  if (section.type === 'paragraph') {
-    return <p>{section.text}</p>;
-  }
-
-  if (section.type === 'code') {
-    return <pre><code>{section.text}</code></pre>;
-  }
-
-  if (section.type === 'list') {
-    return (
-      <ul>
-        {section.items?.map((item) => (
-          <li set:html={item}></li>
-        ))}
-      </ul>
-    );
-  }
-
-  if (section.type === 'callout') {
-    return (
-      <div style="background: #1a1a1a; padding: 1rem; border-left: 3px solid var(--accent); margin-top: 1.5rem;">
-        <h4>{section.title}</h4>
-        <p style="margin: 0; color: var(--gray);">{section.text}</p>
-      </div>
-    );
-  }
-
-  return null;
-})}
+<div class="markdown-content" set:html={html}></div>

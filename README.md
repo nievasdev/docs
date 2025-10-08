@@ -9,11 +9,18 @@ Sistema de documentación técnica construido con **Astro**, diseñado con el mi
 - ✅ Menú lateral dinámico generado automáticamente
 - ✅ **Diseño responsive**: Menu hamburguesa en móvil con overlay
 - ✅ Estilo inspirado en terminales de consola
+- ✅ **Sonido terminal**: Feedback auditivo en navegación (Web Audio API)
 - ✅ 5 tipos de contenido: heading, paragraph, code, list, callout
 - ✅ Sin necesidad de crear archivos .astro para cada página
 - ✅ Navegación fluida con animaciones suaves
 
 ## 📦 Instalación
+
+### Requisitos
+
+- Node.js >= 18.20.8 (requerido por Astro 5)
+
+### Comandos
 
 ```bash
 # Instalar dependencias
@@ -27,6 +34,9 @@ npm run build
 
 # Vista previa de producción
 npm run preview
+
+# Ejecutar tests
+npm test
 ```
 
 ## 📂 Estructura del Proyecto
@@ -66,15 +76,28 @@ docs/
 Crea un nuevo archivo en `src/data/menus/`, por ejemplo `NuevaTematica.json`
 
 #### Opción B: Con categorías (recomendado)
-Organiza tus documentos en carpetas:
+Organiza tus documentos en carpetas (soporta hasta 3 niveles):
 ```
 src/data/menus/
-  backend/         # Categoría Backend
-    Node.json
-    Python.json
-  frontend/        # Categoría Frontend
-    React.json
+  backend/                      # Nivel 1: Categoría "Backend"
+    Node.json                   # Nivel 2: Documento directo
+  academic/                     # Nivel 1: Categoría "Academic"
+    logica_y_matematica/        # Nivel 2: Subcategoría "Logica Y Matematica"
+      Calculo.json              # Nivel 3: Documento (máxima profundidad)
+  frontend/                     # Nivel 1: Categoría "Frontend"
+    React.json                  # Nivel 2: Documento directo
+  PatronesDiseno.json           # Nivel 1: Sin categoría
 ```
+
+**Nombres de carpetas:**
+- Usa guiones bajos (`_`) o guiones (`-`) en lugar de espacios
+- Se mostrarán automáticamente formateados: `logica_y_matematica` → "Logica Y Matematica"
+- Ejemplos válidos: `machine_learning`, `inteligencia-artificial`, `bases_de_datos`
+
+**Estructuras soportadas:**
+- 1 nivel: `archivo.json` → Ítem de menú principal
+- 2 niveles: `carpeta/archivo.json` → Categoría con contenido directo
+- 3 niveles: `carpeta/subcarpeta/archivo.json` → Categoría → Subcategoría → Contenido
 
 Ejemplo de JSON:
 

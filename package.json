@@ -9,7 +9,8 @@
     "start": "astro preview",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "astro check"
+    "lint": "astro check",
+    "test": "bash tests/runAll.sh"
   },
   "dependencies": {
     "astro": "^5.14.1"

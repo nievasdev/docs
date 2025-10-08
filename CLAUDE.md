@@ -14,10 +14,34 @@ npm run dev           # Start dev server (typically http://localhost:4321)
 npm run build         # Build for production
 npm run preview       # Preview production build locally
 npm run lint          # Run Astro type checking
+npm test              # Run test suite
 
 # Package management
 npm install           # Install dependencies
 ```
+
+## Testing
+
+The project includes a comprehensive test suite in `tests/`:
+
+**Test Suites:**
+1. **formatFolderName** (8 tests) - Validates folder name formatting logic
+2. **folderStructure** (10 tests) - Verifies directory structure and file existence
+3. **jsonContent** (8 tests) - Validates JSON structure and content types
+
+**Run tests:**
+```bash
+npm test              # Run all test suites
+bash tests/runAll.sh  # Direct execution
+```
+
+**Total: 26 tests** covering:
+- Folder naming conventions (`_` and `-` to spaces, capitalization)
+- 3-level folder hierarchy support
+- JSON validity and schema compliance
+- Content type validation (heading, paragraph, code, list, callout)
+
+See `tests/README.md` for detailed documentation.
 
 ## Architecture
 
@@ -33,28 +57,40 @@ The entire documentation is driven by JSON files in `src/data/menus/`. The syste
 
 ### Folder Structure
 
-You can organize documentation in subcategories using folders:
+You can organize documentation in subcategories using folders (supports up to 3 levels of nesting):
 
 ```
 src/data/menus/
-  backend/              # Category: Backend
-    node/              # Subcategory under Backend
-      Node.json        # JSON file with Node.js docs
-    python/
-      Python.json
-  frontend/            # Category: Frontend
-    React.json         # Direct JSON file under Frontend
-  PatronesDiseno.json  # Top-level JSON (no category)
+  backend/                    # Level 1: Category folder → "Backend"
+    Node.json                 # Level 2: Direct JSON file
+  academic/                   # Level 1: Category folder → "Academic"
+    logica_y_matematica/      # Level 2: Subcategory → "Logica Y Matematica"
+      Calculo.json            # Level 3: JSON file (deepest supported)
+  PatronesDiseno.json         # Level 1: Top-level JSON (no folder)
 ```
 
+**Folder naming:**
+- Use underscores (`_`) or hyphens (`-`) instead of spaces in folder names
+- Names are automatically formatted: `logica_y_matematica` displays as "Logica Y Matematica"
+- Examples: `machine_learning`, `design-patterns`, `data_structures`
+
 The sidebar will display:
-- **Backend** (category from folder name)
+- **Backend** (formatted from folder name)
   - **Node.js** (from Node.json title)
-    - Sections and items from Node.json
-  - **Python** (from Python.json title)
-- **Frontend** (category from folder name)
-  - **React** (from React.json title)
-- **Patrones de Diseño** (top-level, from PatronesDiseno.json title)
+- **Academic** (formatted from folder name)
+  - **Logica Y Matematica** (formatted from subfolder name)
+    - **Cálculo** (from Calculo.json title)
+- **Patrones de Diseño** (from PatronesDiseno.json title)
+
+**Supported structures:**
+- Level 1: `file.json` → Top-level menu item
+- Level 2: `folder/file.json` → Category with direct content
+- Level 3: `folder/subfolder/file.json` → Category → Subcategory → Content (maximum depth)
+
+**Formatting logic** (src/components/Sidebar.astro):
+- Folder names are processed by `formatFolderName()` function
+- Replaces `_` and `-` with spaces
+- Capitalizes each word
 
 ### JSON File Structure
 
@@ -186,6 +222,20 @@ Terminal-style theme with:
 - Accent: Neon green (#08CB00 - CSS var `--accent`)
 - Font: Monaco, Courier New (monospace)
 - Global styles in `src/styles/global.css`
+
+## Sound Effects
+
+The site includes terminal-style beep sounds for navigation:
+- **Implementation**: `playTerminalSound()` function in `src/layouts/Layout.astro`
+- **Technology**: Web Audio API (no audio files needed)
+- **Sound profile**: Two-tone beep (2000Hz + 1400Hz sine waves)
+- **Triggers**:
+  - Clicking sidebar links
+  - Expanding/collapsing menu sections
+  - Clicking breadcrumb links
+  - Opening/closing mobile hamburger menu
+  - Clicking overlay to close menu
+- All onclick handlers call `playTerminalSound()` inline
 
 ## Mobile Responsive
 

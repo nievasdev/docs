@@ -30,7 +30,7 @@ const { breadcrumb, sections } = content;
     <Sidebar />
 
     <div class="content">
-      <button class="menu-toggle" aria-label="Toggle menu" id="menu-toggle">
+      <button class="menu-toggle" aria-label="Toggle menu" id="menu-toggle" onclick="playTerminalSound()">
         <span></span>
         <span></span>
         <span></span>
@@ -40,11 +40,11 @@ const { breadcrumb, sections } = content;
         {breadcrumb.map((crumb, index) => (
           <>
             {index === 0 ? (
-              <a href="/">{crumb}</a>
+              <a href="/" onclick="playTerminalSound()">{crumb}</a>
             ) : index === breadcrumb.length - 1 ? (
               <span>{crumb}</span>
             ) : (
-              <a href="#">{crumb}</a>
+              <a href="#" onclick="playTerminalSound()">{crumb}</a>
             )}
             {index < breadcrumb.length - 1 && <span>›</span>}
           </>
@@ -87,7 +87,12 @@ const { breadcrumb, sections } = content;
       }
     });
 
-    overlay?.addEventListener('click', closeMenu);
+    overlay?.addEventListener('click', () => {
+      if (typeof playTerminalSound === 'function') {
+        playTerminalSound();
+      }
+      closeMenu();
+    });
 
     // Cerrar menú al hacer click en un link
     const sidebarLinks = sidebar?.querySelectorAll('a');

@@ -1,0 +1,62 @@
+{
+    "title":"Logica y Matematica Discreta",
+    "sections":[
+        {
+            "id": "Booleanos",
+            "title": "Booleanos",
+            "items" : [
+                {
+                    "id": "Operaciones",
+                    "title": "Operaciones",
+                    "slug": "academic/logica_y_matematica_discreta/booleanos",
+                    "content" : {
+                        "breadcrumb": ["Inicio", "academic", "logica y matematica discreta", "booleanos"],
+                        "sections":[
+                            {
+  "type": "paragraph",
+  "text": "El boleano consta unicamente de 2 valores, True y False, la siguiente es la codificación de Booleanos en Haskell"
+},
+{
+    "type": "code",
+    "text": "data Bool = False | True"
+},
+{
+    "type": "heading",
+    "level": "2",
+    "text": "Operador Case"
+},
+{
+    "type": "paragraph",
+     "text": "Tenemos disponible el operador case que, dada una expresión booleana, permite analizar sus posibles valores (False o True)"
+},
+{
+    "type": "code",
+    "text": "\\x -> case x of { \n False -> True; \n True -> False \n } "
+},
+{
+    "type": "paragraph",
+    "text": "obviamente, la funcion tiene tipo Bool -> Bool"
+}
+
+                        ]
+                    }
+                },
+                {
+                    "id": "llamadas",
+                    "title": "infija y Prefija",
+                    "slug": "academic/logica_y_matematica_discreta/llamadas",
+                    "content" :  
+                        {
+                            "breadcrumb": ["Inicio", "academic", "logica y matematica discreta", "llamadas a funciones"],
+                            "sections": [
+                                {
+                                    "type": "paragraph",
+                                    "text": "al utilizar la conjunción, uno quisiera escribir a && b en lugar de conj a b que es lo que obtenemos de la definición precedente. La primera notación, en la que el símbolo correspondiente a la oporación aparece entre sus argumentos, es llamada infija. La otra, en la que el nombre de la oporación precede a los argumentos, es llamada prefija"
+                                }
+                            ]
+                        }
+                    }
+                    ]
+        }
+    ]
+}

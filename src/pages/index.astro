@@ -10,7 +10,7 @@ import Sidebar from '../components/Sidebar.astro';
     <Sidebar />
 
     <div class="content">
-      <button class="menu-toggle" aria-label="Toggle menu" id="menu-toggle">
+      <button class="menu-toggle" aria-label="Toggle menu" id="menu-toggle" onclick="playTerminalSound()">
         <span></span>
         <span></span>
         <span></span>
@@ -92,7 +92,12 @@ import Sidebar from '../components/Sidebar.astro';
       }
     });
 
-    overlay?.addEventListener('click', closeMenu);
+    overlay?.addEventListener('click', () => {
+      if (typeof playTerminalSound === 'function') {
+        playTerminalSound();
+      }
+      closeMenu();
+    });
 
     // Cerrar menú al hacer click en un link
     const sidebarLinks = sidebar?.querySelectorAll('a');

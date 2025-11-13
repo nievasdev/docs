@@ -26,7 +26,11 @@ function menuContainsCurrentPath(m: MenuCategory, p: string): boolean {
 }
 ---
 
-<aside class="sidebar">
+<button class="sidebar-collapse-btn" id="sidebar-collapse-btn" title="Colapsar sidebar" onclick="playTerminalSound()">
+  <span class="collapse-icon">‹</span>
+</button>
+
+<aside class="sidebar" id="main-sidebar">
   <div class="sidebar-header">
     <h1><a href="/" onclick="playTerminalSound()">📚 DOCS</a></h1>
     <div class="font-controls">
@@ -134,7 +138,7 @@ function menuContainsCurrentPath(m: MenuCategory, p: string): boolean {
   u.forEach(e => e.addEventListener('click', () => h(e)));
 
   const f = [12, 14, 16, 18, 20, 22];
-  let c = parseInt(localStorage.getItem('fontSize') || '1');
+  let c = parseInt(localStorage.getItem('fontSize') || '2');
 
   function a(i) {
     document.documentElement.style.fontSize = `${f[i]}px`;
@@ -163,6 +167,29 @@ function menuContainsCurrentPath(m: MenuCategory, p: string): boolean {
         window.playTerminalSound();
       }
     }
+  });
+
+  // Sidebar collapse toggle
+  const sidebarCollapseBtn = document.getElementById('sidebar-collapse-btn');
+  const mainSidebar = document.getElementById('main-sidebar');
+  const docsLayout = document.querySelector('.docs-layout');
+  const sidebarCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
+
+  if (sidebarCollapsed) {
+    mainSidebar?.classList.add('collapsed');
+    docsLayout?.classList.add('sidebar-collapsed');
+    const icon = sidebarCollapseBtn?.querySelector('.collapse-icon');
+    if (icon) icon.textContent = '›';
+  }
+
+  sidebarCollapseBtn?.addEventListener('click', () => {
+    const isCollapsed = mainSidebar?.classList.toggle('collapsed');
+    docsLayout?.classList.toggle('sidebar-collapsed');
+    const icon = sidebarCollapseBtn?.querySelector('.collapse-icon');
+    if (icon) {
+      icon.textContent = isCollapsed ? '›' : '‹';
+    }
+    localStorage.setItem('sidebarCollapsed', isCollapsed ? 'true' : 'false');
   });
 </script>
 

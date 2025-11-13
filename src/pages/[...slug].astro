@@ -17,7 +17,7 @@ export async function getStaticPaths() {
 }
 
 const { title, content } = Astro.props;
-const { breadcrumb = ['Inicio'], html = '' } = content || {};
+const { breadcrumb = ['Inicio'], html = '', comments = [] } = content || {};
 ---
 
 <Layout title={`${title} - Docs`}>
@@ -52,13 +52,33 @@ const { breadcrumb = ['Inicio'], html = '' } = content || {};
         <h1>{title}</h1>
       </div>
 
-      <section>
-        <ContentRenderer html={html} />
-      </section>
+      <div class="content-with-comments">
+        <section class="main-content">
+          <ContentRenderer html={html} />
+        </section>
+      </div>
+
+      {comments.length > 0 && (
+        <>
+          <button class="comments-toggle" id="comments-toggle" onclick="playTerminalSound()" title="Comentarios">
+            <span class="toggle-icon">›</span>
+          </button>
+          <aside class="comments-sidebar" id="comments-sidebar">
+            <div class="comments-container">
+              {comments.map(comment => (
+                <div class="side-comment" data-comment-id={comment.id}>
+                  <div class="comment-content">{comment.text}</div>
+                </div>
+              ))}
+            </div>
+          </aside>
+        </>
+      )}
     </div>
   </main>
 
   <script>
+    // Mobile menu toggle
     const m = document.getElementById('menu-toggle');
     const s = document.querySelector('.sidebar');
     const o = document.getElementById('sidebar-overlay');
@@ -87,5 +107,39 @@ const { breadcrumb = ['Inicio'], html = '' } = content || {};
     });
 
     s?.querySelectorAll('a').forEach(l => l.addEventListener('click', c));
+
+    // Comments sidebar toggle
+    const commentsToggle = document.getElementById('comments-toggle');
+    const commentsSidebar = document.getElementById('comments-sidebar');
+
+    commentsToggle?.addEventListener('click', () => {
+      const isOpen = commentsSidebar?.classList.toggle('open');
+      const icon = commentsToggle?.querySelector('.toggle-icon');
+      if (icon) {
+        icon.textContent = isOpen ? '‹' : '›';
+      }
+    });
+
+    // Highlight comment markers on hover
+    document.querySelectorAll('.comment-marker').forEach(marker => {
+      const commentId = marker.getAttribute('data-comment-id');
+      const commentEl = document.querySelector(`.side-comment[data-comment-id="${commentId}"]`);
+
+      if (commentEl) {
+        marker.addEventListener('mouseenter', () => {
+          commentEl.classList.add('highlight');
+        });
+        marker.addEventListener('mouseleave', () => {
+          commentEl.classList.remove('highlight');
+        });
+
+        commentEl.addEventListener('mouseenter', () => {
+          marker.classList.add('highlight');
+        });
+        commentEl.addEventListener('mouseleave', () => {
+          marker.classList.remove('highlight');
+        });
+      }
+    });
   </script>
 </Layout>

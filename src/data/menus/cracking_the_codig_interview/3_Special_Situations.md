@@ -59,6 +59,6 @@ Generally speaking, inteviewers for PM position are looking for candidates to de
 
 - Teamwork f Leadership: This may be the most important aspect of the interview, and--not surprisingly--te job itself. AM interviewers will be looking for your ability to work well with other people. Most commonly, this is assessed with questions like, "Tell me about a time when a teammate wasn't pulling his/her own weight." Your interviewer is looking to see that you handle conflicts well, that you take initiative, that you understand people, and that people like working with you. Your work preparing for behavioral questions will be extremely important here.
 
-<mark>All of the above areas are important skills for PMs to master and ar etherefore key focus areas of the interview. The weighting of each of these areas will roughly match the importance that the area holds in the actual job.</mark>
+All of the above areas are important skills for PMs to master and ar etherefore key focus areas of the interview. The weighting of each of these areas will roughly match the importance that the area holds in the actual job.
 
 # Dev Lead And Managers

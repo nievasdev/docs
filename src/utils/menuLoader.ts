@@ -43,10 +43,21 @@ function normalizeForSlug(t: string): string {
     .replace(/[^a-z0-9-_/]/g, '');
 }
 
-function processMarkdown(raw: string): { html: string; frontmatter: any } {
+function processMarkdown(raw: string): { html: string; frontmatter: any; comments: Array<{id: string; text: string}> } {
   const { data, content } = matter(raw);
-  const html = String(marked.parse(content));
-  return { html, frontmatter: data };
+
+  // Extract comments with syntax ?? [comment text]
+  const comments: Array<{id: string; text: string}> = [];
+  let commentId = 0;
+
+  const contentWithMarkers = content.replace(/\?\?\s*\[([^\]]+)\]/g, (match, commentText) => {
+    const id = `comment-${commentId++}`;
+    comments.push({ id, text: commentText.trim() });
+    return `<span class="comment-marker" data-comment-id="${id}"></span>`;
+  });
+
+  const html = String(marked.parse(contentWithMarkers));
+  return { html, frontmatter: data, comments };
 }
 
 function readMdFiles(dir: string, basePath: string = ''): any[] {
@@ -103,8 +114,8 @@ function buildStructure(items: any[], parentSlug: string = ''): MenuCategory[] {
 
       const indexFile = item.children.find((c: any) => c.isIndex);
       if (indexFile) {
-        const { html, frontmatter } = processMarkdown(indexFile.raw);
-        cat.indexContent = { html, frontmatter };
+        const { html, frontmatter, comments } = processMarkdown(indexFile.raw);
+        cat.indexContent = { html, frontmatter, comments };
       }
 
       const files = item.children.filter((c: any) => c.type === 'file' && !c.isIndex);
@@ -187,7 +198,7 @@ export async function extractAllPaths(): Promise<Array<{
         const slug = slugParts.map(s => normalizeForSlug(s)).join('/');
         const breadcrumb = ['Inicio', ...slugParts.map(s => formatFolderName(s))];
 
-        const { html, frontmatter } = processMarkdown(raw);
+        const { html, frontmatter, comments } = processMarkdown(raw);
         const title = frontmatter.title || formatFolderName(slugParts[slugParts.length - 1]);
 
         paths.push({
@@ -196,7 +207,8 @@ export async function extractAllPaths(): Promise<Array<{
           content: {
             html,
             breadcrumb,
-            frontmatter
+            frontmatter,
+            comments
           }
         });
       }

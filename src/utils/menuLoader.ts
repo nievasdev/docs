@@ -1,11 +1,9 @@
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
-import { fileURLToPath } from 'node:url';
 import matter from 'gray-matter';
 import { marked } from 'marked';
 
-const __dirname = fileURLToPath(new URL('.', import.meta.url));
-const menusDir = join(__dirname, '../data/menus');
+const menusDir = join(process.cwd(), 'src/data/menus');
 
 export interface MenuItem {
   title: string;

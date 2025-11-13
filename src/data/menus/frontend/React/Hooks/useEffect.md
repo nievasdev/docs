@@ -1,5 +1,0 @@
----
-title: useEffect
----
-
-## useEffect

@@ -1,5 +1,0 @@
----
-title: Memento
----
-
-## Memento

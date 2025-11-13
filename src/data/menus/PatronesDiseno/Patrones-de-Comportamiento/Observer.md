@@ -1,5 +1,0 @@
----
-title: Observer
----
-
-## Observer

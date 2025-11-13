@@ -1,5 +1,0 @@
----
-title: Facade
----
-
-## Facade

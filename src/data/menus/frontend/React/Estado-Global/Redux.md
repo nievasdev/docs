@@ -1,5 +1,0 @@
----
-title: Redux
----
-
-## Redux

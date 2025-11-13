@@ -53,7 +53,7 @@ function processMarkdown(raw: string): { html: string; frontmatter: any; comment
   const contentWithMarkers = content.replace(/\?\?\s*\[([^\]]+)\]/g, (match, commentText) => {
     const id = `comment-${commentId++}`;
     comments.push({ id, text: commentText.trim() });
-    return `<span class="comment-marker" data-comment-id="${id}"></span>`;
+    return `<span class="comment-marker" data-comment-id="${id}" tabindex="0"></span>`;
   });
 
   const html = String(marked.parse(contentWithMarkers));

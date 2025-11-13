@@ -27,12 +27,6 @@ const { breadcrumb = ['Inicio'], html = '', comments = [] } = content || {};
     <Sidebar />
 
     <div class="content">
-      <button class="menu-toggle" aria-label="Toggle menu" id="menu-toggle" onclick="playTerminalSound()">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
       <div class="breadcrumb">
         {breadcrumb.map((crumb, index) => (
           <>
@@ -52,52 +46,41 @@ const { breadcrumb = ['Inicio'], html = '', comments = [] } = content || {};
         <h1>{title}</h1>
       </div>
 
-      <div class="content-with-comments">
+      <div class={`content-with-comments ${comments.length > 0 ? 'has-comments' : ''}`} id="content-with-comments">
         <section class="main-content">
           <ContentRenderer html={html} />
         </section>
-      </div>
 
-      {comments.length > 0 && (
-        <>
-          <button class="comments-toggle" id="comments-toggle" onclick="playTerminalSound()" title="Comentarios">
-            <span class="toggle-icon">›</span>
-          </button>
-          <aside class="comments-sidebar" id="comments-sidebar">
-            <div class="comments-container">
-              {comments.map(comment => (
-                <div class="side-comment" data-comment-id={comment.id}>
-                  <div class="comment-content">{comment.text}</div>
-                </div>
-              ))}
-            </div>
-          </aside>
-        </>
-      )}
+        {comments.length > 0 && (
+          <>
+            <aside class="comments-sidebar" id="comments-sidebar">
+              <div class="comments-container">
+                {comments.map(comment => (
+                  <div class="side-comment" data-comment-id={comment.id}>
+                    <div class="comment-content">{comment.text}</div>
+                  </div>
+                ))}
+              </div>
+            </aside>
+            <button class="comments-toggle" id="comments-toggle" onclick="playTerminalSound()" title="Comentarios">
+              <span class="toggle-icon">‹</span>
+            </button>
+          </>
+        )}
+      </div>
     </div>
   </main>
 
   <script>
-    // Mobile menu toggle
-    const m = document.getElementById('menu-toggle');
+    // Mobile menu close handlers
     const s = document.querySelector('.sidebar');
     const o = document.getElementById('sidebar-overlay');
-
-    function p() {
-      s?.classList.add('mobile-open');
-      o?.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
 
     function c() {
       s?.classList.remove('mobile-open');
       o?.classList.remove('active');
       document.body.style.overflow = '';
     }
-
-    m?.addEventListener('click', () => {
-      s?.classList.contains('mobile-open') ? c() : p();
-    });
 
     o?.addEventListener('click', () => {
       if (typeof playTerminalSound === 'function') {
@@ -112,34 +95,185 @@ const { breadcrumb = ['Inicio'], html = '', comments = [] } = content || {};
     const commentsToggle = document.getElementById('comments-toggle');
     const commentsSidebar = document.getElementById('comments-sidebar');
 
-    commentsToggle?.addEventListener('click', () => {
-      const isOpen = commentsSidebar?.classList.toggle('open');
-      const icon = commentsToggle?.querySelector('.toggle-icon');
-      if (icon) {
-        icon.textContent = isOpen ? '‹' : '›';
+    function toggleComments() {
+      const contentWrapper = document.getElementById('content-with-comments');
+      if (contentWrapper) {
+        const isOpen = contentWrapper.classList.toggle('has-comments-open');
+        const icon = commentsToggle?.querySelector('.toggle-icon');
+        if (icon) {
+          icon.textContent = isOpen ? '›' : '‹';
+        }
+      }
+    }
+
+    commentsToggle?.addEventListener('click', toggleComments);
+
+    // Keyboard shortcut: Right Arrow
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+        // Don't trigger if user is typing in an input or if comments don't exist
+        if (document.activeElement?.tagName === 'INPUT' ||
+            document.activeElement?.tagName === 'TEXTAREA' ||
+            !commentsSidebar) {
+          return;
+        }
+        e.preventDefault();
+        toggleComments();
+        if (typeof window.playTerminalSound === 'function') {
+          window.playTerminalSound();
+        }
       }
     });
 
-    // Highlight comment markers on hover
+    // Comment marker interaction (desktop hover, mobile click)
+    const isMobile = window.innerWidth <= 768;
+    let activeTooltip = null;
+
     document.querySelectorAll('.comment-marker').forEach(marker => {
       const commentId = marker.getAttribute('data-comment-id');
       const commentEl = document.querySelector(`.side-comment[data-comment-id="${commentId}"]`);
 
       if (commentEl) {
-        marker.addEventListener('mouseenter', () => {
-          commentEl.classList.add('highlight');
-        });
-        marker.addEventListener('mouseleave', () => {
-          commentEl.classList.remove('highlight');
-        });
+        if (isMobile) {
+          // Mobile: click to show tooltip
+          marker.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
 
-        commentEl.addEventListener('mouseenter', () => {
-          marker.classList.add('highlight');
-        });
-        commentEl.addEventListener('mouseleave', () => {
-          marker.classList.remove('highlight');
-        });
+            // Remove existing tooltip
+            if (activeTooltip) {
+              activeTooltip.remove();
+              activeTooltip = null;
+            }
+
+            // Create tooltip
+            const tooltip = document.createElement('div');
+            tooltip.className = 'comment-tooltip active';
+            tooltip.innerHTML = `
+              <button class="comment-tooltip-close" aria-label="Cerrar">×</button>
+              <div>${commentEl.querySelector('.comment-content').textContent}</div>
+            `;
+
+            // Position tooltip
+            const rect = marker.getBoundingClientRect();
+            tooltip.style.top = `${rect.bottom + 10}px`;
+            tooltip.style.left = `${Math.max(10, rect.left - 100)}px`;
+
+            document.body.appendChild(tooltip);
+            activeTooltip = tooltip;
+
+            // Close button
+            tooltip.querySelector('.comment-tooltip-close').addEventListener('click', () => {
+              tooltip.remove();
+              activeTooltip = null;
+            });
+          });
+        } else {
+          // Desktop: hover to highlight
+          marker.addEventListener('mouseenter', () => {
+            commentEl.classList.add('highlight');
+          });
+          marker.addEventListener('mouseleave', () => {
+            commentEl.classList.remove('highlight');
+          });
+
+          commentEl.addEventListener('mouseenter', () => {
+            marker.classList.add('highlight');
+          });
+          commentEl.addEventListener('mouseleave', () => {
+            marker.classList.remove('highlight');
+          });
+        }
       }
     });
+
+    // Close tooltip when clicking outside
+    if (isMobile) {
+      document.addEventListener('click', (e) => {
+        if (activeTooltip && !e.target.closest('.comment-marker') && !e.target.closest('.comment-tooltip')) {
+          activeTooltip.remove();
+          activeTooltip = null;
+        }
+      });
+    }
+
+    // Keyboard navigation for comments (J/K keys)
+    if (!isMobile) {
+      let currentCommentIndex = -1;
+      const allMarkers = Array.from(document.querySelectorAll('.comment-marker'));
+
+      function focusComment(index) {
+        if (allMarkers.length === 0) return;
+
+        // Open comments sidebar if it's not already open
+        const contentWrapper = document.getElementById('content-with-comments');
+        if (contentWrapper && !contentWrapper.classList.contains('has-comments-open')) {
+          toggleComments();
+        }
+
+        // Remove previous highlights
+        allMarkers.forEach(m => m.classList.remove('highlight'));
+        document.querySelectorAll('.side-comment').forEach(c => c.classList.remove('highlight'));
+
+        // Wrap around
+        if (index >= allMarkers.length) index = 0;
+        if (index < 0) index = allMarkers.length - 1;
+
+        currentCommentIndex = index;
+        const marker = allMarkers[index];
+
+        // Focus and highlight marker
+        marker.focus();
+        marker.classList.add('highlight');
+
+        // Highlight corresponding comment in sidebar
+        const commentId = marker.getAttribute('data-comment-id');
+        const commentEl = document.querySelector(`.side-comment[data-comment-id="${commentId}"]`);
+        if (commentEl) {
+          commentEl.classList.add('highlight');
+          // Scroll comment into view in sidebar
+          commentEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Scroll marker into view in main content
+        marker.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+
+      document.addEventListener('keydown', (e) => {
+        // Don't trigger if user is typing
+        if (document.activeElement?.tagName === 'INPUT' ||
+            document.activeElement?.tagName === 'TEXTAREA') {
+          return;
+        }
+
+        if (e.key === 'j' || e.key === 'J') {
+          e.preventDefault();
+          focusComment(currentCommentIndex + 1);
+        } else if (e.key === 'k' || e.key === 'K') {
+          e.preventDefault();
+          focusComment(currentCommentIndex - 1);
+        }
+      });
+
+      // Handle focus events on markers
+      allMarkers.forEach((marker, index) => {
+        marker.addEventListener('focus', () => {
+          currentCommentIndex = index;
+          const commentId = marker.getAttribute('data-comment-id');
+          const commentEl = document.querySelector(`.side-comment[data-comment-id="${commentId}"]`);
+          if (commentEl) {
+            commentEl.classList.add('highlight');
+          }
+        });
+
+        marker.addEventListener('blur', () => {
+          const commentId = marker.getAttribute('data-comment-id');
+          const commentEl = document.querySelector(`.side-comment[data-comment-id="${commentId}"]`);
+          if (commentEl) {
+            commentEl.classList.remove('highlight');
+          }
+        });
+      });
+    }
   </script>
 </Layout>

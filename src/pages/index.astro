@@ -10,12 +10,6 @@ import Sidebar from'../components/Sidebar.astro';
     <Sidebar />
 
     <div class="content">
-      <button class="menu-toggle" aria-label="Toggle menu" id="menu-toggle" onclick="playTerminalSound()">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
       <div class="content-header">
         <h1>Bienvenido a la Documentación</h1>
         <p style="color: var(--gray); font-size: 0.786rem; text-transform: uppercase;">
@@ -67,6 +61,19 @@ import Sidebar from'../components/Sidebar.astro';
   </main>
 
   <script>
-const m=document.getElementById('menu-toggle'),s=document.querySelector('.sidebar'),o=document.getElementById('sidebar-overlay');function p(){s?.classList.add('mobile-open');o?.classList.add('active');document.body.style.overflow='hidden'}function c(){s?.classList.remove('mobile-open');o?.classList.remove('active');document.body.style.overflow=''}m?.addEventListener('click',()=>{s?.classList.contains('mobile-open')?c():p()});o?.addEventListener('click',()=>{typeof playTerminalSound==='function'&&playTerminalSound();c()});s?.querySelectorAll('a').forEach(l=>l.addEventListener('click',c));
+const s=document.querySelector('.sidebar'),o=document.getElementById('sidebar-overlay');function c(){s?.classList.remove('mobile-open');o?.classList.remove('active');document.body.style.overflow=''}o?.addEventListener('click',()=>{typeof playTerminalSound==='function'&&playTerminalSound();c()});s?.querySelectorAll('a').forEach(l=>l.addEventListener('click',c));
+
+// Keyboard shortcut: Left Arrow (for sidebar on index page)
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowLeft' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+    if (document.activeElement?.tagName === 'INPUT' ||
+        document.activeElement?.tagName === 'TEXTAREA') {
+      return;
+    }
+    e.preventDefault();
+    const sidebarCollapseBtn = document.getElementById('sidebar-collapse-btn');
+    sidebarCollapseBtn?.click();
+  }
+});
   </script>
 </Layout>

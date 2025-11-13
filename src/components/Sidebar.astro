@@ -138,7 +138,7 @@ function menuContainsCurrentPath(m: MenuCategory, p: string): boolean {
   u.forEach(e => e.addEventListener('click', () => h(e)));
 
   const f = [12, 14, 16, 18, 20, 22];
-  let c = parseInt(localStorage.getItem('fontSize') || '2');
+  let c = parseInt(localStorage.getItem('fontSize') || '3');
 
   function a(i) {
     document.documentElement.style.fontSize = `${f[i]}px`;
@@ -173,23 +173,56 @@ function menuContainsCurrentPath(m: MenuCategory, p: string): boolean {
   const sidebarCollapseBtn = document.getElementById('sidebar-collapse-btn');
   const mainSidebar = document.getElementById('main-sidebar');
   const docsLayout = document.querySelector('.docs-layout');
+  const sidebarOverlay = document.getElementById('sidebar-overlay');
   const sidebarCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
+  const isMobile = window.innerWidth <= 768;
 
-  if (sidebarCollapsed) {
+  // Apply collapsed state on desktop only
+  if (sidebarCollapsed && !isMobile) {
     mainSidebar?.classList.add('collapsed');
     docsLayout?.classList.add('sidebar-collapsed');
     const icon = sidebarCollapseBtn?.querySelector('.collapse-icon');
     if (icon) icon.textContent = '›';
   }
 
-  sidebarCollapseBtn?.addEventListener('click', () => {
-    const isCollapsed = mainSidebar?.classList.toggle('collapsed');
-    docsLayout?.classList.toggle('sidebar-collapsed');
-    const icon = sidebarCollapseBtn?.querySelector('.collapse-icon');
-    if (icon) {
-      icon.textContent = isCollapsed ? '›' : '‹';
+  function toggleSidebar() {
+    if (window.innerWidth <= 768) {
+      // Mobile behavior: toggle mobile-open
+      const isOpen = mainSidebar?.classList.toggle('mobile-open');
+      sidebarOverlay?.classList.toggle('active', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+      const icon = sidebarCollapseBtn?.querySelector('.collapse-icon');
+      if (icon) {
+        icon.textContent = isOpen ? '‹' : '›';
+      }
+    } else {
+      // Desktop behavior: toggle collapsed
+      const isCollapsed = mainSidebar?.classList.toggle('collapsed');
+      docsLayout?.classList.toggle('sidebar-collapsed');
+      const icon = sidebarCollapseBtn?.querySelector('.collapse-icon');
+      if (icon) {
+        icon.textContent = isCollapsed ? '›' : '‹';
+      }
+      localStorage.setItem('sidebarCollapsed', isCollapsed ? 'true' : 'false');
     }
-    localStorage.setItem('sidebarCollapsed', isCollapsed ? 'true' : 'false');
+  }
+
+  sidebarCollapseBtn?.addEventListener('click', toggleSidebar);
+
+  // Keyboard shortcut: Left Arrow
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+      // Don't trigger if user is typing in an input
+      if (document.activeElement?.tagName === 'INPUT' ||
+          document.activeElement?.tagName === 'TEXTAREA') {
+        return;
+      }
+      e.preventDefault();
+      toggleSidebar();
+      if (typeof window.playTerminalSound === 'function') {
+        window.playTerminalSound();
+      }
+    }
   });
 </script>
 

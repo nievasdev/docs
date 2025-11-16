@@ -3,6 +3,12 @@ import { join } from 'node:path';
 import matter from 'gray-matter';
 import { marked } from 'marked';
 
+// Configure marked to allow HTML
+marked.setOptions({
+  gfm: true,
+  breaks: false,
+});
+
 const menusDir = join(process.cwd(), 'src/data/menus');
 
 export interface MenuItem {

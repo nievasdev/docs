@@ -212,4 +212,59 @@ Para efectivamente ejecutar las funciones que implementamos anteriormente sin se
 Con el fin de poder generalizar una función que nos permita realizar el cálcula de los casos posibles cuando no nos importa el orden analizaremos la tabla resultado.
 
 
+| #de Bolillas | Casos Posibles c/oredn (A) | Casos Posibles s/orden (B) | (A) / (B) |
+|----------|----------|----------|----------|
+| 1 | 20 | 20 | 20/20 = 1 |
+| 2 | 380 | 190 | 380/190 = 2 |
+| 3 | 6840 | 1140 | 6840/1140 = 6 |
+| 4 | 11628 | 4845 | 116280/4845 = 24 |
+| 5 | 1860480 | 15504 | 1860480/15504 = 120 |
+
+
+Teniendo la relación que se encuentra entre los distintos casos podemos hallar la  relación de crecimiento.
+
+Para esto vamos a calcular cual es el factor que se encuentra entre cada caso. Este factor lo calculamos dividiendo la relación obtenida en la tabla anterior de una cantidad de bolillas, sobre la misma relación de la cantidad de bolillas actuales menos uno. De esta forma veremos cuántas veces creció la diferencia de considerar el orden o no en el que salen las bolillas.
+
+
+| #de Bolillas | (A)/(B) | Factor de crecimiento |
+|----------|----------|----------|
+| 1 | 1 | 1 |
+| 2 | 2 | 2/1 = 2 |
+| 3 | 6 | 6/2 = 3 |
+| 4 | 24 | 24/6 = 4 |
+| 5 | 120 | 120/24 = 5 | 
+
+
+Analizando los factores resultados vemos que la diferencia para **r** elementos en una jugada es el factorial de r(**r!**), entonces para calcular los casos sobre grupos donde no importa el orden en que se seleccionan los elementos podemos resolverlo calculando las primeras permutaciones y luego dividiendo entre **r!**.
+
+Más allá de verlo en la práctica esto tiene sentido desde un punto de vista más teórico, podemos pensar, por ejemplo un posible caso con 3 elementos, todas las posibles formas de ordenarlo van a ser permutaciones de 3 tomadas de a 3 (P(3,3)), por lo que si no nos importa el orden existen 3! casos que son el mismo.
+
+Por ejemplo, supongamos que seleccioonamos 3 números de los posibles del 5 de oro podriamos tener:
+
+4-6-1; que es lo mismo que : 4-1-6, 1-4-6, 1-6-4, 6-4-1, 6-1-4.
+
+Entonces para cada grupo de 3 números tenemos 6 casos posibles. Cuando contamos con un problema en el que se generan grupos posibles de *n* elementos diferentes tomando r elementos por grupo y no nos importa el orden, estamos hablando de combinaciones. Como vimos anteriormente para calcular combinaciones, calculamos primero permutaciones y luego dividimos entre la cantidad de casos repetidos que hay por cada caso (si tomamos r elementos por caso entonces r!). Llegamos entoces a la siguiente fórmula, siendo n la contidad de elementos posibles y *r* la cantidad de elementos por agrupación:
+
+C(n,r) = n! / r!(n-r)!
+
+**6. Resumen de definiciones.**
+
+Luego de presentados los conceptos a través de ejemplos concretos, ppasemos a una definición más concreta sobre los mismos
+
+**Permutaciones con Repetición**. Dado un conjunto de *n* elementos distintos de los cuales se quieren seleccionar *r* elementos en determinado orden, le llamaremos permutación con repetición de tamaño *r* a una selección que tiene *r* elementos de los *n* considerados pudiendo repetir elementos de éstos últimos.
+
+PR(n,r) = n power(r)
+
+**Permutaciones**. Dado un conjunto de n elementos distintos de los cuales se quieren seleccionar *r* elementos en determinado orden, siendo 0 <= r <= n, le llamaremos permutación de tamaño *r* a una selección que tiene *r* elementos distintos de los *n* considerados.
+
+P(n,r) = n!/r!(n-r)!
+
+**Combinaciones**. Dado un conjunto de *n* elementos distintos de los cuales se quieren seleccionar *r* elementos, siendo 0 <= r <= n, le llamaremos combinatioria de tamaño *r* a una selección que tiene *r* elementos distintos de los *n* considerados.
+
+C(n,r) = n! / r!(n-r)!
+
+**Regla de la Suma**. Si una tarea puede realizarse de m formas, y una segunda tarea puede realizarse de *n* formas, y no es posible realizar ambas tareas de forma simultánea, entonces para llevar a cabo cualquiera de las tareas es posble hacerlo de m+n formas.
+
+**Regla de la Multiplicación**. Si un procedimiento se puedde descomponer en dos etapas, primera y segunda, y si existen *m* resultados posible de la primera etapa y si, para cada uno de estos resultados, existen *n* resultados posibles para la segunda etapa, entonces el procedimiento total se puede realizar, en el orden dado, de *m* * *n* formas.
+
 

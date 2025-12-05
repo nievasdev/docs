@@ -242,6 +242,76 @@ Andrés Quintero, como encargado de gestionar la calidad, dedfine y supervisa lo
 
 Como anteriormente el equipo comentó, el crenograma del proyecto se estructura en *sprints*. La siguiente imagen ( Ilustración 1) muestra los diferentes hitos a lo largo de los sprints:
 
-[Ilustración 1](/2025-12-05_19-03.png)
+![Ilustración 1](/2025-12-05_19-03.png)
+
+A continuación, se desrciben los hitos clave del proyecto.
+
+### 3.5.1 Verificación de requerimientos con el cliente
+
+Una vez trascurridos 5 sprints de desarrollo, el equipo logró un avance visual como para ser mostrado al cliente. Se procedió a agendar una videollamada, para hacer una primera demo de los requerimientos que fueron materializados en la interfaz gráfica, tanto del panel web, como de la aplicación móvil.
+
+Respecto a la aplicación web, se mostró el flujo de login/autenticación de la aplicación web, para luego llegar al menú principal de la misma (sin funcionalidad aún, solo el maquetado) y mostrar la vista genérica de los CRUD's.
+
+Por otro lado, en la aplicación móvil fueron mostrados los siguientes requerimientos: login, logout, registro de movimientos de inventario, eliminación de movimientos de inventario y listado de movimientos de inventario.
+
+El cliente mostró su absoluta conformidad con lo acontecido, tanto en web como móvil. No se evidenciaron críticas. Hizo hincapié en un requerimiento importante (aún no implementado, pero ya conocido), el cual consta de dejar registro de la cantidad de comensales por turno (desayuno, alumerzo, merienda y cena) del hotel, para que el equipo lo tuviese en consideración (para la app móvil). De esta manera, ellos pueden conocer, por ejemplo, cuántos comensales hubo en el almuerzo del 2 de enero del 2025.
+
+Al momento de la primera reunión de verificación de requerimientos, la aplicación móvil Flutter, se encantraba en un 50% meintras que la web se encontraba en su etapa inicial.
+
+En lo  que corresponde a verificación de requerimientos y usabilidad desed el punto de la iteracción del cliente con el producto, el equipo tiene pensado relaizart dos próxmas sesiones durante los sprints 10 (desde 17/10/2024 hasta 4/11/2024) y 11 (desde 4/11/2024 hasta 18/11/2024), posterior a la entrega del documento en gestión.
 
 
+### 3.5.2. Entrega del anteproyecto
+
+El anteproyecto se entregó el 22 de abril de 2024. Este hito es crucial ya que estableció las bases del proyecto y definió en parte, los objetivos y requerimientos específicos.
+
+### 3.5.3 Revisión del proyecto
+
+El 29 de julio de 2024 se ralizó la primera y única revisión del proyecto con Marcelo Cagnani.
+
+### 3.5.4 Revisión de la arquitectura
+
+El equipo contó con el apoyo del profesor Gastón Mousqués con quien se realizó una reunión para presentarle la arquitectura del sistema.
+
+### 3.5.5 Entrega administrativa en el portal de gestión
+
+El 21 de octubre de 2024, se realiza la entrega de la ddocumentación gestión. Para entonces, se habrán completado varias iteraciones enfocadas en la implementación de las funcionalidades requeridas (el ciclo de vida del desarrollo no finaliza con esta entrega).
+
+### 3.5.6 Defensa
+
+Programada para los días 25 al 28 de noviembre de 2024, la defensa es un hito donde el equipo presentará el proyecto finalizado ante el comité evaluador. Este evento se llevará a cabo después ded completar múltiples *sprints* enfocados en pulir detalles, corregir errores y optimizar el sistema basado en las pruebas iniciales y el feedback recibido. La defensa será una oportunidad para demestrar la efectividad de la solución y la alineación con los requerimientos del cliente.
+
+### 3.5.7 Puesto en producción
+
+El 1 de diciembre de 2024, el sistema será puesto en producción, marcando la culminación de los *sprints* dedicados a asegurar la estabilidad y la funcionalidad del software en un entorno real. Este hito es fundamental, ya que implica que el sistema estará completamente operativo y listo para su uso diario por parte del hotel, mejorando significativamente la eficiencia en la gestión ed costos y stock.
+
+### 3.5.8 Fin de soporte de garantía
+
+El soporte de garantía finalizará a finales de abril de 2026. Este poríodo permitirá al equipo asegurar que el sistema funcione sin inconvenientes y que todas las funcionalidades implementadas estén operativas y optimizadas.
+
+En total, el proyecto abarca nieve *sprints* hasta la entrega de gestión, más varios *sprints* adicionales hasta la puesta en producción y el fin del soporte de garantía. Este enfoque iterativo asegura una adaptación continua a los requerimientos del cliente y una mejora constante del producto a lo largo del ciclo de vida del proyecto.
+
+# 4. Ingeniería de requerimientos
+
+## 4.1 Obtención y análisis de requerimientos
+
+El relevamiento de requerimientos es una fase crítica en el desarrollo de software, ya que implica la recopilación de información sobre las necesidades y expectativas de los usuarios y stakeholders. Para realizar este proceso eficazmente, se utilizan herramientas que facilitan la obtención y organización de la información.
+
+### 4.1.1 Herramientas para el relevamiento
+
+Este relevamiento se realizó en su mayoría previo a la iniciación del proyecto para la universidad en el verano de 2021, cuando el hotel en cuestión se embarcó en su primera instacncia de formato All inclusive. Esa etapa realizada antes no tuvo un proceso formal que incluyera encuestas, mapas mentales u otros debido al apuro que los altos cargos conocían los gastos realizados, para saber si era redituable el formato o si se excedían.
+
+#### 4.1.1.1. Observación directa
+
+La observación directa en el ámbito laboral es una técnica eficaz para la recopilación de requerimientos de software, ya que permite a los analistas observar cómo los empleados interactúan con los sistemas y procesos actuales en su entrono de trabajo. Al estar inmersos en el contexto laboral, los observadores pueden identificar patrones de comportamiento, detectar problemas y descubrir necesidades que los usuarios pueden no haber expresado durante entrevistas o encuestas. Este ciclo de vida proporciona información valiosa sobre la dinámica del trabajo, los flujos de información y las interacciones entre los empleaddos y la tecnología, empatizando con los actores involucrados en los procesos, lo que facilita la comprensión de sus verdaderas necesidades.
+
+Esta fue la técnica **utilizada** en el desarrollo de la primera versión **utilizada** en el pasado por Francisco. En el análisis de costos, él entendió primero cómo eran los procesos del sector Alimentos y Bebidas y el sector administrativo y de finanzas con preguntas como: "¿Qué días se realiza el stock en la cocina?", 2."¿Qué ddiferencia tienen las unidades en las facturas contra la realidad?", 3. "¿Por dónde llegan las facturas?", 4. "¿Qué número queieren ver los gerentes?", y lo más importante, 5. "¿Cómo lograr estos cálculos diaria o semanalmente?"
+
+A partir de lo investigado encontró que:
+
+1- Se realizaban los stocks los sábados, demorando unas 4 horas en contar y pesar todos los producto, precisando también así que todos los datos dde las facturas estuvieran cargados para ese día.
+
+2- Dependiendo edl proveedor, varía la nomenclatura del mismo producto para representar distintas unidaddes, no siempre siendo exacta la relación entr ellas por ejemplo:
+"BANANA ecuador IMP KG" / "BANANA ecuador IMP CAJA"
+
+Las cajas suponen tener entre 15kg y 20kg de producto aproximado dependiendo de cual se trate, las bolsas tienen 10kg aproximadamente.

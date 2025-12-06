@@ -315,3 +315,213 @@ A partir de lo investigado encontró que:
 "BANANA ecuador IMP KG" / "BANANA ecuador IMP CAJA"
 
 Las cajas suponen tener entre 15kg y 20kg de producto aproximado dependiendo de cual se trate, las bolsas tienen 10kg aproximadamente.
+
+3. Las facturas que se emiten hoy en día al hotel, y al parador hasta el año pasado, se pueden
+encontrar en el proveedor electrónico de ellos ‘Factura Lista’, siempre y cuando el
+proveedor tenga facturación electrónica. Estas se descargaban en formato pdf y eran
+diferenciadas entre hotel y parador por el encargado de alimentos y bebidas (lo cual ya no
+es necesario desde 2024 por su separación de razones sociales). También había proveedores
+con facturación manual, por lo que el chef debía guardar estas facturas y de perderse habría
+que pedir al proveedor una imagen de su copia.
+
+4. Cuando se presupuestó la idea, se estimó un consumo de 25 dólares por huésped por día.
+Para lograr un cálculo comparativo, se podía dividir el gasto total (de todos los tipos de
+producto) por la suma de huéspedes de cada día. Ejemplo: Un promedio de 90 huéspedes
+por día son 630 huéspedes en 7 días. Calculando todo lo comprado en esos 7 días, dividido
+por estos 630 huéspedes que fueron alimentados, se obtiene las compras por huésped por
+día.  
+
+5. A partir de lo investigado y con las últimas cuatro respuestas se dimensiona la magnitud
+del problema principal. Excel como herramienta no iba a ser viable por la ineficiencia y el
+sesgo que presentaría. ¿Por qué? El problema de realizar estos cálculos solo con los totales
+de las facturas no muestra lo que consumieron esos huéspedes, sino que se infla durante
+una semana en la que varios productos se terminaran y se tuviera que hacer un encargo
+grande, como la semana previa al encargo grande sería la de menor compras.
+
+#### 4.1.1.2. Prototipado y uso
+
+Un proceso de prototipado y uso de un sistema empieza con la creación de un prototipo básico del software, con las funcionalidades identificadas por la observación directa y otros métodos de recolección de requerimientos. Este prototipo permite a los usuarios interactuar con el sistema en un entorno controlado, brindando una representación visual y funcional de cómo será el producto final.
+
+Una vez que el prototipo está en funcionamiento, se invita a los empleados a probarlo. Durante esta fase, se recopilan comentarios sobre su experiencia, usabilidad y si el sistema satisface sus necesidades.
+
+Para este caso el empleado que usaba el sistema era el mismo desarrollador del prototipo: Francisco. Esto agilizo el proceso de recopilación viendo él mismo las falencias u orotunidades que habían de mejora. Por supuesto que toda sugerencia era bienvenida, especialmente por el chef con el que se tenía un trato directo en el uso del prototipo.
+
+A medida que se obtenían nuevas ideas y suegerencias, el prototipo se ajustaba y refinaba en ciclos iterativos. Este enfoque no solo mejora el diseña del sistema, sino que también permite adaptarse a las necesidades cambiantes del usuario y del negocio. Así, el prototipado se convierte en una herramienta dinámica para descubrir continuamente la información necesaria y optimizar el software de acuerdo con las expectativas de los usuarios.
+
+#### 4.1.1.3. Reunión virtual con el cliente
+
+Conociendo las falencias que había en el hotel con respecto a este sector cuando se presenta la oportunidad de realizar el proyecto dde fin dde carrera, la primera idea fue ofrecerle al hotel trabajar en conjunto para solucionar estos problemas con los que contaban.
+
+Se realizo una videaconferencia entre Francisco, el dueño Roberto Planas y el encargado Maximiliano Correa donde se convers´o por arriba sobre el prototipo que se había utilizado en previos años y lo que se podría lograr usándolo como base para avanzar en esta integración tecnológica en un hotel tan antiguo fundado por el padre de Roberto.
+
+La mayor duda que presento el dueño fue por qué el servicio de facturación para restaurantes que utilizaban en el parador no podría utilizarse par aesta situación. La situación con ese sistema era la manera en que estaba implementado, donde hay un manejo de stock, pero este disminuya a partir de las cuentas que se le generan a las mesas. De cada plato se configura en el sistema cuando cunsumía de cada producto para realizarse y a partir de esto el sistema sabe las cantidades a restar del stock cuando se sirve ese plato en cualquier cuenta en la jornada. Sabiendo esto vemos la dificultad que presenta el uso de ese sitmea en un servicio donde cada huésped elije con mano propia el tamaño de su plato, con que completa el mismo, la cantidad de repeticiones que desea y todo realizado con mínima intervinción de un profesional del hotel.
+
+Tanto Maximiliano como Francisco tenían clara esta diferencia en ese instante y pudieron clarificarla detalladamente para poder así continuar.
+
+
+#### 4.1.1.3.1 Entrevista presencial con el cilente
+
+El proceso de entrevista al cliente es crucial para recopilar y revisar requerimientos en el desarrollo de software, ya que permite obtener información directa sobre las necesidades y expectativas de los usuarios finales. Durante estas entrevistas, se utilizan preguntas abiertas en un ambiente de confianza, lo que facilita la expresión de opiniones y la identificación de problemas con el sistema actual. El analista escucha atentamente, toma notas y realiza preguntas de seguimiento para clarificar respuestas. Este enfoque no solo genera un conjunto de requerimientos más claro, sino que también establece una relación de colaboración fundamental para el éxito del proyecto.
+
+Esta ocasión también aportó a confirmar los requerimientos ya relevados en otras instancias y poder mejorarlos o refinarlos.
+
+En fobrero todo el equipo fue invitado a pasar una noche en el hotel para reunirse en la mañana con Maximiliano Correa. El motivo de esta instancia era repasar y adaptar los requerimientos relevados para el prototipo con los nuevos procesos implementados en estos nuevas años. Por ejemplo, la separación de razones sociales entre el hotel y parador, la oblicación de los comercios desde 2024 a facturar solo por medio electrónico y la integración del nuevo container para almacenar los productos. Se recorrieron las instalaciones desde adentro, conversando superficialmente sobre las dinámicas gastronómicas con las que cuentan, conociendo referentes como el nuevo encargado de alimentos y bebidas, previamente encargado de barra, Augusto Gavernet.
+
+Estas dinámicas gastronómicas constan de noches temáticas (como la noche mexicana con tacos), algunas con show cooking, en las que siempre se puede elegir sobre una variedad de proteínas, carbohidratos, postres dulces o salados, así como un bar con bebidas para todos los gustos.
+
+También se nos comentó las dificultades con las que contaron para podrer analazar los costos en la última temporada que optaron por no usar el prototipo. Hicieron el intento de usar excel sobre considerado los valores totales de las facturas.
+
+Lamentablemente el dueño no puedo estar presente en esta instancia, pero mostraba estar de acuerdo con la idea en su mayoría del timpo todavía con algunas dudas respecto a la diferencia que se obtendría con el programa de restaurante anttes mencionado, pero confiando en Maximiliano (como el actual encargado) y Francisco (como su exepleado con el que presenta un cierto nivel de confianza).
+
+### 4.1.2 Conclusión
+
+A partir de estas instancias y la información recopilada, pudimos reconocer a los principales interesados, siendo estos: el dueño, el chef, el encargado de alimentos y bebidas, y el analista de costos. Todos afirman la falta de integración con la tecnología en ese sector del hotel y visualizan los beneficios que podría tener la implementacion de un sistema que contabilice los costos y pueda llevar un stock en tiempo real de los productos.
+
+Esta necesidad de modernizacion resalta la importancia de adoptar herramientas tecnologicas que no solo optimicen la gestion de inventarios ycostos, sino que tambień mejoren la toma de decisiones estrategicas. La implementación de un sistema intregral permitría a los interesados acceder a ddatos actualizados sobre el uso ded insumos, facilitando la planificacion dde compras y reduciendo el desperdicio. Además, una solución tecnológica podría mejorar la comunicación entre los diferentes departamentos, asegurando que todos trabajen con la misma información y en la misma dirección.
+
+En resumen, la integración de tecnología en la gestión de alimentos y bebidas ddel hotel no solo es deseable, sino que se ha convertido en una necesidad imperante par amejorar la eficiencia operativa y maximizar la rentabilidad del negocio.
+
+## 4.2 Espcificación de requerimientos
+
+La etapa de Especificiación de Requerimentos es un proceso integral que implca la recopilación, analisis, documentacion, revision y aprobación de los reqeuemiientos, asegurando que se astablezcan bases sólidas par ael desarrollo del rpoyecto.
+
+### 4.2.1 Prototipo "Finanzas Tio Tom"
+
+El prototipo como se comentó no tenia esperanzas de terminar siendo un sisetama de análisis de costos, sino que comenzo cumo una aplicación de esrcitorio par afinanzas prsonales. Esto dificultaba mucho su modificación y extensibilidad, especialmente con el poco tiempo con el que se contaba. Este prototipo contaba con Proveedores, sectores (de producto) , Productos y Gastos, siendo esta la estructurar base desde la que partimos.
+
+Esta aplicación eral ocal y únicamente accesible por una instancia a menos que se invirtier en descentralizar su based de datos.
+
+El ingreso y trazabilidad de los gastos de cada producto era un o de los mayores prblemas, siendo que  cada gasto era ingresado manualmente y de manera individual permitía a la equivocación seguido. Por ejemplo, estos tenían el numero de factura guardado como un valor entero, per o si se le ingresaba un nuemeero mal de la factura esta ya formaba parte de una factura que no era. Continuando por este problem, si se ingresaba un digito de más o menos en un precio unitario, este alteraba todos los valores de la semana y el mes, obligando al usuario a buscar entretodos los gastos y facturas cual fue mal ingresado principalmente recurriendo a la memoria de cual puede haber sido.
+
+Los stocks semanales requirían al analista tener todo ingresado para el sábado en la mañana sin olvidarse de ninguna factura y aque podría afectar al recuento de stock en el instante. Por ejemplo, con un producto del cual no hubiera stock hace semanas, este no aparecería en la planilla impresa para realizalo llevando a realizar antotaciones a mano que pueden afectar la compresnsión del analista para ingresarlo luego manualmente al sistema. Estos recuento ssemanales tampoco permieten la información en timepo real enrtre semana y requeiren de varias horas relaizanodol por semana.
+
+A pesar de estos  y varios otros defectos que tenia le premitía al analista rendir numeros a los altos cargods del hotel semana a semana trabajando 8 horas por semana (sin días libres) para realizarlo estos reportes eran altamente informativos permitian la comparación entre semanas en la mayoría de los sectores que podían varianr contiuamente,  especialment ante camibos de proveedores.
+
+
+## 4.3 Lista de requeriemientos 
+
+### 4.3.1 Historias de usuario
+Las historias de usuario son una herramiento clave en la metodología ágil para el desarrollo de software., y su uso se base en decisines estrategicas que buscan mejorar la compresión de las necesidades del usuario y facilitar la comunicación entro les distintos miembros del equipo desarrollo. Estas constan de una descripción  breve, infgormal y el lenguaje sencillo de los que un usuario queiere rlograr con el uso de un determinado producto de software.
+
+El equipo optó por redactar los requerimientos en forma de historias deusuario siguiendo el enfoque BDD (Behavior Driven Development), lo cual fdacilita la comuncicación entro les integranttes del proyceto, y pone al usuario en el centro de las deciciones de desarrollo. Se puede encantrar el detalle de BDD en el anexo Behaviour Driver Devoolopment
+
+Este formato permite describir, de manera clara, las funcionalidades dedl sistema desde la perspectiva de los usuarios finales, asegurando que cada historia refleja las necenisadddes expectativas del cliente o usurario.
+
+Cada historia de usuario se estruectura mediante escenarios qu eexplican, en términos de comportamiento, cómo debería funcionar el sistema en distintas situaciones, tanto en casos exitosos come en aquellos donde surgen fallos. Además, el hecho de nnvcluir criterios de acerpatcion calaros antes de comenzar el desarrollo permite al equipo minimizar los malentendidos, asegurando que todos comprendan qué se espara que el sistema haga.
+
+El equipo utilizó este ciclo de vida porque facilita:
+
+- Poner a los usuarios en el centro del rpceso de desarrollo.
+- Comprender el valor que cada funcionalidad aporta al producto
+- Evita la duplicación de esfuerzos y posibles correcciones derivadas de errores de interpretación.
+- Describir tanto escenarios de éxito como de fallo para garantizar que los comportamienttos estén bien documentados.
+
+Las historias de usuario se diseñan con base en los princiopoios BDD y cumplen con las caracteristicas de INVEST (mayer contexto en el anexo ): Son independientes, cnegociable valiosas, estimables, pequeñas  y testeables. Cada historia está lo suficientementte acotada par aser completada dentro de una itercacinon de desarrollo, lo que garanntiza un ciclo de entrega ágic  ycontinuo. 
+
+### 4.3.2 Requrimiento prinicpales funcionales
+
+Historia de usuraciro CC-6: Automatizacion de la captura de datos facturas
+Como usario de la app web,
+Quiero que el sistema captura automáticamente los dates do las facturas electrónicas,
+Para que el ingreso de datos de campras sea rápido, autmatizado y sin errores manuales 
+
+CRiterios de aceptación:
+
+- El sistema deb e realizar el ingreso de facturas desde el proveedor a la base de datos de manera automatica
+- es sistema debe realizar el ingresa de facrturas únicamente de los preveeedores ingresados.- El sistema debe ejecutar este proceso periodicamente en segundo plano.
+
+
+**Historia de usuario CC-11**: Gestión de proveedores
+
+**Como** usuario de la appweb, 
+**Quiero** gestionar la carga, actualizacion, listado y eliminación de proveedores, 
+**Para** mantener un control sobre las empresas que nos venden los insumos necesarios para operar
+
+Criterio de aceptación:
+
+- El sistema debe permitir el ingreso de nuevos proveedores con su RUT y nomber.
+- El sistema debe premitir la modificacion de proveedores ya ingeresados
+- El sistema debe permitir la visualizacion de los proveedores ya ingersador
+- El sistema debe perimtir la habilitación o inhabilitación de un proveedor
+- El sistema debe informar ante cualquier fallo en el ingreso, modificación o consulta valores de los proveedores.
+
+**Historia de usuario CC-15**: Gestion de productos
+
+**Como** usuarios de la app web, 
+
+**Quiero** gestionar la carga, actualización, listado y elimicnacion de preductos
+
+**Para** mantener un inventario preciso y actualizado que refeleje las necesidades edddl negocio.
+
+Criterios de aceptación:
+
+- El sistema debe permitir el ingreso de nuevos productos con su nombre.
+- El sistema debe permitir la modificacion de productos ya ingresados
+- El sistema debe premitir la visualización de los productos ya ingersados.
+- El sistema debe permitir la habilitación o inhabilitación de un producto.
+El sistema debe informar ante cualquier fallo en el ingreso, modificación o consulta de valores de los productos.
+
+
+**Historia de usuario CC-171**: Gostion de usurarios
+
+**Como** usauario de la app web,
+
+**quiero** gestionar la creción, actualizacínso, listado y elimincancion de usuarios,
+
+**Para** asegurarme de que solo personas atorizadas tengan acceso al sistema y sus funcionalidades.
+
+Criterio de aceptación:
+
+- El sistema debe permitir el ingreso de nuevos usuarios con su nombre, apellido, usaario, emoail y contraseña.
+- El sistema debe permitir la modificación de usurarios ya ingresados.
+- El sistema debe permitir la visualizacion de los usuarios ya ingresados
+- El sistema dedbe permitir el eliminado físico de un usuario.
+- El sistema debe informar ante cualquier fallo en el ingreso, modificacióno consulta de valores de los usuarios.
+
+**Historia de usuario CC-117**: login
+**Como ** usuario de la app web, 
+**Quiero** poder iniciar y cerrar sesión utulizando mi nombre de usuario y contraseña,
+
+**Para ** asegruarr el acceso a mi cuentra personal y pretger mi infgormación privada.
+
+Criterios de aceptarción:
+
+- El sistema debe premitir el ingreso de un usuario a partir de un nombre de usariio y contraseña
+- El sistema debe retornar un token JWT con el cual se realizan todas las consutoras por un determinado periodod
+- El sistema deberá rechazar el ingreso de un usuario con sus credenciales incorrectas sin informar cual campo fue el incorrecto.
+- El sistema dedbe informar en caso positivo o negativo de la acción.
+
+**Historia de usuario CC-159**: Historial ded compras
+**Como** usuario de la app web,
+**Quiero** poder visualizar el historial de compras, 
+**Para** tener control sobre las compras que se le hacen a los proveedores.
+
+Criterios de aceptacioń:
+
+- El sistema debe permitir la visualizacion de todas las facturas ingresadas en el sistema.
+- El sistema dedbe permitir la eliminacion de una factura. 
+- El sistema debe premitir el filtrado por fecha desde y hasta de la factura.
+
+**Historia de usuario CC-17: Registro de ingreso de mercadería
+
+**Como** usuario de la app móvil, 
+**Quiero** agregar un nuevo movimiento de mercadería en el sistema,
+**Para** que se mentenga el control de stock y rpevenir desbastecimientos.
+
+Criterios de acpetación:
+
+- El sistema debe permitir registrar el ingreso de mercaderia de un producto seleccionado.
+- El sistema debe prmitir indicar la cantidad de su ingerso.
+- El sistema debe avisar si el ingreso fue logrado o fallido.
+
+**Historia de usuario CC-19**: Registro ed egreso de mercadería
+
+**Como** usuario de la app movil, 
+**Quiero** agregar un nuevo egreso de mercadería en el sistema,
+**Para** que es mantenga el control del stock.
+
+Criterios de aceptación:
+
+- El sistema debe permitir registrar el egreso de mercadería de un producto seleccionado.
+- El sistema debe permitir indicar la cantidad de su egreso
+- El sistema debe avisar si el egreso fue logrado o fallido.

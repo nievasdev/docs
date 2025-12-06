@@ -525,3 +525,78 @@ Criterios de aceptación:
 - El sistema debe permitir registrar el egreso de mercadería de un producto seleccionado.
 - El sistema debe permitir indicar la cantidad de su egreso
 - El sistema debe avisar si el egreso fue logrado o fallido.
+
+### 4.3.3. Requerimientos no funcionales
+
+## RNF-1 - Seguridad
+
+El sistema debe garantizar la seguridad de los datos sensibles mediante el uso de cifrado de datos tanto en tránsito como en reposo (protocolo HTTPS, tokens JWT para las sesiones de usuarios y cifrados de datos sencibles).
+
+## RNF-2 - Disponibilidad
+
+El sistema debe tener una disponibilidad mínima del 99% del tiempo en que debe ser utilizado
+durante la temparada alta, asegurando que los usuarios puedan acceder al sistema en cada momento, excepto durante los periódos destinados al mantenimiento del producto.
+
+## RNF-3 - Escalabilidad
+
+El sistema debe ser capaz de escalar horizontalmente para soportar un aumento en la carga de trabajo durante la temporada alta (en caso de ser necesario), para no afectar el rendimiento del usuario.
+
+## RNF-4 - rendimiento
+
+El sistema debe permitir que el ingreso o modificación de datos, trancurra en un tiempo promedio que no supere los 2.5 segundos promedio, garantizando una experiencia de usuario rápida y sin demoras. Las consultas de datos deben realizarse en un tiempo menor a los 3 segundos promedio.
+
+## RNF-5 - Usabilidad
+
+Las interfaces de usuarios (tanto de la aplicación de contenedor, como el panel admin web), debe ser intuitiva, siguiendo los principios de diseño centrado en el usuario (hourísticas de Nielsen). La intefaz debe proporcionar retroalimentación a los usuarios sobre el estado de sus acciones, incluyendo mensajes de error claros y confirmaciones (siempre y cuando sea necesario). El sistema debe estar accesible para usuarios con diferentes niveles de habilidad tecnológica.
+
+La primera temporada del hotel, en la cual el sistema estará implementado (temporada que abarca el período de tiempo entre los meses de noviembre y fines de abril), será también una prueba piloto para el sistema. El equipo no considera que el análisis para lograr la mejor usabilidad posible culmina al momento de hacer el release a producción, sino que este aspecto seguirá evolucionando a medida que pasa el tiempo y el sistema se va utilizando. Por eso se puede considerar a la primera temporada de utulización de ChefCheck-Manager, como una temporada piloto.
+
+## RNF-6 - Compatibilidad
+
+El panel web admin debe ser compatible con los navegadores web más populares, teniendo como referencia a Google Chrome (por el acceso desde Windows, Android e iOS). Además, las diferentes pantallas de la web deben de poder adaptarse a distintas diminsiones de pantalla, como dispositivos móviles, tablets y computadoras.
+
+Respecto a la aplicación del contenedor, la misma debe ser únicamente compatible con el sistema operativo Android (en un principio), y desarrollada para ser utulizada en una tablet, en su modalidad horizontal (landscape). Debe desarrollarse por medio de un framework multiplataforma, debido a que si en un futuro, es necesario hacer un release de una versión iOS, se puede hacer con un costo muy bajo.
+
+## RNF-7 - Extensibilidad
+
+El sistema debe permitir la extensibilidad, para permitir la integración de nuevos módulos y funcionalidades en el futuro, como, por ejemplo, la incorporación de nuevas tecnologías de machine learning para mejorar las predicciones de consumo y análisis de datos
+
+## RNF-8 - Mantenibilidad
+
+El sistema debe realizarse bajo una arquitectura modular, para facilitar su mantenimiento y actualización en el futuro. El código debe estar documentado adecuadamente y seguir estándares de codificación reconocidos para asegurar la facilidad de comprensión y modificacion. Las actualizaciones (puesta en producción), deben poder realizarse sin causar interrupciones significativas en el servicio. Como la operativa del hotel no dura las 24 horas, existen varios momentos para realizar estas actualizaciones.
+
+## RNF-9 - Recuperación ante fallos
+
+La infraestructura de hosting debe contar con mecanismos de recuperación ante fallos que permitan restaurar su funcionamiento en caso de incidentes críticos. Debe incluir copias de seguridad regulares de los datos y procedimientos claros para la repcuperación rápida y efectiva.
+
+## RNF-10 - Integración
+
+El sistema debe integrarse sin problemas con los servicios externos de la empresa Factura Lista para la descarga e ingreso automático de datos de facturación electrónica.
+
+## RNF-11 - Monitorización y registro
+
+El sistema debe registrar información sobre los errores ocurridos (error, tipo de error, fecha de usuario, etc.), y deben ser almacenados de manera segura en la base de datos. Esto facilita al equipo de desarrollo, la determinación del tipo de error que ocurrió, lo cual agiliza el soporte para solucionarlos.
+
+### 4.3.4. Entregables
+
+Los entregables correspondientes a componentes del sistema se detallan en la sección Arquitectura a alto nivel:
+
+- Base de datos de negocio.
+- Base de datos para módulo de machine learning.
+- Script de machine learning.
+- Web API (incluyendo una integración con la API de la empresa FacturaLista).
+- Frontend web.
+- Fronten mobile.
+- Despliegue en azure para las bases de datos, script de machine learning, web API y frontend web.
+- Despliegue en Google Play Store para aplicición mobile.
+- Documentación técnica del sistema (requerimientos funcionales/ no funcionales, decisiones técnicas, diagramas, descripciones de los componentes de la arquitectura y sus comunicación, etc).
+
+## 4.4 Validación de problema y solución
+
+En el desarrollo de software, es fundamental entender la diferencia entre validar y verificar tanto los requerimientos como las soluciones propuestas.
+
+- Validar el problema: Este proceso implica asegurarse de que tanto el problema como la solución identificados realmente reflejan las necesidades del cliente o usuario. A través de entrevistas y sesiones de retroalimentación, se busca confirmar que el problema planteado es relevante y que los requerimientos recopilados son correctos y adecuados para abordar dicha problemática. Esta validación es esencial para garantizar que el enfoque del proyecto esté alineado con las expectativas y necesidades del cliente, lo que establece una base sólida para el desarrollo de una solución efectiva.
+
+- Verificar la solución: Una vez que se ha desarrollado una solución o un prototipo, la verificación se enfoca en evaluar si está realmente comple con los requerimientos establecidos y resuelve el problema identificado. En esta fase, se presenta el producto al cliente para que valide que la solución corresponde a sus expectativas y necesidades originales.
+
+Ambos procesos son cruciales para asegurar que el desarrollo del software no solo aborda el rpoblema real, 

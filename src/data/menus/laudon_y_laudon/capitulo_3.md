@@ -314,3 +314,9 @@ Cada una de estas industrias tiene su propia historia, intereses y fuerzas motri
 Con frecuencia, los sistemas estratégicos de információn cambian la organización al igual que sus productos, servicios y procedimientos de oporoción, y la impulsan hacia nuevos patrones de comportamiento. Utilizar exitosamente los sistemas de información para lograr una ventaja competitiva es desafiante y requiere una coordinación precisa de tecnología, organizaciones y administración.
 
 # SOSTENER LA VENTAJA COMPETITIVA 
+
+Las ventajas competitivas que confieren los sistemas estratégicos no siempre duran lo suficiente como para asegurar una retnabilidad en el largo plazo. Como los competidores pueden contraatacar y copiar los sistemas estratégicos, la ventaja cometitiva no siempre se puede sostener. Los mercados, las expectativas de los clientes y la tecnología se modifican; la globalización ha provocado que estos cambios sean todavía más rápidos e impredecibles. Internet puede hacer que la ventaja competitiva desaparezca con mucha rapidez, ya que casi todas las compañías pueden usar esta tecnología. Los sistemas estratétigos clásicos, como el sistema de reservaciones por cumputadora SABRE de American Airlines, el sistema de ATM de Citibank y el de rastreo de paquetes de FedEx, se beneficiaron al ser los primeros en sus industrias. Después emergieron los sistemas rivales. Amazon fue líder del e-commerce, pero ahora se enfrenta a la competencia de eBay, Yahoo y Google. Los sistemas de información por sí solos no pueden proveer una ventaja de negocios perdurable; los que en un principio estaban diseñados para ser estratégicos se vuelven con frecuencia herramientas para la supervivencia, se hacen obligatorios para que todas las empresas puedan permanecer en sus actividades de negocios, o pueden evitar que las organizaciones realicen los cambios estratégicos esenciales para un éxitos a futuro.
+
+# ALINEAR LA TI CON LOS OBJETIVOS DE NEGOCIOS
+
+

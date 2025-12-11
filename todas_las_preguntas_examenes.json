@@ -1,0 +1,706 @@
+[
+  {
+    "numero_nuevo": 1,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 1,
+    "enunciado": "Los ___ ayudan a los supervisores generando bases de datos que actúan como base para otros sistemas de información.",
+    "opciones": [
+      {"letra": "A", "texto": "TPS"},
+      {"letra": "B", "texto": "MIS"},
+      {"letra": "C", "texto": "DSS"},
+      {"letra": "E", "texto": "ESS"}
+    ],
+    "respuesta_correcta": "A",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 2,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 2,
+    "enunciado": "Para comprender por completo los sistemas de información, se debe conocer las dimensiones:",
+    "opciones": [
+      {"letra": "A", "texto": "organización, administración, tecnología de los sistemas de información"},
+      {"letra": "B", "texto": "tecnología de los sistemas de información, software, gestión de datos"},
+      {"letra": "C", "texto": "software, gestión de datos, hardware, redes de datos"}
+    ],
+    "respuesta_correcta": "A",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 3,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 3,
+    "enunciado": "Las empresas digitales responden a sus entornos mucho más lentamente que las empresas tradicionales, dándoles más flexibilidad para sobrevivir en tiempos turbulentos",
+    "opciones": [],
+    "respuesta_correcta": "False",
+    "tipo": "true_false"
+  },
+  {
+    "numero_nuevo": 4,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 4,
+    "enunciado": "Los sociólogos estudian los sistemas de información con el objetivo de comprender:",
+    "opciones": [
+      {"letra": "A", "texto": "cómo los sistemas afectan a individuos, grupos y organizaciones"},
+      {"letra": "B", "texto": "cómo los encargados de tomar decisiones humanas perciben y usan la información formal"},
+      {"letra": "C", "texto": "cómo los nuevos sistemas de información cambian las estructuras de control y costos dentro de la empresa"},
+      {"letra": "D", "texto": "La producción de bienes digitales"}
+    ],
+    "respuesta_correcta": "A",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 5,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 5,
+    "enunciado": "El uso de sistemas de información por necesidad de permanecer en sus actividades de negocios describe el objetivo comercial de",
+    "opciones": [
+      {"letra": "A", "texto": "barreras de entrada mejorada"},
+      {"letra": "B", "texto": "excelencia operacional"},
+      {"letra": "C", "texto": "supervivencia"},
+      {"letra": "D", "texto": "informes mejorados"}
+    ],
+    "respuesta_correcta": "C",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 6,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 6,
+    "enunciado": "Sobreproducción o subproducción de bienes y servicios, mala asignación de recursos y lentitud en los tiempos de respuesta son el resultado de que una empresa tenga:",
+    "opciones": [
+      {"letra": "A", "texto": "malas relaciones con los proveedores"},
+      {"letra": "B", "texto": "malas relaciones con los clientes"},
+      {"letra": "C", "texto": "información inadecuada"},
+      {"letra": "D", "texto": "excedente de información"}
+    ],
+    "respuesta_correcta": "C",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 7,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 7,
+    "enunciado": "Las tres actividades en un sistema de información que producen la información que usan las organizaciones para controlar las operaciones son",
+    "opciones": [
+      {"letra": "A", "texto": "recuperación de información, investigación y análisis"},
+      {"letra": "B", "texto": "entrada, salida y retroalimentación"},
+      {"letra": "C", "texto": "entrada, procesamiento y salida"},
+      {"letra": "D", "texto": "análisis de datos, procesamiento y retroalimentación"}
+    ],
+    "respuesta_correcta": "C",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 8,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 8,
+    "enunciado": "Una empresa que invierte en procesos comerciales redundantes está haciendo una inversión en activos organizativos complementarios.",
+    "opciones": [],
+    "respuesta_correcta": "False",
+    "tipo": "true_false"
+  },
+  {
+    "numero_nuevo": 9,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 9,
+    "enunciado": "El campo que se ocupa de los problemas de comportamiento, así como los problemas técnicos que rodean el desarrollo, el uso y el impacto de los sistemas de información utilizados por los gerentes y empleados de la empresa se llama",
+    "opciones": [
+      {"letra": "A", "texto": "alfabetización en sistemas de información"},
+      {"letra": "B", "texto": "arquitectura de sistemas de información"},
+      {"letra": "C", "texto": "sistemas de información gerencial"},
+      {"letra": "D", "texto": "infraestructura de tecnología de la información"}
+    ],
+    "respuesta_correcta": "C",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 10,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 10,
+    "enunciado": "Un sistema de reserva de hotel es un ejemplo típico de un Sistema de Executive Support Systems ESS",
+    "opciones": [],
+    "respuesta_correcta": "False",
+    "tipo": "true_false"
+  },
+  {
+    "numero_nuevo": 11,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 11,
+    "enunciado": "¿Cuál de los siguientes es un ejemplo de un proceso comercial interfuncional?",
+    "opciones": [
+      {"letra": "A", "texto": "identificación de clientes"},
+      {"letra": "B", "texto": "crear un nuevo producto"},
+      {"letra": "C", "texto": "ensamblar un producto"},
+      {"letra": "D", "texto": "pagar a los acreedores"}
+    ],
+    "respuesta_correcta": "B",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 12,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 12,
+    "enunciado": "Los sistemas de procesamiento de transacciones son los más utilizados por el nivel de gerencia media de una organización.",
+    "opciones": [],
+    "respuesta_correcta": "False",
+    "tipo": "true_false"
+  },
+  {
+    "numero_nuevo": 13,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 13,
+    "enunciado": "Los Executive Support Systems ESS están diseñados principalmente para resolver problemas específicos rutinarios.",
+    "opciones": [],
+    "respuesta_correcta": "False",
+    "tipo": "true_false"
+  },
+  {
+    "numero_nuevo": 14,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 14,
+    "enunciado": "¿Los ESS están específicamente diseñados para servir a qué nivel de la organización?",
+    "opciones": [
+      {"letra": "A", "texto": "operacional"},
+      {"letra": "B", "texto": "usuario final"},
+      {"letra": "C", "texto": "gerencia media"},
+      {"letra": "D", "texto": "alta gerencia"}
+    ],
+    "respuesta_correcta": "D",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 15,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 15,
+    "enunciado": "¿Cuál de los siguientes tipos de sistema ayuda a acelerar el flujo de información entre firma y sus proveedores y clientes?",
+    "opciones": [
+      {"letra": "A", "texto": "intranet"},
+      {"letra": "B", "texto": "extranet"},
+      {"letra": "C", "texto": "KMS"},
+      {"letra": "D", "texto": "TPS"}
+    ],
+    "respuesta_correcta": "B",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 16,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 16,
+    "enunciado": "El uso de la tecnología digital e Internet para impulsar los procesos empresariales más importantes se denomina",
+    "opciones": [
+      {"letra": "A", "texto": "eBusiness"},
+      {"letra": "B", "texto": "eCommerce"},
+      {"letra": "C", "texto": "intranet"},
+      {"letra": "D", "texto": "extranet"}
+    ],
+    "respuesta_correcta": "A",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 17,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 17,
+    "enunciado": "¿Qué tipo de sistema usaría para determinar el tiempo promedio de los proveedores en la entrega de bienes?",
+    "opciones": [
+      {"letra": "A", "texto": "TPS"},
+      {"letra": "B", "texto": "MIS"},
+      {"letra": "C", "texto": "DSS"},
+      {"letra": "D", "texto": "ESS"}
+    ],
+    "respuesta_correcta": "B",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 18,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 18,
+    "enunciado": "La gestión operativa es responsable de dirigir las operaciones diarias del negocio y por lo tanto necesita información a nivel de transacción.",
+    "opciones": [],
+    "respuesta_correcta": "True",
+    "tipo": "true_false"
+  },
+  {
+    "numero_nuevo": 19,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 19,
+    "enunciado": "El enlace principal entre los grupos de sistemas de información y el resto de la organización es un",
+    "opciones": [
+      {"letra": "A", "texto": "CIO (Chief Information Officer)"},
+      {"letra": "B", "texto": "analista de sistemas"},
+      {"letra": "C", "texto": "gerente de sistemas de información"},
+      {"letra": "D", "texto": "gerente de tecnología"}
+    ],
+    "respuesta_correcta": "B",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 20,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 20,
+    "enunciado": "Un sistema de procesamiento de transacciones es un sistema computarizado que realiza y registra diariamente transacciones de rutina necesarias para realizar negocios.",
+    "opciones": [],
+    "respuesta_correcta": "True",
+    "tipo": "true_false"
+  },
+  {
+    "numero_nuevo": 21,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 21,
+    "enunciado": "Los sistemas de información de gestión (MIS) suelen apoyar la toma de decisiones no rutinarias.",
+    "opciones": [],
+    "respuesta_correcta": "False",
+    "tipo": "true_false"
+  },
+  {
+    "numero_nuevo": 22,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 22,
+    "enunciado": "Desde el punto de vista de la economía, la tecnología de los sistemas de información puede verse como un factor de producción que puede sustituir a el capital y la mano de obra tradicional.",
+    "opciones": [],
+    "respuesta_correcta": "True",
+    "tipo": "true_false"
+  },
+  {
+    "numero_nuevo": 23,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 23,
+    "enunciado": "El modelo de las 5 fuerzas competitivas fue creado para la firma digital actual.",
+    "opciones": [],
+    "respuesta_correcta": "False",
+    "tipo": "true_false"
+  },
+  {
+    "numero_nuevo": 24,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 24,
+    "enunciado": "En el modelo de cadena de valor, las actividades primarias están más directamente relacionadas con la producción y distribución de los productos y servicios de la empresa que crean valor para el cliente.",
+    "opciones": [],
+    "respuesta_correcta": "True",
+    "tipo": "true_false"
+  },
+  {
+    "numero_nuevo": 25,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 25,
+    "enunciado": "Los costos incurridos cuando una empresa compra en el mercado lo que no puede hacer se denominan",
+    "opciones": [
+      {"letra": "A", "texto": "costos de cambio"},
+      {"letra": "B", "texto": "costos de transacción"},
+      {"letra": "C", "texto": "costos de agencia"},
+      {"letra": "D", "texto": "costos fijos"}
+    ],
+    "respuesta_correcta": "B",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 26,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 26,
+    "enunciado": "Los cuatro tipos principales de estrategia competitiva son:",
+    "opciones": [
+      {"letra": "A", "texto": "liderazgo de bajo costo; productos y servicios sustitutos; clientes; y proveedores"},
+      {"letra": "B", "texto": "liderazgo de bajo costo; la diferenciación del producto; centrarse en un nicho de mercado; e intimidad con clientes y proveedores."},
+      {"letra": "C", "texto": "nuevos participantes en el mercado; productos y servicios sustitutos; clientes; y proveedores."},
+      {"letra": "D", "texto": "liderazgo de bajo costo; nuevos participantes en el mercado; la diferenciación del producto; y centrarse en un nicho de mercado."}
+    ],
+    "respuesta_correcta": "B",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 27,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 27,
+    "enunciado": "¿Cuál de los siguientes NO es una de las fuerzas competitivas?",
+    "opciones": [
+      {"letra": "A", "texto": "sustitutos"},
+      {"letra": "B", "texto": "otros competidores directos"},
+      {"letra": "C", "texto": "grupos de interés"},
+      {"letra": "D", "texto": "poder negociador de los clientes"}
+    ],
+    "respuesta_correcta": "C",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 28,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 28,
+    "enunciado": "Una empresa virtual es una empresa que",
+    "opciones": [
+      {"letra": "A", "texto": "utiliza redes de alianza con otras empresas para crear y distribuir productos sin estar limitado por los límites organizacionales tradicionales o ubicación física"},
+      {"letra": "B", "texto": "utiliza tecnología de Internet para mantener una tienda virtual."},
+      {"letra": "C", "texto": "utiliza la tecnología de Internet para mantener una comunidad de usuarios en red."},
+      {"letra": "D", "texto": "proporciona servicios y productos virtuales."}
+    ],
+    "respuesta_correcta": "A",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 29,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 29,
+    "enunciado": "El valor web es una colección de firmas altamente dependientes que utilizan TI altamente sincronizada para coordinar las cadenas de valor para producir productos o servicios colectivamente",
+    "opciones": [],
+    "respuesta_correcta": "False",
+    "tipo": "true_false"
+  },
+  {
+    "numero_nuevo": 30,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 30,
+    "enunciado": "Internet aumenta la accesibilidad, el almacenamiento y la distribución de información para las organizaciones",
+    "opciones": [],
+    "respuesta_correcta": "True",
+    "tipo": "true_false"
+  },
+  {
+    "numero_nuevo": 31,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 31,
+    "enunciado": "La dependencia de los datos del programa se refiere al acoplamiento de los datos almacenados en archivos y programas de software que usan estos datos de modo que, cambios en los programas NO requieren cambios en los datos y viceversa.",
+    "opciones": [],
+    "respuesta_correcta": "False",
+    "tipo": "true_false"
+  },
+  {
+    "numero_nuevo": 32,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 32,
+    "enunciado": "El proceso de racionalización de datos para minimizar la redundancia y las relaciones incómodas de muchos a muchos se llama",
+    "opciones": [
+      {"letra": "A", "texto": "normalización"},
+      {"letra": "B", "texto": "depuración de datos"},
+      {"letra": "C", "texto": "limpieza de datos"},
+      {"letra": "D", "texto": "definición de datos"}
+    ],
+    "respuesta_correcta": "A",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 33,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 33,
+    "enunciado": "La minería de datos es una herramienta para permitir a los usuarios",
+    "opciones": [
+      {"letra": "A", "texto": "comparar rápidamente los datos de transacciones recopilados durante muchos años"},
+      {"letra": "B", "texto": "encontrar relaciones ocultas en los datos"},
+      {"letra": "C", "texto": "obtener respuestas en línea a preguntas \"ad hoc\" en un tiempo rápido"},
+      {"letra": "D", "texto": "resumir cantidades masivas de datos en informes tradicionales mucho más pequeños"}
+    ],
+    "respuesta_correcta": "B",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 34,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 34,
+    "enunciado": "Un almacén de datos se compone de",
+    "opciones": [
+      {"letra": "A", "texto": "datos históricos de sistemas heredados"},
+      {"letra": "B", "texto": "datos actuales"},
+      {"letra": "C", "texto": "fuentes de datos internas y externas"},
+      {"letra": "D", "texto": "datos internos históricos y actuales"}
+    ],
+    "respuesta_correcta": "D",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 35,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 35,
+    "enunciado": "Un Mercado de Datos generalmente se puede construir más rápidamente y a menor costo que un Almacén de Datos porque",
+    "opciones": [
+      {"letra": "A", "texto": "generalmente se enfoca en un área temática o línea de negocios"},
+      {"letra": "B", "texto": "toda la información que almacena es histórica"},
+      {"letra": "C", "texto": "utiliza una interfaz web"},
+      {"letra": "D", "texto": "toda la información pertenece a una sola empresa"}
+    ],
+    "respuesta_correcta": "A",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 36,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 36,
+    "enunciado": "Los almacenes de datos combinan exclusivamente cantidades enormes de datos financieros de la empresa.",
+    "opciones": [],
+    "respuesta_correcta": "False",
+    "tipo": "true_false"
+  },
+  {
+    "numero_nuevo": 37,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 37,
+    "enunciado": "Los sistemas de planificación de recursos empresariales (ERP) están diseñados principalmente para permitir la comunicación entre una organización y socios y proveedores externos.",
+    "opciones": [],
+    "respuesta_correcta": "False",
+    "tipo": "true_false"
+  },
+  {
+    "numero_nuevo": 38,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 38,
+    "enunciado": "El efecto látigo es la distorsión de la información sobre la demanda de un producto a medida que pasa de una entidad a la siguiente en toda la cadena de suministro",
+    "opciones": [],
+    "respuesta_correcta": "True",
+    "tipo": "true_false"
+  },
+  {
+    "numero_nuevo": 39,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 39,
+    "enunciado": "Un sistemas de planificación de recursos empresariales (ERP) es un conjunto de módulos de software integrados y una base de datos central común",
+    "opciones": [],
+    "respuesta_correcta": "True",
+    "tipo": "true_false"
+  },
+  {
+    "numero_nuevo": 40,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 40,
+    "enunciado": "¿Cuál de los siguientes afirmaciones NO es cierto acerca de los sistemas empresariales?",
+    "opciones": [
+      {"letra": "A", "texto": "Los sistemas empresariales habilitan respuestas rápidas a las solicitudes de información o productos de los clientes"},
+      {"letra": "B", "texto": "Los datos del sistema empresarial tienen definiciones y formatos estandarizados que son aceptados por toda la organización"},
+      {"letra": "C", "texto": "El software empresarial incluye herramientas analíticas para evaluar el desempeño organizacional general"},
+      {"letra": "D", "texto": "Los sistemas empresariales eficientes dificultan que las empresas se asocien o fusionen con otras organizaciones"}
+    ],
+    "respuesta_correcta": "D",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 41,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 41,
+    "enunciado": "La organización y procesos responsables de la entrega de productos a los clientes se denomina",
+    "opciones": [
+      {"letra": "A", "texto": "cadena de suministro ascendente"},
+      {"letra": "B", "texto": "cadena de suministro descendente"},
+      {"letra": "C", "texto": "distribución final"},
+      {"letra": "D", "texto": "distribución ascendente"}
+    ],
+    "respuesta_correcta": "B",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 42,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 42,
+    "enunciado": "¿Cuál de los siguientes NO es una función de los Sistemas de planificación de la cadena de suministro?",
+    "opciones": [
+      {"letra": "A", "texto": "Modelar la cadena de suministro existente"},
+      {"letra": "B", "texto": "Planificación de la demanda"},
+      {"letra": "C", "texto": "Gestionar el flujo de productos a través de centros de distribución y almacenes de manera eficiente"},
+      {"letra": "D", "texto": "Establecer niveles de inventario óptimos"}
+    ],
+    "respuesta_correcta": "C",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 43,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 43,
+    "enunciado": "Una cadena de suministro impulsada por pedidos o compras reales de clientes sigue un modelo",
+    "opciones": [
+      {"letra": "A", "texto": "basado en extracción (pull)"},
+      {"letra": "B", "texto": "basado en empuje (push)"},
+      {"letra": "C", "texto": "basado en stock"},
+      {"letra": "D", "texto": "basado en reposición (replacement)"}
+    ],
+    "respuesta_correcta": "A",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 44,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 44,
+    "enunciado": "Los paquetes de CRM analíticos suelen incluir herramientas para automatización de la fuerza de ventas, servicio al cliente y automatización de marketing",
+    "opciones": [],
+    "respuesta_correcta": "False",
+    "tipo": "true_false"
+  },
+  {
+    "numero_nuevo": 45,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 45,
+    "enunciado": "Además de reducir los costos, los sistemas de administración de la cadena de suministro ayudan a incrementar las ventas.",
+    "opciones": [],
+    "respuesta_correcta": "True",
+    "tipo": "true_false"
+  },
+  {
+    "numero_nuevo": 46,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 46,
+    "enunciado": "¿Cuál de los siguientes NO se considera un punto de contacto (método de interacción con el cliente) para un CRM?",
+    "opciones": [
+      {"letra": "A", "texto": "correo electrónico"},
+      {"letra": "B", "texto": "sitio web"},
+      {"letra": "C", "texto": "intranet"},
+      {"letra": "D", "texto": "tienda minorista"}
+    ],
+    "respuesta_correcta": "C",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 47,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 47,
+    "enunciado": "Internet disminuye la asimetría de información.",
+    "opciones": [],
+    "respuesta_correcta": "True",
+    "tipo": "true_false"
+  },
+  {
+    "numero_nuevo": 48,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 48,
+    "enunciado": "En general, para los bienes digitales, el costo marginal de producir otra unidad aumenta proporcionalmente a la cantidad de productos producidos",
+    "opciones": [],
+    "respuesta_correcta": "False",
+    "tipo": "true_false"
+  },
+  {
+    "numero_nuevo": 49,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 49,
+    "enunciado": "¿Cuál de las siguientes empresas utiliza el modelo de negocio creador del mercado?",
+    "opciones": [
+      {"letra": "A", "texto": "una casa de remates en línea"},
+      {"letra": "B", "texto": "un periódico en línea"},
+      {"letra": "C", "texto": "un sitio de streaming de videos"},
+      {"letra": "D", "texto": "un librería en línea"}
+    ],
+    "respuesta_correcta": "A",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 50,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 50,
+    "enunciado": "La venta de los mismos productos a diferentes grupos objetivo a diferentes precios se llama",
+    "opciones": [
+      {"letra": "A", "texto": "personalización de costos"},
+      {"letra": "B", "texto": "optimización de costos"},
+      {"letra": "C", "texto": "aumento de precios"},
+      {"letra": "D", "texto": "discriminación de precios"}
+    ],
+    "respuesta_correcta": "D",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 51,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 51,
+    "enunciado": "En comparación con los mercados digitales, los mercados tradicionales tienen",
+    "opciones": [
+      {"letra": "A", "texto": "menores costos de búsqueda"},
+      {"letra": "B", "texto": "efectos de red más fuertes"},
+      {"letra": "C", "texto": "mayores efectos de gratificación retardada"},
+      {"letra": "D", "texto": "mayores costos de transacción"}
+    ],
+    "respuesta_correcta": "D",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 52,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 52,
+    "enunciado": "¿Cuál de las siguientes empresas utiliza el modelo de negocio de Internet de proveedor de contenido?",
+    "opciones": [
+      {"letra": "A", "texto": "PedidosYa"},
+      {"letra": "B", "texto": "Spotify"},
+      {"letra": "C", "texto": "Uber"},
+      {"letra": "D", "texto": "MercadoLibre"}
+    ],
+    "respuesta_correcta": "B",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 53,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 53,
+    "enunciado": "¿Cuál de las siguientes NO es un modelos de negocios del comercio electrónico visto en el curso?",
+    "opciones": [
+      {"letra": "A", "texto": "agente de transacciones"},
+      {"letra": "B", "texto": "franquicia o licencia"},
+      {"letra": "C", "texto": "e-Tailer"},
+      {"letra": "D", "texto": "proveedor de servicio"}
+    ],
+    "respuesta_correcta": "B",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 54,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 54,
+    "enunciado": "TI puede aumentar los costos de agencia, haciendo posible que las empresas crezcan sin aumentar los costos de supervisión y sin agregar empleados",
+    "opciones": [],
+    "respuesta_correcta": "False",
+    "tipo": "true_false"
+  },
+  {
+    "numero_nuevo": 55,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 55,
+    "enunciado": "Los sistemas de información pueden reducir la cantidad de niveles en una organización (achatamiento de la organización) al:",
+    "opciones": [
+      {"letra": "A", "texto": "proveer a los gerentes información de los competidores para lograr discriminación de precios"},
+      {"letra": "B", "texto": "otorgar a los empleados de mayor nivel mejor información en la toma de decisiones"},
+      {"letra": "C", "texto": "proveer a los gerentes información para supervisar mayores número de trabajadores"},
+      {"letra": "D", "texto": "proveer a los gerentes información de los sustitutos para lograr mayor diferenciación"}
+    ],
+    "respuesta_correcta": "C",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 56,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 56,
+    "enunciado": "Los Sistemas de Información se pueden ver como un factor de producción sustituible por capital y mano de obra tradicionales",
+    "opciones": [],
+    "respuesta_correcta": "True",
+    "tipo": "true_false"
+  },
+  {
+    "numero_nuevo": 57,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 57,
+    "enunciado": "Los gerentes de alto nivel necesitan información tanto de dentro como de fuera de la organización.",
+    "opciones": [],
+    "respuesta_correcta": "True",
+    "tipo": "true_false"
+  },
+  {
+    "numero_nuevo": 58,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 58,
+    "enunciado": "El MIS registra las transacciones diarias, como los pedidos de los clientes, las facturas, los niveles de inventario y la producción.",
+    "opciones": [],
+    "respuesta_correcta": "False",
+    "tipo": "true_false"
+  },
+  {
+    "numero_nuevo": 59,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 59,
+    "enunciado": "¿Quién usa/se beneficia de un TPS?",
+    "opciones": [
+      {"letra": "A", "texto": "Gerencia operacional"},
+      {"letra": "B", "texto": "Gerencia nivel medio"},
+      {"letra": "C", "texto": "Gerencia de nivel superior"},
+      {"letra": "D", "texto": "Junta directiva"}
+    ],
+    "respuesta_correcta": "A",
+    "tipo": "multiple_choice"
+  },
+  {
+    "numero_nuevo": 60,
+    "examen_origen": "FSI_0108_Exam_20",
+    "pregunta_original": 60,
+    "enunciado": "Los mercados digitales son muy flexibles y eficientes debido a que operan con costos de búsqueda y de transacción reducidos, menores costos de menú, una mayor discriminación de precios y la habilidad de cambiar dinámicamente los precios con base en las condiciones del mercado.",
+    "opciones": [],
+    "respuesta_correcta": "True",
+    "tipo": "true_false"
+  }
+]

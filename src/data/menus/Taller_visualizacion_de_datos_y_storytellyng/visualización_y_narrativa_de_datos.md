@@ -1,5 +1,5 @@
 ---
-title: Taller: Visualización y narrativa de datos
+title: "Taller: Visualización y narrativa de datos"
 ---
 
 # Práctico NOTAS SOBRE EXCEL

@@ -285,5 +285,23 @@ Enfoque de TI tradicional:
 | **Aprovisionamiento** | Configurar recursos | Crear un nuevo servidor virtual | 
 | **Multi-tenancy** | Infraestructura compartida | Múltiples clientes en mismo servidor físico |
 
+---
+
+# Puntos Clave
+
+## Recurda Esto:
+
+- La computación en la nube es un **modelo de entrega de servicios**, no solo hardware
+- Las 5 **características esenciales** definen qué hace algo "nube"
+- **Elasticidad** = escalado automático (diferenciar clave)
+- El modelo de **pago por uso** cambia cómo pensamos sobre costos de TI
+- La nube habilita **innovación** al remover barreras de infraestructura
+
+## Para el Examen:
+
+- Enfócate en **escenarios** - ¿cuándo usarías la nube?
+- Entiende la **diferencia** entre escalabilidad y elasticidad
+- Conoce las **5 características esenciales** de memoria
+- Sé capaz de **desmentir conceptos erróneos**
 
 

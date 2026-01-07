@@ -2,54 +2,54 @@
 title: Infraestructura Global de AWS
 ---
 
-Imagina AWS como una red global de ciudades interconectadas:
+🌍Imagina AWS como una red global de ciudades interconectadas:
 
-- Regiones son como grandes áreas metropolitanas
-- Zonas de Disponibilidad son como distritos dentro de cada ciudad
-- Edge Locations son como centros de distribucion para servicio rápido
+- **Regiones** son como grandes áreas metropolitanas
+- **Zonas de Disponibilidad** son como distritos dentro de cada ciudad
+- **Edge Locations** son como centros de distribucion para servicio rápido
 - Todo está conectado por **autopistas de alta velocidad**
 
 ¡Esta infraestructura permite a AWS entregar servicios con increíble **velocidad**, **confiabilidad** y **alcance global**!
 
-# Regiones de AWS
+# 🏙️ Regiones de AWS
 
-## ¿Qué es una Región de AWS?
+## 🌆 ¿Qué es una Región de AWS?
 
-piensa en una Región de AWS como una **gran ciudad** con **múltiples distritos**:
+Piensa en una Región de AWS como una **gran ciudad** con **múltiples distritos**:
 
-- Cada región es un área geográfica separada
-- Contiene múltiples ubicaciones aisladas (Zonas de Disponibilidad)
-- Completamente independiente de otras Regiones
-- Tiene su propia red eléctrica, redes y conectividad
+- Cada región es un **área geográfica separada**
+- Contiene **múltiples ubicaciones aisladas** (Zonas de Disponibilidad)
+- **Completamente independiente** de otras Regiones
+- Tiene su **propia red eléctrica, redes y conectividad**
 
-## Huella Global Actual
+## 🌍Huella Global Actual
 
-A partir de 2024, AWS tiene 30+ **regiones** en todo el mundo, incluyendo:
+A partir de 2024, AWS tiene **30+ regiones** en todo el mundo, incluyendo:
 
 **Regiones Principales por Área Geográfica**:
 
 Estados Unidos
 
-- us-east-1 (N.Virginia) - La región "original"
-- us-west-2 (Oregon) - Popular para aplicaciones de la costa oeste
-- us-east-2 (Ohio) - Ubicación central, buena latencia
-- us-west-1 (N. California) - Proximidad a Silicon Valley
+- **us-east-1** (N.Virginia) - La región "original"
+- **us-west-2** (Oregon) - Popular para aplicaciones de la costa oeste
+- **us-east-2** (Ohio) - Ubicación central, buena latencia
+- **us-west-1** (N. California) - Proximidad a Silicon Valley
 
 Europa
 
-- eu-west-1 (Irlanda) - Sede europea
-- eu-central-1 (Frankfurt) - Soberanía de datos para Alemania
-- eu-west-2 (Londres) - Servicios del Reino Unido post-Brexit
-- eu-south-1 (Milán) - Cobertura del sur de Europa
+- **eu-west-1**    (Irlanda) - Sede europea
+- **eu-central-1** (Frankfurt) - Soberanía de datos para Alemania
+- **eu-west-2**    (Londres) - Servicios del Reino Unido post-Brexit
+- **eu-south-1**   (Milán) - Cobertura del sur de Europa
 
 Asia Pacífico
 
-- ap-northeast-1 (Tokio) - Región principal de Japón
-- ap-southeast-1 (Singapur) - Centro del sudeste asiático
-- ap-south-1 (Mumbai) - Mercado creciente de India
-- ap-northeast-2 (Seúl) - Cobertura de Corea del Sur
+- **ap-northeast-1** (Tokio) - Región principal de Japón
+- **ap-southeast-1** (Singapur) - Centro del sudeste asiático
+- **ap-south-1**     (Mumbai) - Mercado creciente de India
+- **ap-northeast-2** (Seúl) - Cobertura de Corea del Sur
 
-## Características de las Regiones
+## 🔧 Características de las Regiones
 
 ### Independencia de Infraestructura
 

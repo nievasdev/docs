@@ -37,7 +37,7 @@ Ejemplo del mundo real:
 - Tradicional: Llamar a TI, enviar ticket, esperar días por nuevo servidor
 - Nube: Hacer click en botón, obtener servidor en 2 minutos
 
-Por qué importa: Velociodad y autonomía par adesarrolladores y empresas.
+Por qué importa: Velociodad y autonomía para adesarrolladores y empresas.
 
 2. Acceso Amplio de Red
 
@@ -63,7 +63,7 @@ Piénsalo como:
 
 Por qué importa: Mucho más costo-efectivo que recursos dedicados.
 
-4 Elasticidad Rápida
+4. Elasticidad Rápida
 
 Qué significa: Escalar recursos automáticamente hacia arriba o abajo basado en la demanda.
 
@@ -76,7 +76,7 @@ Ejemplo del mundo real:
 
 Por qué importa: Manejar picos de tráfico sin intervención manual.
 
-5. Servicio Medio
+5. Servicio Medido
 
 Qué significa: Pagar solo por lo que realmente usas, con monitoreo detallado.
 
@@ -136,9 +136,9 @@ Por qué esto está parcialmente mal:
 
 ---
 
-# Por qué esto Imorta
+# 🎯 Por qué esto Imorta
 
-## Para tu Carrera
+## 💼 Para tu Carrera
 
 Entender los fundamentos de la nube es como entender cómo funciona internet en los 1990s - va a estar en todas partes.
 
@@ -166,19 +166,19 @@ Oportunidades de carrera:
 
 ---
 
-# Impacto en la industria
+# 🌍 Impacto en la industria
 
-## Por los Números
+## 📈 Por los Números
 
-- $500+ mil millones - Tamaño del mercado global de nube (2023)
-- 30%+ crecimiento anual - Sector tecnológico de már rápido creciemiento
-- 90%+ de empresas usan alguna forma de nube
-- 50%+ más rápido despliegue comparado con TI tradicional
+- 💰$500+ mil millones - Tamaño del mercado global de nube (2023)
+- 📊30%+ crecimiento anual - Sector tecnológico de már rápido creciemiento
+- 🏢90%+ de empresas usan alguna forma de nube
+- ⚡50%+ más rápido despliegue comparado con TI tradicional
 
-## Industrias Transformadas
+## 🏭Industrias Transformadas
 
 - Entretenimiento: Netflix trasmite a 200M+ usuarios globalmente
-- Banca: Capital One se fua "all-in" en AWS
+- Banca: Capital One se fue "all-in" en AWS
 - Retail: Target maneja picos de tráfico de Black Friday
 - Salud: Plataformas de telemedicina escalan instantáneamente
 - Educición: Apredizaje rempto par amillones durante COVID-19

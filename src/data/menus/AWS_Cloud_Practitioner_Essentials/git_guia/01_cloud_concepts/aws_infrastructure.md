@@ -2,7 +2,7 @@
 title: Infraestructura Global de AWS
 ---
 
-🌍Imagina AWS como una red global de ciudades interconectadas:
+🌍 Imagina AWS como una red global de ciudades interconectadas:
 
 - **Regiones** son como grandes áreas metropolitanas
 - **Zonas de Disponibilidad** son como distritos dentro de cada ciudad
@@ -22,7 +22,7 @@ Piensa en una Región de AWS como una **gran ciudad** con **múltiples distritos
 - **Completamente independiente** de otras Regiones
 - Tiene su **propia red eléctrica, redes y conectividad**
 
-## 🌍Huella Global Actual
+## 🌍 Huella Global Actual
 
 A partir de 2024, AWS tiene **30+ regiones** en todo el mundo, incluyendo:
 
@@ -51,66 +51,66 @@ Asia Pacífico
 
 ## 🔧 Características de las Regiones
 
-### Independencia de Infraestructura
+### 🏗️ Independencia de Infraestructura
 
-- Infraestructura física separada en cada región
-- Redes eléctricas independientes y conexiones de internet
-- Dominios de falla aislados - problemas en una región no afectan a otras
-- Equipos de servicio regionales para soporte local
+- **Infraestructura física separada** en cada región
+- **Redes eléctricas independientes** y conexiones de internet
+- **Dominios de falla aislados** - problemas en una región no afectan a otras
+- **Equipos de servicio regionales** para soporte local
 
-### Disponibilidad de Servicios
+### 🌐 Disponibilidad de Servicios
 
-- No todos los servicios están disponibles en todas las regiones inicialmente
-- Los servicios maś nuevos típicamente se lanzan primero en us-east-1
-- Despliegue gradual a otras regiones basado en la demanda
-- Algunos servicios sen globales por naturaleza (IAM, CloudFront)
+- **No todos los servicios están disponibles** en todas las regiones inicialmente
+- **Los servicios maś nuevos** típicamente se lanzan primero en us-east-1
+- **Despliegue gradual** a otras regiones basado en la demanda
+- **Algunos servicios sen globales** por naturaleza (IAM, CloudFront)
 
-### Variaciones de Precios
+### 💰 Variaciones de Precios
 
-- Precios diferentes en diferentes regiones
-- us-east-1 típicamente tiene los precios más bajos
-- Regiones maás nuevas pueden tener costos iniciales más altos
-- Costos de transferencia de datos varían entreregiones
+- **Precios diferentes** en diferentes regiones
+- **us-east-1** típicamente tiene los precios más bajos
+- **Regiones más nuevas** pueden tener costos iniciales más altos
+- **Costos de transferencia de datos** varían entreregiones
 
-## Regional Services vs Global Services
+## 🎯 Regional Services vs Global Services
 
-### Servicios Regionales (La Mayoría de Servicios AWS)
+### 🏢Servicios Regionales (La Mayoría de Servicios AWS)
 
-- EC2 las instancias se ejecutan en regiones específicas
-- S3 los buckets se crean en regiones específicas
-- RDS las bases de datos existen en regiones elegidas
-- VPCs son específicas de región
+- **EC2** las instancias se ejecutan en regiones específicas
+- **S3** los buckets se crean en regiones específicas
+- **RDS** las bases de datos existen en regiones elegidas
+- **VPCs** son específicas de región
 
-### Servicios Globales
+### 🌍 Servicios Globales
 
-- IAM (Gestión de Identidad y Acceso)
-- CloudFront (Red de Entrega de Contenido)
-- Route 53 (servicio DNS)
-- WAF (Firewall de Aplicaciones Web)
+- **IAM** (Gestión de Identidad y Acceso)
+- **CloudFront** (Red de Entrega de Contenido)
+- **Route 53** (servicio DNS)
+- **WAF** (Firewall de Aplicaciones Web)
 
 ---
 
-# Zonas de Disponibilidad (AZs)
+# 🏢 Zonas de Disponibilidad (AZs)
 
-## ¿Qué es una Zona de Disponibilidad?
+## 🏗️ ¿Qué es una Zona de Disponibilidad?
 
 Piensa en las AZs como distritos **separados** en una ciudad:
 
-- Centros de datlos físicamente separados dentro de una región
-- Conectados por enlaces de alta velocidad y baja latencia
-- Energía, refigeración y redes independientes
-- Diseñados para aislar fallas
+- **Centros de datlos físicamente separados** dentro de una región
+- **Conectados por enlaces de alta velocidad y baja latencia**
+- **Energía, refigeración y redes independientes**
+- **Diseñados para aislar fallas**
 
-## Características de las AZ
+## 📊 Características de las AZ
 
-Número por Región
+🔢 Número por Región
 
 - Mínimo 3 AZs por region (la mayoría tiene 3-6)
 - Cada AZ tiene uno o más centros de datos físicos
 - Energía, redes y conectividad redundantes
 - Múltiples proveedores de servicios de internet
 
-Conectividad
+🔢 Conectividad
 
 - Redes de alto ancho de banda y baja latencia entre AZs
 - Conexiones privadas de fibra óptica
@@ -119,10 +119,10 @@ Conectividad
 
 Separación Física
 
-- Al menos 100km de distancia (pero usualmente mucha más cerca)
-- Llanuras de inundación separadas y líneas de falla
-- Redes eléctricas independientes
-- Perímetros de seguridad física diferentes
+- **Al menos 100km de distancia** (pero usualmente mucha más cerca)
+- **Llanuras de inundación separadas** y líneas de falla
+- **Redes eléctricas independientes**
+- **Perímetros de seguridad física diferentes**
 
 Alta Disponibilidad con AZs
 
